@@ -1,0 +1,6 @@
+
+> pulsefit@1.0.0 db:mongo
+> tsx scripts/mongo-setup.ts
+
+Workout validator and indexes installed
+exit_code=0

@@ -1,0 +1,18 @@
+?? .env.example
+?? .gitignore
+?? README.md
+?? database/
+?? docs/
+?? eslint.config.mjs
+?? next-env.d.ts
+?? next.config.ts
+?? package-lock.json
+?? package.json
+?? scripts/
+?? src/
+?? tests/
+?? tsconfig.json
+origin	https://github.com/ChiragBasanth/dbms_mini_project_pulsefit.git (fetch)
+origin	https://github.com/ChiragBasanth/dbms_mini_project_pulsefit.git (push)
+master
+No commits; no push/merge/deployment performed.
