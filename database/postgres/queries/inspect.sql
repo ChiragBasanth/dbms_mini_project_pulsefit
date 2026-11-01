@@ -1,0 +1,10 @@
+SELECT version();
+SELECT extname,extversion FROM pg_extension WHERE extname IN ('vector','btree_gist') ORDER BY extname;
+SELECT table_name FROM information_schema.tables WHERE table_schema='public' ORDER BY table_name;
+SELECT conname,contype FROM pg_constraint WHERE connamespace='public'::regnamespace ORDER BY conname;
+SELECT indexname,indexdef FROM pg_indexes WHERE schemaname='public' ORDER BY indexname;
+SELECT pg_get_functiondef('reserve_slot(uuid,uuid)'::regprocedure);
+SELECT tgname FROM pg_trigger WHERE NOT tgisinternal ORDER BY tgname;
+SELECT * FROM upcoming_bookings ORDER BY starts_at;
+SELECT * FROM trainer_utilization ORDER BY user_id;
+SELECT count(*)::int exercises,count(embedding)::int indexed_exercises FROM exercises;

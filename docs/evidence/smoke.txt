@@ -1,0 +1,28 @@
+
+> pulsefit@1.0.0 test:smoke
+> tsx --test tests/smoke.test.ts
+
+PAGE / 200
+PAGE /login 200
+PAGE /register 200
+PAGE /dashboard 200
+PAGE /trainers 200
+PAGE /bookings 200
+PAGE /workouts 200
+PAGE /analytics 200
+PAGE /recommendations 200
+PAGE /availability 200
+PAGE /appointments 200
+HTTP /does-not-exist 404
+HTTP /api/bookings 401
+HTTP /api/me 200
+✔ S01 production page and unauthenticated API smoke checks (860.5169ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1070.2699
+exit_code=0

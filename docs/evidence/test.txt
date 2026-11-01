@@ -1,0 +1,22 @@
+
+> pulsefit@1.0.0 test
+> tsx --test tests/unit.test.ts
+
+✔ U01 registration validates roles and normalizes email (3.0162ms)
+✔ U02 rejects short passwords and malformed email (0.2841ms)
+✔ U03 password hashes verify and never equal plaintext (876.2782ms)
+✔ U04 slot boundaries reject past, inverted, long and distant intervals (3.214ms)
+✔ U05 strength and cardio logs accept different shapes (2.0409ms)
+✔ U06 rejects negative weight, zero reps and empty sets (0.3082ms)
+✔ U07 analytics starts with user-scoped match and handles optional measures (0.6269ms)
+✔ U08 goals length and category validation (0.7379ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1230.6571
+
+exit_code=0

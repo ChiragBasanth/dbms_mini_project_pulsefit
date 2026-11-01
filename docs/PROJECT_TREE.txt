@@ -1,0 +1,79 @@
+pulsefit/
+├── database/
+│   ├── mongo/
+│   │   ├── course_demo.mongosh.js
+│   │   └── setup.ts
+│   └── postgres/
+│       ├── migrations/
+│       │   ├── 001_core.sql
+│       │   └── 002_profile_metadata.sql
+│       ├── queries/
+│       │   ├── course_demo.sql
+│       │   ├── inspect.sql
+│       │   └── semantic_search.sql
+│       └── seed/
+│           └── exercises.json
+├── docs/
+│   ├── CONTRIBUTIONS.md
+│   ├── DATA_DICTIONARY.md
+│   ├── DBMS_PROJECT_REPORT.md
+│   ├── DEMO_SCRIPT.md
+│   ├── ER_DIAGRAM.md
+│   ├── FINAL_HANDOFF.md
+│   ├── IMPLEMENTATION_AUDIT.md
+│   ├── PDF_QA.md
+│   ├── PROJECT_TREE.txt
+│   ├── RELATIONAL_SCHEMA.md
+│   ├── REQUIREMENTS_MATRIX.md
+│   ├── SCREENSHOT_CHECKLIST.md
+│   ├── SECURITY_AND_CONSISTENCY.md
+│   ├── SETUP.md
+│   └── TEST_RESULTS.md
+├── scripts/
+│   ├── capture-db-evidence.ts
+│   ├── embed.ts
+│   ├── generate-report.py
+│   ├── local-services.ts
+│   ├── migrate.ts
+│   ├── mongo-setup.ts
+│   ├── render-report.py
+│   ├── seed.ts
+│   ├── test-server.ts
+│   └── verify.ts
+├── src/
+│   ├── app/
+│   │   ├── [view]/
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   └── [...path]/
+│   │   │       └── route.ts
+│   │   ├── trainers/
+│   │   │   └── [id]/
+│   │   │       └── page.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   └── Portal.tsx
+│   └── lib/
+│       ├── auth.ts
+│       ├── db.ts
+│       ├── embedding.ts
+│       ├── errors.ts
+│       ├── validation.ts
+│       └── workouts.ts
+├── tests/
+│   ├── api.test.ts
+│   ├── integration.test.ts
+│   ├── smoke.test.ts
+│   └── unit.test.ts
+├── .env.example
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+└── tsconfig.json

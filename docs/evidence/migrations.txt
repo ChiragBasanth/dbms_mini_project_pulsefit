@@ -1,0 +1,7 @@
+
+> pulsefit@1.0.0 db:migrate
+> tsx scripts/migrate.ts
+
+Applied 001_core.sql
+Applied 002_profile_metadata.sql
+exit_code=0

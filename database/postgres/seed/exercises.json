@@ -1,0 +1,8 @@
+[
+ {"name":"Goblet squat","muscle_group":"Legs","description":"Build lower body strength and muscle with a dumbbell held at the chest. Controlled knee and hip movement for beginners.","difficulty":"BEGINNER","category":"STRENGTH"},
+ {"name":"Steady cycling","muscle_group":"Cardiovascular","description":"Low impact aerobic endurance training on a stationary bicycle. Improve heart health and stamina without running or jumping.","difficulty":"BEGINNER","category":"CARDIO"},
+ {"name":"Hip mobility flow","muscle_group":"Hips","description":"Gentle stretching and joint range of motion to reduce stiffness after sitting. Improve flexibility and comfortable movement.","difficulty":"BEGINNER","category":"MOBILITY"},
+ {"name":"Dumbbell row","muscle_group":"Back","description":"Strengthen upper back muscles and improve pulling strength with controlled resistance training.","difficulty":"BEGINNER","category":"STRENGTH"},
+ {"name":"Interval running","muscle_group":"Cardiovascular","description":"Alternating fast running and easy recovery to develop cardiovascular endurance and athletic stamina.","difficulty":"INTERMEDIATE","category":"CARDIO"},
+ {"name":"Overhead press","muscle_group":"Shoulders","description":"Resistance exercise to build shoulder muscle and upper body pushing strength.","difficulty":"INTERMEDIATE","category":"STRENGTH"}
+]

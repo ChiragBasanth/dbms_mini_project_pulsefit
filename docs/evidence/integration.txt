@@ -1,0 +1,25 @@
+
+> pulsefit@1.0.0 test:integration
+> tsx --test --test-concurrency=1 tests/integration.test.ts
+
+CONCURRENCY [{"ok":true,"id":"59f632fb-fff0-44a0-8c97-9c44357c198f"},{"ok":false,"code":"23505"},{"ok":false,"code":"23505"},{"ok":false,"code":"23505"},{"ok":false,"code":"23505"},{"ok":false,"code":"23505"},{"ok":false,"code":"23505"},{"ok":false,"code":"23505"}]
+▶ I01 PostgreSQL constraints, concurrent reservations, cancellation and audit
+  ✔ I02 parallel independent connections yield one winner and SQLSTATE 23505 losers (146.8595ms)
+  ✔ I03 cancellation releases slot; audit records committed transitions (4.7238ms)
+  ✔ I04 overlap, invalid duration and past availability rejected (7.4294ms)
+  ✔ I05 normalized email, typed profile FK, ownership query and SQL injection parameterization (6.3507ms)
+  ✔ I06 rollback and safe course SQL execute (23.1516ms)
+✔ I01 PostgreSQL constraints, concurrent reservations, cancellation and audit (524.463ms)
+MONGO_AGGREGATION {"sessions":[{"sessions":2,"date":"2026-01-01"}],"volume":[{"volume":350,"duration":0,"distance":0,"exercise":"Squat"},{"volume":0,"duration":600,"distance":1500,"exercise":"Cycling"}]}
+✔ I07 real MongoDB CRUD, ownership, validator and aggregation accuracy (78.275ms)
+VECTOR Xenova/all-MiniLM-L6-v2 [{"name":"aerobic","similarity":0.4065922983398822},{"name":"strength","similarity":0.1471995851992327}]
+✔ I08 legitimate embeddings and pgvector semantic ranking (470.3747ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1578.6038
+exit_code=0

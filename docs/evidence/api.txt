@@ -1,0 +1,15 @@
+
+> pulsefit@1.0.0 test:api
+> tsx --test tests/api.test.ts
+
+API fixtures suffix: 8a15362a-dd97-41bd-b943-d019b6c04163 Use disposable DB reset after inspection.
+✔ A01 member/trainer auth, ownership, booking, workout and recommendation API flow (3262.2706ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3419.1409
+exit_code=0
