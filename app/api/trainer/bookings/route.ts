@@ -1,0 +1,7 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { requireSession } from "@/lib/authorization";
+import { pgPool } from "@/lib/postgres";
+const action=z.object({bookingId:z.string().uuid(),status:z.enum(["CONFIRMED","REJECTED","COMPLETED"])});
+export async function GET(){const auth=await requireSession(["TRAINER"]);if(auth.error)return auth.error;try{const {rows}=await pgPool.query("SELECT b.*,u.full_name member_name,u.email member_email,m.phone FROM bookings b JOIN users u ON u.id=b.member_id LEFT JOIN member_profiles m ON m.user_id=b.member_id WHERE b.trainer_id=$1 ORDER BY b.starts_at DESC",[auth.session.id]);return NextResponse.json({bookings:rows});}catch{return NextResponse.json({error:"Database unavailable"},{status:503});}}
+export async function PATCH(request:Request){const auth=await requireSession(["TRAINER"]);if(auth.error)return auth.error;const parsed=action.safeParse(await request.json());if(!parsed.success)return NextResponse.json({error:parsed.error.flatten()},{status:400});try{const {rows}=await pgPool.query("UPDATE bookings SET status=$1,updated_at=now() WHERE id=$2 AND trainer_id=$3 AND status='PENDING' RETURNING id,status",[parsed.data.status,parsed.data.bookingId,auth.session.id]);return rows[0]?NextResponse.json({booking:rows[0]}):NextResponse.json({error:"Booking is not pending or is not yours"},{status:409});}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Booking update failed"},{status:409});}}

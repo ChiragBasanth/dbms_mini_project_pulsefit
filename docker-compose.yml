@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: pulsefit
+      POSTGRES_USER: pulsefit
+      POSTGRES_PASSWORD: pulsefit_local_only
+    ports: ["5432:5432"]
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]
+    volumes: ["mongo_data:/data/db"]
+volumes:
+  postgres_data:
+  mongo_data:

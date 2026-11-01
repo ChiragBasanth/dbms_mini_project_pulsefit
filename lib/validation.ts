@@ -1,0 +1,3 @@
+import { z } from "zod";
+export const registerSchema=z.object({name:z.string().min(2).max(100),email:z.string().email(),password:z.string().min(10),role:z.enum(["MEMBER","TRAINER"]).default("MEMBER")});
+export const workoutSchema=z.object({workoutDate:z.coerce.date(),durationMinutes:z.number().int().min(0).max(600).optional(),caloriesBurned:z.number().min(0).optional(),notes:z.string().max(2000).optional(),exercises:z.array(z.object({name:z.string().min(1),kind:z.enum(["strength","cardio","mobility","sport","other"]),sets:z.array(z.object({reps:z.number().int().min(0).optional(),weightKg:z.number().min(0).optional(),durationSeconds:z.number().min(0).optional(),distanceMeters:z.number().min(0).optional(),rpe:z.number().min(1).max(10).optional()}).strict())})).min(1)});

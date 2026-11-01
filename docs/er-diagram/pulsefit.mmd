@@ -1,0 +1,18 @@
+erDiagram
+ USERS ||--o| MEMBER_PROFILES : has
+ USERS ||--o| TRAINER_PROFILES : has
+ TRAINER_PROFILES ||--o{ TRAINER_SPECIALIZATIONS : specializes
+ TRAINER_PROFILES ||--o{ TRAINER_AVAILABILITY : publishes
+ MEMBER_PROFILES ||--o{ BOOKINGS : makes
+ TRAINER_PROFILES ||--o{ BOOKINGS : receives
+ BOOKINGS ||--o{ BOOKING_AUDIT : records
+ MEMBER_PROFILES ||--o{ FITNESS_GOALS : sets
+ USERS { uuid id PK string email UK string password_hash string full_name enum role boolean is_active timestamptz created_at }
+ MEMBER_PROFILES { uuid user_id PK_FK string phone date date_of_birth string fitness_level }
+ TRAINER_PROFILES { uuid user_id PK_FK string headline string biography decimal hourly_rate smallint years_experience vector_128 embedding }
+ TRAINER_SPECIALIZATIONS { bigint id PK uuid trainer_id FK string name }
+ TRAINER_AVAILABILITY { uuid id PK uuid trainer_id FK timestamptz starts_at timestamptz ends_at boolean is_open }
+ BOOKINGS { uuid id PK uuid member_id FK uuid trainer_id FK timestamptz starts_at timestamptz ends_at enum status }
+ BOOKING_AUDIT { bigint id PK uuid booking_id FK uuid actor_id FK string action enum old_status enum new_status timestamptz changed_at }
+ FITNESS_GOALS { uuid id PK uuid member_id FK string description vector_128 embedding date target_date }
+ EXERCISE_EMBEDDINGS { uuid id PK string name UK string description string category vector_128 embedding jsonb metadata }
