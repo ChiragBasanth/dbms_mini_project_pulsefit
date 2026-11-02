@@ -14,7 +14,7 @@ PostgreSQL manages roles, schedules and transactional bookings. MongoDB manages 
 
 ## D. Requirement status
 
-REQUIREMENTS_MATRIX.md maps all 18 course requirements: 12 COMPLETE within local technical scope, 5 PARTIAL, 1 BLOCKED. Student 1 is Chirag Basanth Bellavi — PES1UG24CS133; Student 2 is Chhavi S Wadhwa — PES1UG24CS132. The blocked item is verified individual contributions and team approval, not missing names/SRNs. Partial items concern section-title uniqueness, remaining dedicated code/terminal screenshots, actual student contribution history, formal presentation and instructor originality/AI-assistance approval. No rubric marks were supplied or invented.
+REQUIREMENTS_MATRIX.md maps all 18 course requirements: 12 COMPLETE within local technical scope, 5 PARTIAL, 1 BLOCKED. Student 1 is Chirag Basanth Bellavi — PES1UG24CS133; Student 2 is Chhavi Siddarth Wadhwa — PES1UG24CS132. The blocked item is verified individual contributions and team approval, not missing names/SRNs. Partial items concern section-title uniqueness, remaining dedicated code/terminal screenshots, actual student contribution history, formal presentation and instructor originality/AI-assistance approval. No rubric marks were supplied or invented.
 
 ## E. Commands and results
 

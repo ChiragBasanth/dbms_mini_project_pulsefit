@@ -5,7 +5,7 @@ All 18 numbered requirements from the supplied four-page course document are map
 | Requirement | Weight/Marks | Implementation | Evidence/File | Verification | Status | Remaining Work |
 |---|---|---|---|---|---|---|
 | 1. Unique meaningful title | Not provided | Double-booking and flexible tracking problem; title selected | `README.md; docs/DBMS_PROJECT_REPORT.md` | Live booking and analytics; section uniqueness unconfirmed | PARTIAL | Instructor confirms title uniqueness |
-| 2. Two-person team and both contribute | Not provided | Chirag Basanth Bellavi — PES1UG24CS133; Chhavi S Wadhwa — PES1UG24CS132; contributions pending | `docs/CONTRIBUTIONS.md` | No student contribution history supplied | BLOCKED | Team approval and confirmed contributions with evidence |
+| 2. Two-person team and both contribute | Not provided | Chirag Basanth Bellavi — PES1UG24CS133; Chhavi Siddarth Wadhwa — PES1UG24CS132; contributions pending | `docs/CONTRIBUTIONS.md` | No student contribution history supplied | BLOCKED | Team approval and confirmed contributions with evidence |
 | 3. SQL plus NoSQL/vector | Not provided | PostgreSQL + MongoDB + pgvector | `src/lib/db.ts; database/` | Live migrations, I01, I07, I08 | COMPLETE | None for local demo |
 | 4. Database design | Not provided | ER, typed FKs, constraints, schema, dictionary and vector metadata | `docs/ER_DIAGRAM.md; docs/RELATIONAL_SCHEMA.md; docs/DATA_DICTIONARY.md` | Migrations executed against PostgreSQL | COMPLETE | None for local demo |
 | 5. SQL DDL | Not provided | CREATE, safe ALTER, temporary DROP, indexes and views | `database/postgres/migrations/; database/postgres/queries/course_demo.sql` | I06 and captured SQL outputs | COMPLETE | None |

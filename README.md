@@ -9,7 +9,7 @@ PulseFit combines database-enforced trainer reservations with flexible workout h
 ## Project team
 
 - **Student 1: Chirag Basanth Bellavi — PES1UG24CS133**
-- **Student 2: Chhavi S Wadhwa — PES1UG24CS132**
+- **Student 2: Chhavi Siddarth Wadhwa — PES1UG24CS132**
 
 Names and SRNs were explicitly confirmed by the user. Individual database/application contributions remain pending confirmation; see [contribution record](docs/CONTRIBUTIONS.md).
 

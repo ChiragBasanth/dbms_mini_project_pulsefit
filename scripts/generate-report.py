@@ -7,7 +7,7 @@ def read(p):return (ROOT/p).read_text(encoding='utf-8-sig')
 def code(p,lang='sql',text=None):return f'\nSource: `{p}`.\n\n```{lang}\n{(read(p) if text is None else text).strip()}\n```\n'
 requirements=[
 ('1. Unique meaningful title','Double-booking and flexible tracking problem; title selected','README.md; docs/DBMS_PROJECT_REPORT.md','Live booking and analytics; section uniqueness unconfirmed','PARTIAL','Instructor confirms title uniqueness'),
-('2. Two-person team and both contribute','Chhavi S — PES1UG24CS132; Chirag Basanth — PES1UG24CS133; contributions pending','docs/CONTRIBUTIONS.md','No student contribution history supplied','BLOCKED','Team approval and confirmed contributions with evidence'),
+('2. Two-person team and both contribute','Chirag Basanth Bellavi — PES1UG24CS133; Chhavi Siddarth Wadhwa — PES1UG24CS132; contributions pending','docs/CONTRIBUTIONS.md','No student contribution history supplied','BLOCKED','Team approval and confirmed contributions with evidence'),
 ('3. SQL plus NoSQL/vector','PostgreSQL + MongoDB + pgvector','src/lib/db.ts; database/','Live migrations, I01, I07, I08','COMPLETE','None for local demo'),
 ('4. Database design','ER, typed FKs, constraints, schema, dictionary and vector metadata','docs/ER_DIAGRAM.md; docs/RELATIONAL_SCHEMA.md; docs/DATA_DICTIONARY.md','Migrations executed against PostgreSQL','COMPLETE','None for local demo'),
 ('5. SQL DDL','CREATE, safe ALTER, temporary DROP, indexes and views','database/postgres/migrations/; database/postgres/queries/course_demo.sql','I06 and captured SQL outputs','COMPLETE','None'),
@@ -60,9 +60,9 @@ report=f'''# 1. TITLE
 
 DBMS Experiential Learning – Level 3 Project. Evidence recorded on 1 November 2026, Asia/Calcutta.
 
-**Student 1: Chhavi S — PES1UG24CS132**
+**Student 1: Chirag Basanth Bellavi — PES1UG24CS133**
 
-**Student 2: Chirag Basanth — PES1UG24CS133**
+**Student 2: Chhavi Siddarth Wadhwa — PES1UG24CS132**
 
 Repository: https://github.com/ChiragBasanth/dbms_mini_project_pulsefit
 
@@ -76,9 +76,9 @@ Provide transactionally safe, capacity-one trainer booking; role-authorized sche
 
 # 2. STUDENTS' SRN AND NAME
 
-Student 1: Chhavi S — PES1UG24CS132
+Student 1: Chirag Basanth Bellavi — PES1UG24CS133
 
-Student 2: Chirag Basanth — PES1UG24CS133
+Student 2: Chhavi Siddarth Wadhwa — PES1UG24CS132
 
 Both names and SRNs were explicitly confirmed by the user. Team approval and individual contributions remain pending confirmation. No GitHub handle was used to infer a student identity. See Appendix B and `CONTRIBUTIONS.md` for the contribution record; no individual work is attributed without evidence. This submission requires student review and instructor-policy confirmation for AI assistance.
 
