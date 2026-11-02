@@ -1,9 +1,8 @@
-node_modules
-.next
-.env
-.env.*
+node_modules/
+.next/
+.env*
 !.env.example
-coverage
-dist
-*.log
-tsconfig.tsbuildinfo
+.cache/
+*.tsbuildinfo
+coverage/
+work/

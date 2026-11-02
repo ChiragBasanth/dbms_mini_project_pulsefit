@@ -1,0 +1,37 @@
+[
+  {
+    "command": "npm run typecheck",
+    "started": "2026-11-01T17:01:51.216Z",
+    "finished": "2026-11-01T17:01:53.227Z",
+    "exitCode": 0,
+    "evidence": "typecheck.txt"
+  },
+  {
+    "command": "npm run lint",
+    "started": "2026-11-01T17:01:53.227Z",
+    "finished": "2026-11-01T17:02:01.967Z",
+    "exitCode": 0,
+    "evidence": "lint.txt"
+  },
+  {
+    "command": "npm run test",
+    "started": "2026-11-01T17:02:01.968Z",
+    "finished": "2026-11-01T17:02:03.616Z",
+    "exitCode": 0,
+    "evidence": "test.txt"
+  },
+  {
+    "command": "npm run test:integration",
+    "started": "2026-11-01T17:02:03.617Z",
+    "finished": "2026-11-01T17:02:05.304Z",
+    "exitCode": 0,
+    "evidence": "test-integration.txt"
+  },
+  {
+    "command": "npm run build",
+    "started": "2026-11-01T17:02:05.304Z",
+    "finished": "2026-11-01T17:02:29.411Z",
+    "exitCode": 0,
+    "evidence": "build.txt"
+  }
+]

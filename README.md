@@ -1,62 +1,79 @@
-# PulseFit — Hybrid Smart Gym & Trainer Booking System
+# PulseFit
 
-DBMS Level 3 project by **Chirag Basanth Bellavi (PES1UG24CS133)** and **Chhavi S Wadhwa (PES1UG24CS132)**. Faculty: **Dr. Nagasundari S**, Department of Computer Science and Engineering, PES University.
+**Hybrid Smart Gym & Trainer Booking System** — university DBMS Experiential Learning Level 3.
 
-PulseFit combines PostgreSQL transactions and constraints for accounts and trainer booking, MongoDB for flexible workout records and analytics, and pgvector for cosine-similarity recommendations.
+Repository: https://github.com/ChiragBasanth/dbms_mini_project_pulsefit
 
-## Requirements and startup
+PulseFit combines database-enforced trainer reservations with flexible workout history and semantic goal matching. The repository was empty at inspection; this implementation was authored for this brief.
 
-Install Node.js 20+, PostgreSQL 16+ with `pgvector`, and MongoDB 7+. The simplest local option is Docker Desktop:
+## Project team
+
+- **Student 1: Chhavi S — PES1UG24CS132**
+- **Student 2: Chirag Basanth — PES1UG24CS133**
+
+Names and SRNs were explicitly confirmed by the user. Individual database/application contributions remain pending confirmation; see [contribution record](docs/CONTRIBUTIONS.md).
+
+## Quick start
+
+Use Node.js 22 LTS or later, npm, PostgreSQL with **pgvector + btree_gist**, and MongoDB. Native installation and optional portable setup are explained in [docs/SETUP.md](docs/SETUP.md). Docker is optional.
 
 ```powershell
-docker compose up -d
-```
-
-Copy `.env.example` to `.env`, then replace the values with the local credentials below. The supplied compose file uses database `pulsefit`, user `pulsefit`, and password `pulsefit_local_only` for local evaluation only. Enable extensions supported by the server (`pgcrypto`, `btree_gist`, `vector`). Then run:
-
-```powershell
-npm install
-Get-Content -Raw database/sql/001_schema.sql | docker compose exec -T postgres psql -U pulsefit -d pulsefit
-Get-Content -Raw database/sql/002_seed.sql | docker compose exec -T postgres psql -U pulsefit -d pulsefit
+npm ci
+Copy-Item .env.example .env
+# Edit .env privately: actual database URLs, 32+ character SESSION_SECRET, SEED_PASSWORD.
+npm run db:migrate
+npm run db:mongo
+npm run db:seed
+npm run db:embed
 npm run dev
 ```
 
-Open http://localhost:3000. Do not commit `.env`. The implementation includes registration/login, signed sessions, member profile and booking management, trainer availability and booking decisions, workout CRUD, MongoDB analytics and pgvector recommendation endpoints.
+Open http://localhost:3000. Demo emails: `member@pulsefit.example`, `strength@pulsefit.example`, `endurance@pulsefit.example`, `mobility@pulsefit.example`. The password is **your SEED_PASSWORD**, never a hardcoded shared password. Seed accounts are fictitious. Seeds do not overwrite existing accounts or reset passwords. The first embedding run downloads the quantized MiniLM model; later runs use the ignored local cache. Model failure is reported as service unavailable and never replaced with fake vectors.
 
-### Local demo credentials
+On macOS/Linux use `cp .env.example .env`. If PowerShell blocks npm.ps1, use `npm.cmd`. Start with `npm run build` then `npm start` for a production smoke check. The production server uses Secure cookies; localhost is supported by modern browsers, and a remote deployment requires HTTPS and matching APP_ORIGIN. No deployment was performed.
 
-After executing `002_seed.sql`, use either account below. Both use password `PulseFitDemo!2026`.
+## Workflows
 
-| Role | Email |
-| --- | --- |
-| Member | `member.demo@pulsefit.local` |
-| Trainer | `trainer.maya@pulsefit.local` |
+- Register as MEMBER or TRAINER. Passwords require 12–72 characters and at most 72 UTF-8 bytes; bcrypt cost 12. Sessions expire after eight hours.
+- A trainer writes a bio/specialties on Overview and creates future availability. Bio saving generates its real embedding, so the model must be available.
+- Members search trainers, inspect available slots, reserve, view history and cancel their own future bookings. A cancelled booking remains in history and releases the slot.
+- Members log strength/cardio/mobility sessions, edit/delete their own entries and filter by date/type. The flexible JSON workout editor includes strength and cardio examples; use numeric kg, seconds and metres.
+- Progress queries MongoDB aggregation. The landing-page bars are explicitly labeled an illustration; they are not claimed to be analytics.
+- Goal matching embeds free text and queries PostgreSQL cosine distance. Trainer results require an indexed bio and an open, unoccupied future slot.
 
-### Validation
+## Architecture
+
+Next.js App Router → server-only route handler → PostgreSQL and MongoDB. All database access and model inference run on Node.js. PostgreSQL manages users, role-specific profiles, availability, bookings, audit and catalog embeddings. MongoDB stores varied exercise/set records. A PostgreSQL UUID is the MongoDB member reference; no distributed ACID guarantee is claimed.
+
+Reservations call `reserve_slot(member,slot)`. The function locks the slot; a partial unique index protects every insert against multiple confirmed bookings. A GiST exclusion constraint prevents arbitrary overlapping trainer intervals. Validation and audit triggers, utilization/upcoming views, migrations, query indexes, NoSQL aggregation and vector retrieval provide more than four advanced concepts.
+
+## Verification
 
 ```powershell
-npx tsc --noEmit
+npm run typecheck
+npm run lint
 npm test
+npm run test:integration
 npm run build
+# Terminal 2: app using explicitly configured disposable test databases
+node --import tsx scripts/test-server.ts
+# Terminal 3:
+$env:TEST_APP_ORIGIN='http://localhost:3001'
+$env:ALLOW_API_TEST_FIXTURES='yes'
+npm run test:api
 ```
 
-The first two commands were executed successfully on 1 November 2026. `npm test` passed 7 independent tests for session payload validation, Edge HMAC tamper rejection, role route policy and deterministic embeddings. Run the production build, database scripts and service-backed tests from an unrestricted terminal with Docker or local PostgreSQL/MongoDB running.
+Set TEST_DATABASE_URL and TEST_MONGODB_URI/DB first. Tests refuse database names not ending in `_test`; missing configuration is a **skip/blocker**, never an integration pass. Integration tests create and drop only their own PostgreSQL schema and delete only their own MongoDB fixture UUIDs. Extensions may remain installed. API tests retain fictitious accounts and reservations in the disposable test DB for inspection. Do not point the API test server at a real user database.
 
-## DBMS viva guide
+The concurrency test releases eight separately acquired PostgreSQL connections through a shared barrier, asserts one committed winner and seven unique violations, then checks cancellation, audit and rebooking. The API test independently asserts one 201 and one 409 under parallel HTTP requests. [Observed test results](docs/TEST_RESULTS.md) and raw [evidence logs](docs/evidence/) document what actually ran.
 
-- **Exclusion constraint:** GiST compares each confirmed booking's half-open time range; overlapping trainer ranges cannot coexist, even under concurrent writes.
-- **Atomic booking:** `create_booking` locks the matching availability row and inserts the confirmed booking. The database constraint is the final integrity boundary.
-- **Trigger + audit:** `bookings_audit_trigger` records creation and status transitions.
-- **View + indexes:** `trainer_booking_summary` and query indexes support reporting and discovery.
-- **MongoDB:** `workout_logs` keeps an extensible typed exercise/set document. Aggregations compute totals, weekly counts, volume and progress.
-- **pgvector:** vectors are 128 dimensions and searched by cosine distance. Embeddings use deterministic token and bigram feature hashing; this local reproducible baseline is not a pretrained model, so semantic quality is limited.
+## Academic deliverables
 
-See `database/sql/command_gallery.sql`, `mongodb/aggregations/workout-analytics.ts`, `docs/relational-schema.md`, `docs/data-dictionary.md`, and `docs/er-diagram/pulsefit.mmd`.
+- [Initial audit](docs/IMPLEMENTATION_AUDIT.md) and [requirements matrix](docs/REQUIREMENTS_MATRIX.md)
+- [ER diagram](docs/ER_DIAGRAM.md), [relational schema](docs/RELATIONAL_SCHEMA.md), [data dictionary](docs/DATA_DICTIONARY.md)
+- [Project report](docs/DBMS_PROJECT_REPORT.md) with the nine required headings and [printable PDF](docs/DBMS_PROJECT_REPORT.pdf)
+- [Seven-minute demo](docs/DEMO_SCRIPT.md) and [screenshot checklist](docs/SCREENSHOT_CHECKLIST.md)
 
-## Student report status
+## Limits and authorship
 
-The requested student and faculty details are included above. Application features requiring live databases cannot be marked tested until PostgreSQL/pgvector and MongoDB are configured and migrations run. Screenshots and final PDF/DOCX report must be produced from a running configured app; no fabricated evidence is included.
-
-## Repository
-
-https://github.com/ChiragBasanth/dbms_mini_project_pulsefit
+This is a local academic demonstrator. It has no payment system, password reset, email verification, per-session revocation or distributed rate limiter. The in-process login throttle is appropriate to this single-process demo; scale-out requires a shared limiter. DB credentials are server-only and must use least privilege in deployment. MongoDB cannot enforce a PostgreSQL FK: users have no deletion API, and reconciliation is required before adding cross-store account deletion. Never assign student authorship or commit history that did not occur. Both students must review, understand and make identifiable database and application contributions according to their instructor's policy.

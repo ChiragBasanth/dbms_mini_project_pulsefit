@@ -1,0 +1,10 @@
+{
+  "postgres": {
+    "users": 4,
+    "confirmed_bookings": 1,
+    "indexed_exercises": 6,
+    "indexed_trainers": 3
+  },
+  "mongo_workouts": 2
+}
+exit_code=0
