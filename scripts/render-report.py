@@ -121,6 +121,6 @@ def page(canvas,doc):
  canvas.setStrokeColor(LINE);canvas.line(42,h-35,w-42,h-35)
  canvas.setFont('Body',7.5);canvas.setFillColor(MUTED);canvas.drawString(42,23,'Evidence-based project report | 1 November 2026');canvas.drawRightString(w-42,23,str(doc.page));canvas.restoreState()
 out=ROOT/'docs/DBMS_PROJECT_REPORT.pdf'
-doc=SimpleDocTemplate(str(out),pagesize=(595.28,841.89),leftMargin=42,rightMargin=42,topMargin=53,bottomMargin=43,title='PulseFit - Hybrid Smart Gym & Trainer Booking System',author='Chhavi S (PES1UG24CS132); Chirag Basanth (PES1UG24CS133)',allowSplitting=True)
+doc=SimpleDocTemplate(str(out),pagesize=(595.28,841.89),leftMargin=42,rightMargin=42,topMargin=53,bottomMargin=43,title='PulseFit - Hybrid Smart Gym & Trainer Booking System',author='Chirag Basanth Bellavi (PES1UG24CS133); Chhavi S Wadhwa (PES1UG24CS132)',allowSplitting=True)
 doc.build(story,onFirstPage=page,onLaterPages=page)
 print('Created',out)

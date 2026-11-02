@@ -14,7 +14,7 @@ PostgreSQL manages roles, schedules and transactional bookings. MongoDB manages 
 
 ## D. Requirement status
 
-REQUIREMENTS_MATRIX.md maps all 18 course requirements: 12 COMPLETE within local technical scope, 5 PARTIAL, 1 BLOCKED. Student 1 is Chhavi S — PES1UG24CS132; Student 2 is Chirag Basanth — PES1UG24CS133. The blocked item is verified individual contributions and team approval, not missing names/SRNs. Partial items concern section-title uniqueness, remaining dedicated code/terminal screenshots, actual student contribution history, formal presentation and instructor originality/AI-assistance approval. No rubric marks were supplied or invented.
+REQUIREMENTS_MATRIX.md maps all 18 course requirements: 12 COMPLETE within local technical scope, 5 PARTIAL, 1 BLOCKED. Student 1 is Chirag Basanth Bellavi — PES1UG24CS133; Student 2 is Chhavi S Wadhwa — PES1UG24CS132. The blocked item is verified individual contributions and team approval, not missing names/SRNs. Partial items concern section-title uniqueness, remaining dedicated code/terminal screenshots, actual student contribution history, formal presentation and instructor originality/AI-assistance approval. No rubric marks were supplied or invented.
 
 ## E. Commands and results
 
@@ -26,7 +26,7 @@ DBMS_PROJECT_REPORT.md contains the required nine main headings; DBMS_PROJECT_RE
 
 ## G. Remaining human actions
 
-Names/SRNs are confirmed and populated. Confirm title uniqueness, team approval and AI-assistance policy; both students review and confirm actual database/application contributions with evidence; record truthful commits with their real identities; capture dedicated source/terminal/DB-console images if the instructor requires them. Public deployment and pushing require explicit authorization. Private demo credentials are in ignored .env; do not submit that file. Native database alternatives and a portable setup are documented in SETUP.md.
+Names/SRNs are confirmed and populated. Confirm title uniqueness, team approval and AI-assistance policy; both students review and confirm actual database/application contributions with evidence; record truthful commits with their real identities; capture dedicated source/terminal/DB-console images if the instructor requires them. The project is published to the repository named in README. Private demo credentials are in ignored .env; do not submit that file. Native database alternatives and a portable setup are documented in SETUP.md.
 
 For the prepared local environment, open two terminals in this directory:
 
@@ -43,4 +43,4 @@ Verification servers were stopped at handoff. A real database restart check reta
 
 ## H. Git status
 
-At the original implementation handoff, the repository had no commits. During the subsequently authorized PR preparation, a minimal local `main` commit and `feature/pulsefit-level3-complete` branch were prepared. The user explicitly supplied Git author `chhavi2308-s <chhavi.s2308@gmail.com>` after Git reported no existing identity. Preparation commits are not claims of individual academic contributions. Inspect the current local commit hashes with `git log --oneline --all`. Nothing has been pushed, merged or deployed; publication remains on hold by the user's instruction.
+At the original implementation handoff, the repository had no commits. It was later merged and pushed to the configured GitHub `main` branch. Preparation commits are not claims of individual academic contributions. Inspect the current local commit hashes with `git log --oneline --all`.

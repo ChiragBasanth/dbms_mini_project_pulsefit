@@ -41,7 +41,7 @@ Observed on 1 November 2026, Asia/Calcutta, using real portable PostgreSQL 18.6,
 | T13 | Validation and SQL injection | Bad fields rejected; injected input treated as data | Role/password/measure validation passed; parameterized injected email/search returned no rows | PASS | U01–U08; I05; A01 |
 | T14 | Build and route smoke | Build/type/lint succeed; core routes serve; auth enforced | All final checks exit 0; 11 pages returned 200, unknown page 404, bookings API 401 | PASS | verification.json; build.txt; smoke.txt |
 | T15 | Schema/DDL/DML/views | Ordered migrations and reversible demonstrations execute | Both migrations and safe course SQL executed; trigger/function/view catalogs captured | PASS | migrations.txt; I06; sql-*.json |
-| T16 | Both students' contributions | Real team identities and attributable work | Names/SRNs confirmed: Chhavi S — PES1UG24CS132; Chirag Basanth — PES1UG24CS133. Instructor approval and individual contribution evidence remain pending | BLOCKED | CONTRIBUTIONS.md |
+| T16 | Both students' contributions | Real team identities and attributable work | Names/SRNs confirmed: Chirag Basanth Bellavi — PES1UG24CS133; Chhavi S Wadhwa — PES1UG24CS132. Instructor approval and individual contribution evidence remain pending | BLOCKED | CONTRIBUTIONS.md |
 | T17 | Dedicated code/terminal/DB-console screenshots | Genuine editor/console images | App images captured; dedicated console images pending | BLOCKED | SCREENSHOT_CHECKLIST.md |
 
 ## Concurrency proof and isolation assumptions
