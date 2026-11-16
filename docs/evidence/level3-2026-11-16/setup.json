@@ -1,57 +1,57 @@
 [
   {
     "command": "npm run db:migrate",
-    "started": "2026-11-16T15:14:10.156Z",
-    "finished": "2026-11-16T15:14:11.171Z",
+    "started": "2026-11-16T15:30:52.948Z",
+    "finished": "2026-11-16T15:30:54.179Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
     "command": "npm run db:migrate (DATABASE_URL=TEST_DATABASE_URL)",
-    "started": "2026-11-16T15:14:11.172Z",
-    "finished": "2026-11-16T15:14:12.182Z",
+    "started": "2026-11-16T15:30:54.180Z",
+    "finished": "2026-11-16T15:30:55.243Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
     "command": "npm run db:mongo",
-    "started": "2026-11-16T15:14:12.183Z",
-    "finished": "2026-11-16T15:14:13.144Z",
+    "started": "2026-11-16T15:30:55.244Z",
+    "finished": "2026-11-16T15:30:56.184Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
     "command": "npm run db:seed",
-    "started": "2026-11-16T15:14:13.144Z",
-    "finished": "2026-11-16T15:14:14.583Z",
+    "started": "2026-11-16T15:30:56.185Z",
+    "finished": "2026-11-16T15:30:57.786Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
     "command": "npm run db:seed (DATABASE_URL=TEST_DATABASE_URL)",
-    "started": "2026-11-16T15:14:14.584Z",
-    "finished": "2026-11-16T15:14:16.129Z",
+    "started": "2026-11-16T15:30:57.788Z",
+    "finished": "2026-11-16T15:30:59.313Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
-    "command": "npm run db:rbac",
-    "started": "2026-11-16T15:14:16.130Z",
-    "finished": "2026-11-16T15:14:17.160Z",
+    "command": "npm run db:rbac -- --with-tests",
+    "started": "2026-11-16T15:30:59.315Z",
+    "finished": "2026-11-16T15:31:00.280Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
     "command": "npm run db:embed",
-    "started": "2026-11-16T15:14:17.166Z",
-    "finished": "2026-11-16T15:14:18.838Z",
+    "started": "2026-11-16T15:31:00.292Z",
+    "finished": "2026-11-16T15:31:02.027Z",
     "exitCode": 0,
     "skippedTests": false
   },
   {
     "command": "npm run db:embed (DATABASE_URL=TEST_DATABASE_URL)",
-    "started": "2026-11-16T15:14:18.839Z",
-    "finished": "2026-11-16T15:14:20.572Z",
+    "started": "2026-11-16T15:31:02.029Z",
+    "finished": "2026-11-16T15:31:03.873Z",
     "exitCode": 0,
     "skippedTests": false
   }

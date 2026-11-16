@@ -78,6 +78,13 @@ if (process.argv[1]?.endsWith("rbac.ts")) {
     ["DATABASE_URL", "APP_DATABASE_URL", "pulsefit_app"],
     ["TEST_DATABASE_URL", "TEST_APP_DATABASE_URL", "pulsefit_app_test"],
   ]) {
+    // A demo-only quick start must not depend on a migrated test database.
+    // The full verification setup opts into both after migrating them.
+    if (
+      ownerKey === "TEST_DATABASE_URL" &&
+      !process.argv.includes("--with-tests")
+    )
+      continue;
     const owner = process.env[ownerKey];
     if (!owner) continue;
     let app = process.env[appKey];

@@ -44,7 +44,8 @@ for (const command of commands) {
     env.DATABASE_URL = env.TEST_DATABASE_URL;
   }
   const started = new Date().toISOString();
-  const child = spawn(process.execPath, [npm, "run", script], {
+  const args = command === "db:rbac" ? ["--", "--with-tests"] : [];
+  const child = spawn(process.execPath, [npm, "run", script, ...args], {
     env,
     windowsHide: true,
   });
@@ -68,6 +69,7 @@ for (const command of commands) {
   report.push({
     command:
       `npm run ${script}` +
+      (args.length ? " -- --with-tests" : "") +
       (isTestMigrate ? " (DATABASE_URL=TEST_DATABASE_URL)" : ""),
     started,
     finished: new Date().toISOString(),

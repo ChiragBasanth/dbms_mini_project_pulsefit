@@ -64,6 +64,8 @@ TEST_DATABASE_URL must end in `_test`, as must TEST_MONGODB_DB. Tests create the
 
 ### Complete disposable test setup
 
+`db:rbac` alone provisions only the demonstration runtime login. To provision test login too after both databases are migrated, use `npm run db:rbac -- --with-tests`; the full verification setup below adds that flag automatically. Demo quick start does not require a running/migrated test database.
+
 Set TEST_DATABASE_URL and TEST_MONGODB_URI/DB to disposable databases ending in `_test`. `npm run verify:final -- setup` runs migrations on both SQL databases, initializes MongoDB, seeds and embeds both SQL catalogs, and provisions both restricted logins. It uses your private SEED_PASSWORD. It deliberately writes fictitious seed data; never configure a real user database as the test target.
 
 Then run `npm run verify:final -- checks`. Start `npm run test:server` in another terminal after the build. In PowerShell set `$env:TEST_APP_ORIGIN='http://localhost:3001'`, `$env:SMOKE_ORIGIN='http://localhost:3001'`, `$env:ALLOW_API_TEST_FIXTURES='yes'`, then `npm run verify:final -- http`. Current logs go to `docs/evidence/level3-2026-11-16/`; the older top-level evidence remains historical. Tests with missing URLs are skipped and must not be called passes. `test:rbac` requires the migrated public test schema and the restricted TEST_APP_DATABASE_URL.

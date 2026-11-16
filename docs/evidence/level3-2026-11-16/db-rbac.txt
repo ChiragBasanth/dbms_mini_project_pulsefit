@@ -1,6 +1,6 @@
 
 > pulsefit@1.0.0 db:rbac
-> tsx scripts/rbac.ts
+> tsx scripts/rbac.ts --with-tests
 
 APP_DATABASE_URL: restricted login verified; private configuration saved/reused.
 TEST_APP_DATABASE_URL: restricted login verified; private configuration saved/reused.

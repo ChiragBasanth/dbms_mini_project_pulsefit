@@ -65,6 +65,8 @@ Added/fixed: additive RLS migration and restricted application connection, expli
 
 Compatibility change: HTTP requests now require the restricted APP_DATABASE_URL and migration 003; run db:migrate then db:rbac before restarting. Test HTTP uses TEST_APP_DATABASE_URL and a seeded/embedded test catalog. The maintenance owner continues to run migrations/seeds and existing owner integration fixtures. Applied migrations 001/002 were not edited, preserving recorded checksums. Old 128D entry points intentionally fail with canonical-path guidance; their original contents remain in legacy. The portable service helper preserves generated restricted URLs on restart.
 
+Clean-setup verification: db:rbac provisions the demo login alone; test provisioning explicitly adds --with-tests after both databases are migrated. verify:final setup adds that flag automatically. A final check supplied an unreachable TEST_DATABASE_URL and confirmed demo-only provisioning still succeeded; full setup and R01 were rerun successfully after this repair. See demo-only-rbac.txt and the refreshed setup.json.
+
 ## Actual module inventory
 
 These are nine logical areas sharing Portal and one catch-all route, not nine isolated services. Generic /[view] pages select the supported screen; trainer detail has its own dynamic page. There is no middleware file in the active src implementation; authorization is enforced by the server API and SQL policies.
