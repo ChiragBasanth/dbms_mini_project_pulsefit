@@ -142,7 +142,9 @@ SETUP.md documents native prerequisites and optional project-local real database
 
 Branch: feature/chhavi-dbms-level3-demo-readiness. Origin is original ChiragBasanth repository; fork remote is the user-confirmed chhavi2308-s repository, verified accessible through git ls-remote with matching main baseline. GitHub connector returned 404 for the fork even though Git succeeded; publication uses available Git transport. Repository-local identity is chhavi2308-s / chhavi.s2308@gmail.com. No historical author rewrite, force push, original-main push or automatic merge. See GIT_HANDOFF.md for actual final commits/push/PR result and fallback commands.
 
-Publication confirmed: fork feature branch pushed; [PR #2](https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/2) is OPEN and MERGEABLE, not merged. Implementation commit e567352; documentation/evidence commit 8e0c478; final status commit available in Git. The demo app was started on localhost:3000 and both seeded role logins were verified against its real databases.
+**Current status addendum:** PR #2 merged into original main at e63dd87c8f221659dc7eda2c867e11e897958a0b on 16 November 2026. Current teammate execution and viva instructions are TEAMMATE_EXECUTION_CHECKLIST.md and FINAL_VIVA_PREPARATION.md.
+
+Historical publication observation, before that merge: fork feature branch pushed; [PR #2](https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/2) is OPEN and MERGEABLE, not merged. Implementation commit e567352; documentation/evidence commit 8e0c478; final status commit available in Git. The demo app was started on localhost:3000 and both seeded role logins were verified against its real databases.
 
 Remaining human actions: inspect/review the PR or local changes, confirm actual personal contributions and institutional AI/originality policy, rehearse and perform viva, capture additional console screenshots if required. A clean machine still needs installed compatible database extensions/executables and initial model access. Public deployment is not required.
 

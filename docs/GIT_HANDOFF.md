@@ -1,27 +1,24 @@
-# Git handoff
+# Current Git and teammate handoff
 
-Branch: feature/chhavi-dbms-level3-demo-readiness.
+PR #2 **merged** into original main on 16 November 2026 at **e63dd87c8f221659dc7eda2c867e11e897958a0b**:
+https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/2
 
-Baseline: 92499a3cbd21a2d1da249e77e08af5a04e2fafc7 (original main and fork/main at audit).
-Implementation commit: e567352 — enforce database authorization and verify Level 3 queries.
-Documentation/evidence commit: 8e0c478 — prepare audited Level 3 evidence and faculty demonstration. A final handoff-status commit follows; see `git log -3 --oneline` for its SHA.
+The previous open-PR handoff is preserved in [archive/GIT_HANDOFF-before-pr2-merge.md](archive/GIT_HANDOFF-before-pr2-merge.md) as a historical observation, not current status. The original independent audit remains a dated read-only report; its then-current findings were not rewritten.
 
-Remotes:
-- origin: https://github.com/ChiragBasanth/dbms_mini_project_pulsefit.git (original)
-- fork: https://github.com/chhavi2308-s/dbms_mini_project_pulsefit.git (user-confirmed fork)
+This follow-up branch, **docs/chhavi-final-demo-handoff**, starts from original main e63dd87. It corrects native setup/merge-status guidance and adds independently executable teammate and viva instructions. It does not replace the functioning application or change existing migrations, model, dimensions, permissions or UI.
 
-Repository-local author identity: chhavi2308-s / chhavi.s2308@gmail.com. Historical identities and commits were preserved. Earlier dirty local checkout was left untouched. Current branch is based on fetched main, not on those uncommitted edits; copied validation/test edits are acknowledged in CONTRIBUTIONS.md.
+## References to use
 
-Publication verified: the feature branch was pushed to the fork. **PR #2 is OPEN, non-draft and MERGEABLE** against original main: https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/2. The GitHub connector returned 403 for PR creation; the installed GitHub CLI successfully created it and verified the result. No main push, force push or automatic merge was performed. To publish later branch updates:
+- [Chirag's blank execution/result checklist](TEAMMATE_EXECUTION_CHECKLIST.md)
+- [Final viva and 10–15 minute plan](FINAL_VIVA_PREPARATION.md)
+- [Native/portable setup and exact owner/runtime roles](SETUP.md)
+- [This follow-up's actual verification](FINAL_HANDOFF_VERIFICATION.md)
+- [Verifiable contribution records and blank confirmations](CONTRIBUTIONS.md)
 
-```powershell
-git push -u fork feature/chhavi-dbms-level3-demo-readiness
-gh pr view 2 --repo ChiragBasanth/dbms_mini_project_pulsefit
-```
+Configured local remotes during preparation: origin = https://github.com/ChiragBasanth/dbms_mini_project_pulsefit.git (original); fork = https://github.com/chhavi2308-s/dbms_mini_project_pulsefit.git (Chhavi's fork). A teammate cloning the original normally calls it origin; do not assume remote names are universal.
 
-Manual comparison URL:
-https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/compare/main...chhavi2308-s:dbms_mini_project_pulsefit:feature/chhavi-dbms-level3-demo-readiness?expand=1
+Repository-local commit identity: chhavi2308-s / chhavi.s2308@gmail.com. Prior authors/committers and uncommitted work were preserved. No history rewrite, force push, direct original-main push or automatic merge.
 
-Review all changes before merging. Both students confirm actual contributions and rehearse the live demonstration; Git attribution alone is not certification of independent work.
+Follow-up publication confirmed: [PR #3](https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/3) is open for review against original main, from Chhavi's fork branch. The primary handoff commit is `2497b33`; a publication/message status commit follows. The connector returned 403 for creation; the installed GitHub CLI successfully created the PR. No merge was performed.
 
-Local handoff: production demo server was started on 127.0.0.1:3000, with APP_ORIGIN=http://localhost:3000. Use http://localhost:3000 in the browser. Both seeded MEMBER/TRAINER logins returned 200 and HttpOnly/Secure cookies were checked; no secret or cookie values were recorded. See evidence/level3-2026-11-16/demo-startup.txt. Local services remain project-owned; use SETUP.md for restart after stopping terminals.
+Until reviewed and merged, these new files belong to the follow-up branch, not original main. After merge Chirag should clone/pull original main with --ff-only, record the exact SHA, complete every browser/database workflow himself, and keep manual actual-result/PASS cells blank until performed. Codex's tests do not establish his laptop's results or independent contributions. A [ready-to-send teammate message](CHIRAG_HANDOFF_MESSAGE.md) is provided as a draft; it has not been sent.

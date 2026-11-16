@@ -11,10 +11,21 @@ Current task team labels: **Chhavi S — PES1UG24CS132** and **Chirag Basanth �
 | 9bb11d2 | ChiragBasanth | Merge integrates implementations |
 | 4e398a2 | ChiragBasanth | Portable-service restart fix |
 | f17c3e7, 92499a3 | ChiragBasanth | Team/handoff/report documentation updates |
-| Current feature branch | chhavi2308-s, user-requested local identity | AI-assisted RLS/runtime grants, query demos, tests and final demo documentation; final SHAs are in Git log |
+| e567352, 8e0c478, 6ccbd8a, 27bdf8c; merged by PR #2 at e63dd87 | chhavi2308-s, user-requested local identity; merge author Chhavi Siddarth Wadhwa | AI-assisted RLS/runtime grants, query demos, verification, setup repair and documentation |
 
 Original PR: https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/1. GitHub metadata read in this audit confirms creator chhavi2308-s, merged 1 November 2026, merge SHA fd516e93414d034f4df143da8ca68cc5a5a09ce7. `git log --all` and `git show --stat <sha>` support file scopes. These facts do not assign percentages or imply sole manual authorship.
 
-An earlier local checkout on fix/pulsefit-final-submission-audit had uncommitted changes. It was left untouched. Its cardio minimum-value validation repair and U09/API assertions were copied after inspection; they did not originate in this audit. Other uncommitted files and evidence remain there. This branch starts at remote main 92499a3 and preserves all historical author/committer identities.
+An earlier local checkout on fix/pulsefit-final-submission-audit had uncommitted changes. It was left untouched. Its cardio minimum-value validation repair and U09/API assertions were copied after inspection; they did not originate in this audit. Other uncommitted files and evidence remain there. The original implementation feature branch started at 92499a3 and was merged by PR #2 at e63dd87. The final documentation handoff starts from that merged main and preserves all historical author/committer identities.
 
 Manual confirmation: each student identifies actual personal work, explains database and application concepts, confirms unrecorded collaboration, and follows instructor rules on AI assistance/originality. Commit attribution is evidence, not certification of independent contribution.
+
+## Personal confirmation — not filled by Codex
+
+Verifiable commits above establish attribution and file scope. The execution/viva guides require both students to understand the database and application; they do not retroactively assign feature ownership. Documented responsibilities and genuine personal work must be confirmed by each student, separately from AI-assisted commit attribution.
+
+| Student | Personally performed work / responsibilities | Supporting commit, PR or other evidence | What I can explain and demonstrate | Assistance / limitations to disclose | Date / confirmation |
+|---|---|---|---|---|---|
+| Chhavi S — PES1UG24CS132 | | | | | |
+| Chirag Basanth — PES1UG24CS133 | | | | | |
+
+Do not replace blank fields with invented percentages or conclusions from another person’s test run. Instructor originality/AI policy and viva readiness remain human confirmations.
