@@ -1,0 +1,3 @@
+DEMO_LOGIN MEMBER 200 HttpOnly/Secure cookie verified; secret and cookie omitted
+DEMO_LOGIN TRAINER 200 HttpOnly/Secure cookie verified; secret and cookie omitted
+Production demonstration startup on localhost:3000 verified with real demo databases

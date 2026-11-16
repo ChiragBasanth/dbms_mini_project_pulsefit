@@ -1,0 +1,1084 @@
+[
+  {
+    "command": "SELECT",
+    "rowCount": 8,
+    "oid": null,
+    "rows": [
+      {
+        "tablename": "booking_audit",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "bookings",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "exercises",
+        "rowsecurity": false
+      },
+      {
+        "tablename": "member_profiles",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "schema_migrations",
+        "rowsecurity": false
+      },
+      {
+        "tablename": "trainer_availability",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "trainer_profiles",
+        "rowsecurity": true
+      },
+      {
+        "tablename": "users",
+        "rowsecurity": false
+      }
+    ],
+    "fields": [
+      {
+        "name": "tablename",
+        "tableID": 12033,
+        "columnID": 2,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "rowsecurity",
+        "tableID": 12033,
+        "columnID": 8,
+        "dataTypeID": 16,
+        "dataTypeSize": 1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "tablename": null,
+      "rowsecurity": null
+    }
+  },
+  {
+    "command": "SELECT",
+    "rowCount": 12,
+    "oid": null,
+    "rows": [
+      {
+        "tablename": "booking_audit",
+        "policyname": "audit_read",
+        "cmd": "SELECT",
+        "qual": "(EXISTS ( SELECT 1\n   FROM bookings b\n  WHERE (b.id = booking_audit.booking_id)))",
+        "with_check": null
+      },
+      {
+        "tablename": "bookings",
+        "policyname": "booking_cancel",
+        "cmd": "UPDATE",
+        "qual": "((member_id = request_actor()) AND request_has_role('MEMBER'::text) AND (status = 'CONFIRMED'::text) AND (EXISTS ( SELECT 1\n   FROM trainer_availability s\n  WHERE ((s.id = bookings.slot_id) AND (s.starts_at > now())))))",
+        "with_check": "((member_id = request_actor()) AND (status = 'CANCELLED'::text))"
+      },
+      {
+        "tablename": "bookings",
+        "policyname": "booking_read",
+        "cmd": "SELECT",
+        "qual": "(((member_id = request_actor()) AND request_has_role('MEMBER'::text)) OR ((trainer_id = request_actor()) AND request_has_role('TRAINER'::text)))",
+        "with_check": null
+      },
+      {
+        "tablename": "member_profiles",
+        "policyname": "member_insert",
+        "cmd": "INSERT",
+        "qual": null,
+        "with_check": "((user_id = request_actor()) AND request_has_role('MEMBER'::text))"
+      },
+      {
+        "tablename": "member_profiles",
+        "policyname": "member_read",
+        "cmd": "SELECT",
+        "qual": "(user_id = request_actor())",
+        "with_check": null
+      },
+      {
+        "tablename": "member_profiles",
+        "policyname": "member_update",
+        "cmd": "UPDATE",
+        "qual": "((user_id = request_actor()) AND request_has_role('MEMBER'::text))",
+        "with_check": "(user_id = request_actor())"
+      },
+      {
+        "tablename": "trainer_availability",
+        "policyname": "availability_insert",
+        "cmd": "INSERT",
+        "qual": null,
+        "with_check": "((trainer_id = request_actor()) AND request_has_role('TRAINER'::text))"
+      },
+      {
+        "tablename": "trainer_availability",
+        "policyname": "availability_read",
+        "cmd": "SELECT",
+        "qual": "true",
+        "with_check": null
+      },
+      {
+        "tablename": "trainer_availability",
+        "policyname": "availability_update",
+        "cmd": "UPDATE",
+        "qual": "((trainer_id = request_actor()) AND request_has_role('TRAINER'::text))",
+        "with_check": "(trainer_id = request_actor())"
+      },
+      {
+        "tablename": "trainer_profiles",
+        "policyname": "trainer_insert",
+        "cmd": "INSERT",
+        "qual": null,
+        "with_check": "((user_id = request_actor()) AND request_has_role('TRAINER'::text))"
+      },
+      {
+        "tablename": "trainer_profiles",
+        "policyname": "trainer_read",
+        "cmd": "SELECT",
+        "qual": "true",
+        "with_check": null
+      },
+      {
+        "tablename": "trainer_profiles",
+        "policyname": "trainer_update",
+        "cmd": "UPDATE",
+        "qual": "((user_id = request_actor()) AND request_has_role('TRAINER'::text))",
+        "with_check": "(user_id = request_actor())"
+      }
+    ],
+    "fields": [
+      {
+        "name": "tablename",
+        "tableID": 12018,
+        "columnID": 2,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "policyname",
+        "tableID": 12018,
+        "columnID": 3,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "cmd",
+        "tableID": 12018,
+        "columnID": 6,
+        "dataTypeID": 25,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "qual",
+        "tableID": 12018,
+        "columnID": 7,
+        "dataTypeID": 25,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "with_check",
+        "tableID": 12018,
+        "columnID": 8,
+        "dataTypeID": 25,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "tablename": null,
+      "policyname": null,
+      "cmd": null,
+      "qual": null,
+      "with_check": null
+    }
+  },
+  {
+    "command": "SELECT",
+    "rowCount": 14,
+    "oid": null,
+    "rows": [
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "booking_audit",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "bookings",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "exercises",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "member_profiles",
+        "privilege_type": "INSERT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "member_profiles",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "occupied_slots",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_availability",
+        "privilege_type": "INSERT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_availability",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "privilege_type": "INSERT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_utilization",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "upcoming_bookings",
+        "privilege_type": "SELECT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "users",
+        "privilege_type": "INSERT"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "users",
+        "privilege_type": "SELECT"
+      }
+    ],
+    "fields": [
+      {
+        "name": "grantee",
+        "tableID": 15073,
+        "columnID": 2,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "table_name",
+        "tableID": 15073,
+        "columnID": 5,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "privilege_type",
+        "tableID": 15073,
+        "columnID": 6,
+        "dataTypeID": 1043,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "grantee": null,
+      "table_name": null,
+      "privilege_type": null
+    }
+  },
+  {
+    "command": "SELECT",
+    "rowCount": 8,
+    "oid": null,
+    "rows": [
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "bookings",
+        "column_name": "status",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "member_profiles",
+        "column_name": "fitness_goals",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_availability",
+        "column_name": "status",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "column_name": "bio",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "column_name": "embedding",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "column_name": "embedding_model",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "column_name": "experience_years",
+        "privilege_type": "UPDATE"
+      },
+      {
+        "grantee": "pulsefit_app",
+        "table_name": "trainer_profiles",
+        "column_name": "specialties",
+        "privilege_type": "UPDATE"
+      }
+    ],
+    "fields": [
+      {
+        "name": "grantee",
+        "tableID": 14938,
+        "columnID": 2,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "table_name",
+        "tableID": 14938,
+        "columnID": 5,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "column_name",
+        "tableID": 14938,
+        "columnID": 6,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "privilege_type",
+        "tableID": 14938,
+        "columnID": 7,
+        "dataTypeID": 1043,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "grantee": null,
+      "table_name": null,
+      "column_name": null,
+      "privilege_type": null
+    }
+  },
+  {
+    "command": "SELECT",
+    "rowCount": 2,
+    "oid": null,
+    "rows": [
+      {
+        "extname": "btree_gist",
+        "extversion": "1.8"
+      },
+      {
+        "extname": "vector",
+        "extversion": "0.8.7"
+      }
+    ],
+    "fields": [
+      {
+        "name": "extname",
+        "tableID": 3079,
+        "columnID": 2,
+        "dataTypeID": 19,
+        "dataTypeSize": 64,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "extversion",
+        "tableID": 3079,
+        "columnID": 6,
+        "dataTypeID": 25,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "extname": null,
+      "extversion": null
+    }
+  },
+  {
+    "command": "SELECT",
+    "rowCount": 1,
+    "oid": null,
+    "rows": [
+      {
+        "embedding_model": "Xenova/all-MiniLM-L6-v2",
+        "dimensions": 384,
+        "count": "6"
+      }
+    ],
+    "fields": [
+      {
+        "name": "embedding_model",
+        "tableID": 25783,
+        "columnID": 8,
+        "dataTypeID": 25,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "dimensions",
+        "tableID": 0,
+        "columnID": 0,
+        "dataTypeID": 23,
+        "dataTypeSize": 4,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "count",
+        "tableID": 0,
+        "columnID": 0,
+        "dataTypeID": 20,
+        "dataTypeSize": 8,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "embedding_model": null,
+      "dimensions": null,
+      "count": null
+    }
+  },
+  {
+    "command": "SELECT",
+    "rowCount": 1,
+    "oid": null,
+    "rows": [
+      {
+        "embedding_model": "Xenova/all-MiniLM-L6-v2",
+        "dimensions": 384,
+        "count": "3"
+      }
+    ],
+    "fields": [
+      {
+        "name": "embedding_model",
+        "tableID": 25685,
+        "columnID": 7,
+        "dataTypeID": 25,
+        "dataTypeSize": -1,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "dimensions",
+        "tableID": 0,
+        "columnID": 0,
+        "dataTypeID": 23,
+        "dataTypeSize": 4,
+        "dataTypeModifier": -1,
+        "format": "text"
+      },
+      {
+        "name": "count",
+        "tableID": 0,
+        "columnID": 0,
+        "dataTypeID": 20,
+        "dataTypeSize": 8,
+        "dataTypeModifier": -1,
+        "format": "text"
+      }
+    ],
+    "_parsers": [
+      null,
+      null,
+      null
+    ],
+    "_types": {
+      "_types": {
+        "arrayParser": {},
+        "builtins": {
+          "BOOL": 16,
+          "BYTEA": 17,
+          "CHAR": 18,
+          "INT8": 20,
+          "INT2": 21,
+          "INT4": 23,
+          "REGPROC": 24,
+          "TEXT": 25,
+          "OID": 26,
+          "TID": 27,
+          "XID": 28,
+          "CID": 29,
+          "JSON": 114,
+          "XML": 142,
+          "PG_NODE_TREE": 194,
+          "SMGR": 210,
+          "PATH": 602,
+          "POLYGON": 604,
+          "CIDR": 650,
+          "FLOAT4": 700,
+          "FLOAT8": 701,
+          "ABSTIME": 702,
+          "RELTIME": 703,
+          "TINTERVAL": 704,
+          "CIRCLE": 718,
+          "MACADDR8": 774,
+          "MONEY": 790,
+          "MACADDR": 829,
+          "INET": 869,
+          "ACLITEM": 1033,
+          "BPCHAR": 1042,
+          "VARCHAR": 1043,
+          "DATE": 1082,
+          "TIME": 1083,
+          "TIMESTAMP": 1114,
+          "TIMESTAMPTZ": 1184,
+          "INTERVAL": 1186,
+          "TIMETZ": 1266,
+          "BIT": 1560,
+          "VARBIT": 1562,
+          "NUMERIC": 1700,
+          "REFCURSOR": 1790,
+          "REGPROCEDURE": 2202,
+          "REGOPER": 2203,
+          "REGOPERATOR": 2204,
+          "REGCLASS": 2205,
+          "REGTYPE": 2206,
+          "UUID": 2950,
+          "TXID_SNAPSHOT": 2970,
+          "PG_LSN": 3220,
+          "PG_NDISTINCT": 3361,
+          "PG_DEPENDENCIES": 3402,
+          "TSVECTOR": 3614,
+          "TSQUERY": 3615,
+          "GTSVECTOR": 3642,
+          "REGCONFIG": 3734,
+          "REGDICTIONARY": 3769,
+          "JSONB": 3802,
+          "REGNAMESPACE": 4089,
+          "REGROLE": 4096
+        }
+      },
+      "text": {},
+      "binary": {}
+    },
+    "RowCtor": null,
+    "rowAsArray": false,
+    "_prebuiltEmptyResultObject": {
+      "embedding_model": null,
+      "dimensions": null,
+      "count": null
+    }
+  }
+]

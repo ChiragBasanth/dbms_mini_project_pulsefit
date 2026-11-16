@@ -1,51 +1,34 @@
-# Live evaluation runbook
+# Live evaluation runbook — 16 November 2026
 
-Run these commands from the project root in an unrestricted PowerShell after Docker Desktop is running.
+Use the active 384D migrations. Do not execute historical 128D SQL under database/legacy. Docker is optional; no Compose file is supplied.
+
+Prerequisites: Node.js 22+, npm, PostgreSQL with matching pgvector and btree_gist, MongoDB 7+, and the MiniLM model downloaded once. Create a private maintenance owner and disposable *_test databases using SETUP.md. The owner needs CREATEROLE for db:rbac (or an administrator must provision the equivalent grants).
 
 ```powershell
+npm.cmd ci
+# Fresh native installation only; never overwrite an existing private .env:
 Copy-Item .env.example .env
-docker compose up -d
-Get-Content -Raw database/sql/001_schema.sql | docker compose exec -T postgres psql -U pulsefit -d pulsefit
-Get-Content -Raw database/sql/002_seed.sql | docker compose exec -T postgres psql -U pulsefit -d pulsefit
-$env:DATABASE_URL = "postgresql://pulsefit:pulsefit_local_only@localhost:5432/pulsefit"
-$env:MONGODB_URI = "mongodb://localhost:27017/pulsefit"
-$env:SESSION_SECRET = "replace-this-with-a-unique-local-secret-of-at-least-24-characters"
-npm run seed:vectors
-npx tsc --noEmit
-npm test
-npm run build
-npm run dev
+# Edit private SQL/Mongo URLs, test databases, SESSION_SECRET and SEED_PASSWORD.
+npm.cmd run verify:final -- setup
+npm.cmd run verify:final -- checks
+npm.cmd start -- --hostname 127.0.0.1
 ```
 
-Open `http://localhost:3000` and use the demo accounts below after the seed script completes.
+For portable services, do not copy .env.example first. Provision pgvector DLL/mongod.exe as described in SETUP.md, run `npm.cmd run services`, and keep that terminal open. It creates/reuses ignored private configuration. Run setup/check/start in another terminal.
 
-| Role | Email | Password |
-| --- | --- | --- |
-| Member | member.demo@pulsefit.local | PulseFitDemo!2026 |
-| Trainer | trainer.maya@pulsefit.local | PulseFitDemo!2026 |
+Open http://localhost:3000. Member: member@pulsefit.example. Trainers: endurance@pulsefit.example, strength@pulsefit.example, mobility@pulsefit.example. Password: your private SEED_PASSWORD. Use separate browser profiles. Never project .env.
 
-## Live verification checklist
-
-1. Sign in as the trainer and create an availability slot.
-2. Sign in as the member, browse trainers, open the trainer profile and book the slot.
-3. Attempt a second confirmed booking for the same trainer and overlapping time. PostgreSQL must reject it.
-4. View member booking history and cancel a future booking.
-5. Log a strength and a cardio workout. Open Analytics and confirm weekly counts, volume and exercise performance.
-6. Open Recommendations and test trainer plus exercise matching.
-7. Capture screenshots of the landing page, member dashboard, trainer dashboard, discovery, booking result, workout log, analytics, recommendations, PostgreSQL query output and MongoDB aggregation output. Store them under `docs/screenshots/`.
-
-## GitHub push
-
-After the build passes, commit from an unrestricted terminal. `.env`, `.next` and `node_modules` are already ignored.
+After building, start `npm.cmd run test:server` in another terminal, then:
 
 ```powershell
-git init -b main
-git config user.name "ChiragBasanth"
-git config user.email "chiragbasanthb@gmail.com"
-git remote add origin https://github.com/ChiragBasanth/dbms_mini_project_pulsefit.git
-git add .
-git commit -m "feat: complete PulseFit hybrid gym system"
-git push -u origin main
+$env:TEST_APP_ORIGIN='http://localhost:3001'
+$env:SMOKE_ORIGIN='http://localhost:3001'
+$env:ALLOW_API_TEST_FIXTURES='yes'
+npm.cmd run verify:final -- http
 ```
 
-If a local repository has already been initialized, omit `git init -b main`. Before pushing, run `git ls-remote origin main` to confirm whether the remote has received any teammate commits.
+This retains fictitious API fixtures only in disposable test databases. Current logs are docs/evidence/level3-2026-11-16/. A zero exit code with skipped tests is not an integration pass. `test:rbac` uses the actual restricted login; owner connections intentionally bypass RLS.
+
+In an owner psql session run `\i database/postgres/queries/course_demo.sql`. It rolls back its own fixtures and returns a seven-date capacity report. Show correlated EXISTS, nested IN, JOINs, aggregates/HAVING, recursive CTE and safe temporary CREATE/ALTER/DROP.
+
+Follow DEMO_SCRIPT.md for the 10–15 minute presentation. Recovery: refresh conflicted capacity; cancel an owned future reservation to release it. Expired seed times require new trainer availability; seed reruns preserve existing schedules. Stop app/services with Ctrl+C and reopen the same directory to restart. Retain .env, work/postgres and work/mongo. Never delete data to solve startup errors. Publication uses the feature branch and PR, never a main-branch push or automatic merge.

@@ -28,6 +28,26 @@ WITH totals AS (SELECT trainer_id,count(*) total FROM bookings WHERE status='CON
 SELECT * FROM totals WHERE total >= (SELECT avg(total) FROM totals);
 SELECT * FROM upcoming_bookings ORDER BY starts_at;
 SELECT * FROM trainer_utilization;
+-- Correlated EXISTS: trainers with at least one future open unoccupied slot.
+-- Inner queries reference the current outer trainer/slot, unlike an independent subquery.
+SELECT u.name FROM trainer_profiles t JOIN users u ON u.id=t.user_id
+WHERE EXISTS(SELECT 1 FROM trainer_availability s WHERE s.trainer_id=t.user_id
+ AND s.status='OPEN' AND s.starts_at>now()
+ AND NOT EXISTS(SELECT 1 FROM bookings b WHERE b.slot_id=s.id AND b.status='CONFIRMED'))
+ORDER BY u.name;
+-- Explicit nested subquery: members booked with a trainer who has an indexed bio.
+SELECT name FROM users WHERE id IN(SELECT member_id FROM bookings WHERE trainer_id IN
+ (SELECT user_id FROM trainer_profiles WHERE embedding IS NOT NULL)) ORDER BY name;
+-- Recursive seven-day planning report. Expected: exactly seven dates, including
+-- zero-capacity days; aggregate future capacity from actual trainer availability.
+WITH RECURSIVE training_days(day) AS (
+ SELECT current_date
+ UNION ALL SELECT day+1 FROM training_days WHERE day<current_date+6
+)
+SELECT d.day,count(s.id) FILTER(WHERE s.status='OPEN' AND s.starts_at>now()
+ AND NOT EXISTS(SELECT 1 FROM bookings b WHERE b.slot_id=s.id AND b.status='CONFIRMED')) AS free_slots
+FROM training_days d LEFT JOIN trainer_availability s ON s.starts_at::date=d.day
+GROUP BY d.day ORDER BY d.day;
 ROLLBACK;
 -- Failure exercise (separate transaction): BEGIN; SELECT reserve_slot('<member UUID>','<slot UUID>');
 -- Repeat on an occupied slot: SQLSTATE 23505; ROLLBACK restores usable connection.

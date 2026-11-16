@@ -1,3 +1,5 @@
+> Historical November 1 snapshot. Current audit, schema authorization, test evidence and requirements: [LEVEL3_FINAL_REPORT.md](LEVEL3_FINAL_REPORT.md).
+
 # Evaluation checklist
 
 | Requirement | Status | Evidence |

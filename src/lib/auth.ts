@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
-import { sql } from "./db";
+import { appSql } from "./db";
 import { HttpError } from "./errors";
 export type User = {
   id: string;
@@ -49,7 +49,7 @@ export async function currentUser(): Promise<User | null> {
   if (!id) return null;
   return (
     (
-      await sql().query("SELECT id,name,email,role FROM users WHERE id=$1", [
+      await appSql().query("SELECT id,name,email,role FROM users WHERE id=$1", [
         id,
       ])
     ).rows[0] || null

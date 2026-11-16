@@ -37,8 +37,8 @@ const set = z
   .object({
     reps: z.number().int().positive().max(1000).optional(),
     weight: z.number().nonnegative().max(1500).optional(),
-    duration: z.number().positive().max(86400).optional(),
-    distance: z.number().positive().max(1000000).optional(),
+    duration: z.number().min(0.001).max(86400).optional(),
+    distance: z.number().min(0.001).max(1000000).optional(),
   })
   .refine(
     (v) => v.reps !== undefined || v.duration !== undefined,

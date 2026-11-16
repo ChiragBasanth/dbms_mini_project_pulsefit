@@ -1,0 +1,15 @@
+
+> pulsefit@1.0.0 db:embed
+> tsx scripts/embed.ts
+
+Embedded exercise Steady cycling
+Embedded exercise Interval running
+Embedded exercise Goblet squat
+Embedded exercise Hip mobility flow
+Embedded exercise Overhead press
+Embedded exercise Dumbbell row
+Embedded trainer 22312fb5-58fb-4a9d-aea1-6252e1798551
+Embedded trainer 96330a62-6e21-4790-8875-a6ee5b23f19a
+Embedded trainer 44ff76be-5a85-4bae-b195-0d6f91a0c9f2
+
+exit_code=0

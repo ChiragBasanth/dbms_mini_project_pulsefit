@@ -2,6 +2,8 @@
 
 Source of truth: ordered SQL in `database/postgres/migrations/`.
 
+Migration 003 adds RLS to both profiles, availability, bookings and audit, plus the guarded app_reserve_slot and actor helpers. The restricted non-owner application login receives explicit table/column/function grants through scripts/rbac.ts. upcoming_bookings/trainer_utilization use security_invoker; occupied_slots exposes capacity identifiers without member booking details. See SECURITY_AND_CONSISTENCY.md and test:rbac for the trusted-backend actor model and actual-login negative tests.
+
 ```text
 users(id PK, name, email UNIQUE, password_hash, role, created_at, UNIQUE(id,role))
 member_profiles(user_id PK, role='MEMBER', fitness_goals,

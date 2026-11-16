@@ -4,7 +4,9 @@
 
 Repository: https://github.com/ChiragBasanth/dbms_mini_project_pulsefit
 
-PulseFit combines database-enforced trainer reservations with flexible workout history and semantic goal matching. The repository was empty at inspection; this implementation was authored for this brief.
+PulseFit combines database-enforced trainer reservations with flexible workout history and semantic goal matching. The current audit builds on the existing implementation and preserves its Git history.
+
+**Current submission:** [Level 3 final report](docs/LEVEL3_FINAL_REPORT.md), [10–15 minute demo](docs/DEMO_SCRIPT.md), [current verification](docs/TEST_RESULTS.md). Older PDF/DOCX reports and November 1 logs are historical snapshots and do not include the database authorization migration added in this audit.
 
 ## Project team
 
@@ -22,6 +24,7 @@ npm ci
 Copy-Item .env.example .env
 # Edit .env privately: actual database URLs, 32+ character SESSION_SECRET, SEED_PASSWORD.
 npm run db:migrate
+npm run db:rbac
 npm run db:mongo
 npm run db:seed
 npm run db:embed
@@ -54,7 +57,9 @@ npm run typecheck
 npm run lint
 npm test
 npm run test:integration
+npm run test:rbac
 npm run build
+# First migrate, seed and embed TEST_DATABASE_URL too; see docs/SETUP.md.
 # Terminal 2: app using explicitly configured disposable test databases
 node --import tsx scripts/test-server.ts
 # Terminal 3:

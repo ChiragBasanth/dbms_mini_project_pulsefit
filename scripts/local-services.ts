@@ -70,6 +70,8 @@ const writePortableEnv = async (mongoUri = previous?.MONGODB_URI ?? "") =>
       `SEED_PASSWORD=${seedPassword}`,
       "EMBEDDING_MODEL=Xenova/all-MiniLM-L6-v2",
       "EMBEDDING_CACHE=./.cache/models",
+      ...(previous?.APP_DATABASE_URL ? [`APP_DATABASE_URL=${previous.APP_DATABASE_URL}`] : []),
+      ...(previous?.TEST_APP_DATABASE_URL ? [`TEST_APP_DATABASE_URL=${previous.TEST_APP_DATABASE_URL}`] : []),
       "",
     ].join("\n"),
   );

@@ -1,0 +1,44 @@
+[
+  {
+    "command": "npm run typecheck",
+    "started": "2026-11-16T15:14:22.779Z",
+    "finished": "2026-11-16T15:14:26.337Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run lint",
+    "started": "2026-11-16T15:14:26.338Z",
+    "finished": "2026-11-16T15:14:31.294Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run test",
+    "started": "2026-11-16T15:14:31.296Z",
+    "finished": "2026-11-16T15:14:33.618Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run test:integration",
+    "started": "2026-11-16T15:14:33.619Z",
+    "finished": "2026-11-16T15:14:35.960Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run test:rbac",
+    "started": "2026-11-16T15:14:35.962Z",
+    "finished": "2026-11-16T15:14:37.061Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run build",
+    "started": "2026-11-16T15:14:37.062Z",
+    "finished": "2026-11-16T15:14:59.170Z",
+    "exitCode": 0,
+    "skippedTests": false
+  }
+]

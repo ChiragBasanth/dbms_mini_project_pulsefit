@@ -20,7 +20,7 @@ CREATE EXTENSION IF NOT EXISTS btree_gist;
 ```
 
 4. Run `npm ci`, copy `.env.example` to `.env`, edit private values. DATABASE_URL must use URL-encoded password characters. Set MONGODB_URI and MONGODB_DB. Generate SESSION_SECRET with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"` and store it privately. Set APP_ORIGIN to the exact browser origin; state-changing requests without a matching Origin are rejected.
-5. Run `npm run db:migrate`, `npm run db:mongo`, `npm run db:seed`, `npm run db:embed`, then `npm run dev`. The migration runner acquires an advisory lock and applies checksum-tracked SQL in a transaction. Failed extension installation rolls the migration back.
+5. Run `npm run db:migrate`, then `npm run db:rbac`, `npm run db:mongo`, `npm run db:seed`, `npm run db:embed`, then `npm run dev`. The migration runner acquires an advisory lock and applies checksum-tracked SQL in a transaction. Failed extension installation rolls the migration back. `DATABASE_URL` is the private maintenance owner. HTTP requests require a distinct `APP_DATABASE_URL` that cannot own tables or bypass RLS. `db:rbac` creates a random-password restricted login and appends its URL to ignored `.env`; the owner must have CREATEROLE (or an administrator must provision equivalent grants from scripts/rbac.ts). Do not manually set APP_DATABASE_URL to the owner URL: the API refuses it.
 6. Login using fictitious seed emails from README and your chosen SEED_PASSWORD. If there are no upcoming seed slots because many days have elapsed, create new times through a trainer account; rerunning the seed intentionally does not change existing identities or schedules.
 
 ## Cross-platform alternatives
@@ -47,6 +47,7 @@ npm ci
 node --import tsx scripts/local-services.ts
 # Keep that terminal running. In another terminal:
 npm run db:migrate
+npm run db:rbac
 npm run db:mongo
 npm run db:seed
 npm run db:embed
@@ -60,6 +61,18 @@ The service script reuses only an `.env` marked PORTABLE_SERVICES=1 and existing
 TEST_DATABASE_URL must end in `_test`, as must TEST_MONGODB_DB. Tests create their own schema or UUID-scoped records. `scripts/test-server.ts` starts a separate app on port 3001 using these test settings, leaving the regular demonstration database untouched. Use `TEST_APP_ORIGIN=http://localhost:3001` and `ALLOW_API_TEST_FIXTURES=yes` for API tests. The latter explicitly acknowledges retained fictitious API fixtures.
 
 `database/postgres/queries/course_demo.sql` runs DDL and real domain DML within BEGIN/ROLLBACK and uses only its own fixtures. Seed at least one member first. Its DROP target is a temporary demonstration table. No real accounts or bookings are deleted by the course demonstration.
+
+### Complete disposable test setup
+
+`db:rbac` alone provisions only the demonstration runtime login. To provision test login too after both databases are migrated, use `npm run db:rbac -- --with-tests`; the full verification setup below adds that flag automatically. Demo quick start does not require a running/migrated test database.
+
+Set TEST_DATABASE_URL and TEST_MONGODB_URI/DB to disposable databases ending in `_test`. `npm run verify:final -- setup` runs migrations on both SQL databases, initializes MongoDB, seeds and embeds both SQL catalogs, and provisions both restricted logins. It uses your private SEED_PASSWORD. It deliberately writes fictitious seed data; never configure a real user database as the test target.
+
+Then run `npm run verify:final -- checks`. Start `npm run test:server` in another terminal after the build. In PowerShell set `$env:TEST_APP_ORIGIN='http://localhost:3001'`, `$env:SMOKE_ORIGIN='http://localhost:3001'`, `$env:ALLOW_API_TEST_FIXTURES='yes'`, then `npm run verify:final -- http`. Current logs go to `docs/evidence/level3-2026-11-16/`; the older top-level evidence remains historical. Tests with missing URLs are skipped and must not be called passes. `test:rbac` requires the migrated public test schema and the restricted TEST_APP_DATABASE_URL.
+
+### Recovery
+
+Stop the application and service terminals with Ctrl+C. Reopen the same directory, run `npm run services` for the portable setup, then `npm start` (or `npm run dev`). The service helper preserves runtime login URLs on restart. Never copy `.env.example` over a working private `.env`. Never delete `work/postgres` or `work/mongo` to solve a startup error. Back up the project-owned data before any deliberate reset. To refresh expired demo availability, log in as trainer and create new future slots; seed reruns intentionally leave existing schedules alone.
 
 ## Troubleshooting
 

@@ -24,3 +24,7 @@ Ten JPEGs were actually captured for the report: `01-landing-desktop.jpg`, `01-l
 The overlapping availability image is **not** a duplicate-reservation screenshot. Duplicate reservation rejection is currently proved by actual test logs; its dedicated visual capture remains pending, along with PostgreSQL/MongoDB console, source-code and terminal captures. The checklist's PNG filenames are suggested names for those manual captures, not claims that files exist.
 
 Screenshots may be captured using the available browser/computer tool. For remaining console/editor captures, use Windows Snipping Tool manually and save with the descriptive names above. A missing filename is a pending task, not evidence of completion. See the report for images actually captured in this session.
+
+## Current audit evidence — 16 November 2026
+
+Fresh captures: level3-2026-11-16/member-dashboard.jpg, trainer-dashboard.jpg, trainer-availability.jpg, semantic-recommendations.jpg. Observed the current production app using disposable test fixtures. Other images are historical. Console GUI captures remain manual if faculty requires them: RLS permission failure, overlap 23P01, eight-connection conflict array, Mongo aggregation and vector SQL output. Current raw logs provide actual executed evidence; never fabricate console images.
