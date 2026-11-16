@@ -1,0 +1,58 @@
+[
+  {
+    "command": "npm run db:migrate",
+    "started": "2026-11-16T15:14:10.156Z",
+    "finished": "2026-11-16T15:14:11.171Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:migrate (DATABASE_URL=TEST_DATABASE_URL)",
+    "started": "2026-11-16T15:14:11.172Z",
+    "finished": "2026-11-16T15:14:12.182Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:mongo",
+    "started": "2026-11-16T15:14:12.183Z",
+    "finished": "2026-11-16T15:14:13.144Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:seed",
+    "started": "2026-11-16T15:14:13.144Z",
+    "finished": "2026-11-16T15:14:14.583Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:seed (DATABASE_URL=TEST_DATABASE_URL)",
+    "started": "2026-11-16T15:14:14.584Z",
+    "finished": "2026-11-16T15:14:16.129Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:rbac",
+    "started": "2026-11-16T15:14:16.130Z",
+    "finished": "2026-11-16T15:14:17.160Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:embed",
+    "started": "2026-11-16T15:14:17.166Z",
+    "finished": "2026-11-16T15:14:18.838Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run db:embed (DATABASE_URL=TEST_DATABASE_URL)",
+    "started": "2026-11-16T15:14:18.839Z",
+    "finished": "2026-11-16T15:14:20.572Z",
+    "exitCode": 0,
+    "skippedTests": false
+  }
+]

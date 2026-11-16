@@ -1,0 +1,23 @@
+
+> pulsefit@1.0.0 test
+> tsx --test tests/unit.test.ts
+
+✔ U09 cardio API boundaries agree with MongoDB validator (8.3053ms)
+✔ U01 registration validates roles and normalizes email (1.5553ms)
+✔ U02 rejects short passwords and malformed email (0.2883ms)
+✔ U03 password hashes verify and never equal plaintext (1403.484ms)
+✔ U04 slot boundaries reject past, inverted, long and distant intervals (1.1184ms)
+✔ U05 strength and cardio logs accept different shapes (0.5658ms)
+✔ U06 rejects negative weight, zero reps and empty sets (0.419ms)
+✔ U07 analytics starts with user-scoped match and handles optional measures (0.8971ms)
+✔ U08 goals length and category validation (0.55ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1779.1572
+
+exit_code=0

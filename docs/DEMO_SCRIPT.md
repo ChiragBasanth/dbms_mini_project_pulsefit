@@ -1,18 +1,20 @@
-# Seven-minute live demonstration
+# PulseFit: 10–15 minute faculty demonstration
 
-Preparation: follow SETUP.md, start the app and seed/embedding steps. Run tests before the presentation. Use two browser profiles or separate cookie jars. All sample accounts are fictitious. Read the locally generated seed password from `.env` privately; never show it on the projector.
+Prepare with live-evaluation-runbook.md and SETUP.md. Run all setup/check/HTTP commands beforehand. Keep member and trainer browser profiles ready, fresh slots available, database processes running and model cached. Never project passwords.
 
-| Time | Action | Visible DBMS concept |
+| Time | Action | DBMS explanation / evidence |
 |---|---|---|
-| 0:00–0:40 | Open landing page; explain trainer double-booking and varied workout data | Meaningful problem; SQL/NoSQL/vector responsibilities |
-| 0:40–1:20 | Show ER diagram and migrations; point to typed FKs, CHECKs and GiST exclusion | Relational design and integrity |
-| 1:20–2:00 | Sign in as trainer; add a future slot; try overlapping time | Availability API; cross-row exclusion |
-| 2:00–3:00 | Sign in as member; discover trainer and reserve; show eight-client test log | Stored function, row locks, partial unique index, conflict 409 |
-| 3:00–3:35 | Cancel own booking and reserve again; query booking_audit | Transactional cancellation, trigger, historical record |
-| 3:35–4:35 | Save a strength log and a cardio log; edit one; show filtered history | MongoDB flexible documents, validation and ownership |
-| 4:35–5:15 | Open Progress; compare known fixture 350 kg×reps and 600 seconds | `$match`, `$unwind`, `$group`, `$facet`; real aggregation |
-| 5:15–6:05 | Describe a goal without exact exercise keywords; show ranked exercises and available trainers | Real 384-D sentence embeddings, pgvector cosine distance |
-| 6:05–6:40 | Show unauthorized API test, build/test logs and upcoming_bookings view | Security, joins, reproducible evidence |
-| 6:40–7:00 | Explain limitations, both students' actual contributions and future work | Honest evaluation and hybrid consistency limits |
+| 0:00–1:00 | Motivation, team and architecture | Double-booking and variable workout structures; SQL/NoSQL/vector responsibilities |
+| 1:00–2:15 | ER diagram and relational schema | Typed profiles, composite FKs, booking/slot cardinality, half-open ranges |
+| 2:15–3:15 | Migrations 001–003 | PK/FK/UNIQUE/CHECK, GiST overlap exclusion, partial unique booking index, database RLS |
+| 3:15–4:30 | Execute course_demo.sql | Correlated EXISTS, nested IN, INNER/LEFT JOIN, GROUP BY/HAVING, seven-day WITH RECURSIVE; temporary CREATE/ALTER/DROP and rolled-back domain DML |
+| 4:30–6:00 | Trainer creates slot, rejects overlap; member reserves | reserve_slot row lock; eight-client test gives one winner/seven 23505; HTTP test gives 201/409 |
+| 6:00–6:45 | Cancel and rebook | Historical cancellation, partial index releases capacity, transactional booking_changes audit |
+| 6:45–8:15 | Strength/cardio workout CRUD | Mongo workout_logs: reps/weight versus duration/distance, strict validation, own edit/delete and filters |
+| 8:15–9:00 | Progress and aggregation | Owner $match, $facet, $unwind, $group and $sort. I07 fixture expects 2 sessions, 350 kg×reps, 600s/1500m; these are not automatically the live user's totals |
+| 9:00–10:15 | Goal: Improve stamina and cardiovascular endurance | Genuine MiniLM 384D, mean pooling/normalization, PostgreSQL cosine <=> and 1-distance; show exercise and available trainer ranking |
+| 10:15–11:30 | Run test:rbac | Restricted login rejects member availability creation, trainer reservation, cross-user cancellation, role updates and audit deletion; pool actor reset |
+| 11:30–12:30 | Member/trainer interfaces, route and test logs | Signed cookies, DB role lookup, Origin/Zod/bcrypt; build and 11-page smoke |
+| 12:30–14:00 | Contributions, limitations and viva | Actual Git/PR evidence; no fabricated independent authorship or distributed ACID claim |
 
-Use `npm run test:integration` to demonstrate direct database contention. The test acquires eight independent connections before releasing a shared promise barrier, records exactly one success and seven SQLSTATE 23505 errors, and checks the committed count. Do not describe this proof as complete until its run log shows the assertions passing.
+Both students rehearse the complete system; no arbitrary division of ownership is asserted. For a 10-minute slot, shorten navigation and show already executed contention/HTTP logs. If a live service fails, state that result and distinguish dated evidence from the failed action. Check startup/recovery once before faculty evaluation.

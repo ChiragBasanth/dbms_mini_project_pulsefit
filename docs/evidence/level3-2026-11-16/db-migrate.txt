@@ -1,0 +1,6 @@
+
+> pulsefit@1.0.0 db:migrate
+> tsx scripts/migrate.ts
+
+
+exit_code=0

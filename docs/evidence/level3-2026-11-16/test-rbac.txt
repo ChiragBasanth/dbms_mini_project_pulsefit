@@ -1,0 +1,16 @@
+
+> pulsefit@1.0.0 test:rbac
+> tsx --test tests/rbac.test.ts
+
+RLS: member/trainer denial, cross-owner filtering, direct function denial, audit protection and reused-connection reset verified
+✔ R01 real restricted login enforces role, ownership, grants and pool isolation (229.3209ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 508.7346
+
+exit_code=0

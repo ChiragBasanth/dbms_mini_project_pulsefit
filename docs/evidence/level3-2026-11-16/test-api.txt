@@ -1,0 +1,18 @@
+
+> pulsefit@1.0.0 test:api
+> tsx --test tests/api.test.ts
+
+HTTP_CONCURRENCY [{"status":201},{"status":409,"error":"That email, slot or reservation conflicts with an existing record."}]
+API_VECTOR {"exercises":[{"id":"2caf729a-549c-42fa-bafe-38ff8711a28e","name":"Interval running","description":"Alternating fast running and easy recovery to develop cardiovascular endurance and athletic stamina.","category":"CARDIO","similarity":0.7114332014331943},{"id":"beb76c9b-cce2-446b-92f2-ac8f150d61e5","name":"Steady cycling","description":"Low impact aerobic endurance training on a stationary bicycle. Improve heart health and stamina without running or jumping.","category":"CARDIO","similarity":0.6305306897358137}],"trainers":[{"id":"0d615a10-0abf-4e78-afce-f2bbee14a61d","name":"API trainer","bio":"Aerobic conditioning for stamina, cycling and cardiovascular endurance","specialties":["Endurance"],"similarity":0.7981023670939762},{"id":"e6d90569-cf91-445f-a75d-ee6e3a788186","name":"Dev Sen","bio":"Aerobic conditioning for heart health, stamina and low impact endurance.","specialties":["Cardio","Endurance"],"similarity":0.7332792659616849},{"id":"0288ffaa-0a99-407f-87b7-2b69d98a8bc5","name":"Asha Rao","bio":"Resistance coaching for muscle growth, safe lifting and full body strength.","specialties":["Strength","Hypertrophy"],"similarity":0.3359154763146184},{"id":"e17d1bf7-a74a-41cf-acc3-567e209dadf2","name":"Mira Das","bio":"Gentle flexibility, joint range of motion and posture for desk workers.","specialties":["Mobility","Flexibility"],"similarity":0.1346505656974748}],"model":"Xenova/all-MiniLM-L6-v2","dimension":384}
+API fixtures suffix: 724a1af8-3a64-4b01-93b9-4b41b91e3a7f Use disposable DB reset after inspection.
+✔ A01 member/trainer auth, ownership, booking, workout and recommendation API flow (3872.0864ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4140.1168
+
+exit_code=0

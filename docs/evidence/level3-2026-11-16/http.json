@@ -1,0 +1,16 @@
+[
+  {
+    "command": "npm run test:api",
+    "started": "2026-11-16T15:16:05.671Z",
+    "finished": "2026-11-16T15:16:10.398Z",
+    "exitCode": 0,
+    "skippedTests": false
+  },
+  {
+    "command": "npm run test:smoke",
+    "started": "2026-11-16T15:16:10.399Z",
+    "finished": "2026-11-16T15:16:11.490Z",
+    "exitCode": 0,
+    "skippedTests": false
+  }
+]

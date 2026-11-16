@@ -1,3 +1,5 @@
+> Historical November 1 snapshot. Current audit, schema authorization, test evidence and requirements: [LEVEL3_FINAL_REPORT.md](LEVEL3_FINAL_REPORT.md).
+
 # Implementation audit
 
 Audit date: 1 November 2026 (Asia/Calcutta). This records the initial state before implementation and the evidence policy for the final state.

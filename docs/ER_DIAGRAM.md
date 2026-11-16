@@ -1,5 +1,7 @@
 # Entity relationship diagram
 
+Renderable source: [pulsefit.mmd](er-diagram/pulsefit.mmd). Actual exported overview: [PNG](er-diagram/pulsefit.png) / [SVG](er-diagram/pulsefit.svg). The overview includes MongoDB's logical member link and labels cardinalities; SQL remains authoritative for full constraints.
+
 ```mermaid
 erDiagram
  USERS ||--o| MEMBER_PROFILES : "id + role"
