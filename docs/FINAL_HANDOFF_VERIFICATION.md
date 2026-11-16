@@ -6,6 +6,8 @@ This records **Codex's executed checks for the documentation/setup handoff**, no
 
 Base: original main `e63dd87c8f221659dc7eda2c867e11e897958a0b`, which includes merged PR #2. Follow-up branch: `docs/chhavi-final-demo-handoff`. The application, API, migrations, tests, model/dimensions, RLS policies and existing attribution were preserved. Changes are setup/documentation plus explanatory environment-example comments; no new feature, dependency or deployment.
 
+Publication: primary commit `2497b33` pushed to Chhavi's fork; [PR #3](https://github.com/ChiragBasanth/dbms_mini_project_pulsefit/pull/3) created against original main and left unmerged. The teammate message is a draft, not a communication sent on anyone's behalf.
+
 - Current Git handoff now identifies PR #2 as merged. The earlier open-PR observation is explicitly historical and preserved under docs/archive; the independent audit was not rewritten.
 - Native setup now gives explicit administrator role/database/extension commands and separate private owner/runtime URLs. Administrator-precreated runtime roles allow the maintenance owner to remain NOSUPERUSER/NOCREATEROLE/NOCREATEDB/NOBYPASSRLS; automatic role creation is clearly distinguished.
 - Added Chirag's complete Windows/browser/SQL/Mongo/vector execution guide with blank personal results, and final source-based viva questions/10–15 minute plan.
