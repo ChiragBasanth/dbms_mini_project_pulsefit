@@ -4,11 +4,23 @@
 
 1. Install Node.js 22 LTS, PostgreSQL 18 (or a compatible 16+ server) and MongoDB Community 7+. Use pgAdmin/psql and mongosh if desired. Keep databases bound to localhost for the classroom demonstration.
 2. Install pgvector for the **same PostgreSQL major version and architecture**. The official project documents Windows compilation with Visual Studio C++ tools: https://github.com/pgvector/pgvector#windows. `CREATE EXTENSION vector` does not install the native DLL; it only enables an already-installed extension. `btree_gist` is a PostgreSQL contrib extension.
-3. As a PostgreSQL administrator, create a login role with a private password and two databases owned by that role: `pulsefit` and `pulsefit_test`. Example SQL below uses psql's interactive password command so no password is embedded in documentation.
+3. **Administrator step** — connect with psql as the PostgreSQL installer/administrator account. On a fresh cluster create the maintenance owner, separate runtime logins, and two databases. Do not rerun CREATE ROLE/DATABASE blindly on an existing installation. The application never uses the administrator login.
+
+Generate **two different 48-character hex runtime passwords** privately by running this command twice in another terminal; save them in a private password manager and later in ignored .env, not Git or screenshots:
+
+```powershell
+node -e "console.log(require('node:crypto').randomBytes(24).toString('hex'))"
+```
+
+Then, in the administrator's **psql** session (backslash commands are psql commands, not SQL for pgAdmin's query editor):
 
 ```sql
-CREATE ROLE pulsefit LOGIN;
+CREATE ROLE pulsefit LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS;
 \password pulsefit
+CREATE ROLE pulsefit_app LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
+\password pulsefit_app
+CREATE ROLE pulsefit_app_test LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;
+\password pulsefit_app_test
 CREATE DATABASE pulsefit OWNER pulsefit;
 CREATE DATABASE pulsefit_test OWNER pulsefit;
 \connect pulsefit
@@ -19,8 +31,16 @@ CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS btree_gist;
 ```
 
+Choose a private maintenance password at its prompt; at the two runtime prompts paste the separate generated hex passwords. The administrator owns/enables the installed extensions; the maintenance role owns the databases and application objects created by migrations. Runtime roles own no application tables, inherit no maintenance/admin role, and cannot bypass RLS.
+
+**Required private .env mapping:** DATABASE_URL uses pulsefit on pulsefit; TEST_DATABASE_URL uses pulsefit on pulsefit_test; APP_DATABASE_URL uses pulsefit_app on pulsefit; TEST_APP_DATABASE_URL uses pulsefit_app_test on pulsefit_test. Runtime passwords must be hex strings of at least 48 characters because scripts/rbac.ts validates them. Explicitly set both runtime URLs before db:rbac when using this administrator-preprovisioned path. Empty runtime URLs make the helper attempt CREATE ROLE instead, which the NOCREATEROLE maintenance login correctly cannot do.
+
+After migration, db:rbac connects as the **object owner** and grants only the table/column/function privileges listed in scripts/rbac.ts, then verifies the real runtime password and non-owner status. It does not need CREATEROLE when these runtime roles already exist. Do not grant superuser or BYPASSRLS to solve a setup error.
+
+**Alternative for an administrator-controlled bootstrap:** the helper can create missing runtime logins if its maintenance connection has CREATEROLE. That is an optional elevated setup permission, not a runtime requirement. Prefer the explicit administrator-created logins above; retain NOCREATEROLE for the maintenance owner. PostgreSQL's [CREATE ROLE](https://www.postgresql.org/docs/18/sql-createrole.html) and [object GRANT](https://www.postgresql.org/docs/18/sql-grant.html) documentation distinguish role creation from an object's owner granting access.
+
 4. Run `npm ci`, copy `.env.example` to `.env`, edit private values. DATABASE_URL must use URL-encoded password characters. Set MONGODB_URI and MONGODB_DB. Generate SESSION_SECRET with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"` and store it privately. Set APP_ORIGIN to the exact browser origin; state-changing requests without a matching Origin are rejected.
-5. Run `npm run db:migrate`, then `npm run db:rbac`, `npm run db:mongo`, `npm run db:seed`, `npm run db:embed`, then `npm run dev`. The migration runner acquires an advisory lock and applies checksum-tracked SQL in a transaction. Failed extension installation rolls the migration back. `DATABASE_URL` is the private maintenance owner. HTTP requests require a distinct `APP_DATABASE_URL` that cannot own tables or bypass RLS. `db:rbac` creates a random-password restricted login and appends its URL to ignored `.env`; the owner must have CREATEROLE (or an administrator must provision equivalent grants from scripts/rbac.ts). Do not manually set APP_DATABASE_URL to the owner URL: the API refuses it.
+5. Run `npm run db:migrate`, then `npm run db:rbac`, `npm run db:mongo`, `npm run db:seed`, `npm run db:embed`, then `npm run dev`. The migration runner acquires an advisory lock and applies checksum-tracked SQL in a transaction. Failed extension installation rolls the migration back. `DATABASE_URL` is the private maintenance owner. HTTP requests require a distinct `APP_DATABASE_URL` that cannot own tables or bypass RLS. `db:rbac` reuses and verifies the precreated runtime login URLs, then applies object grants. Automatic creation when a runtime URL is empty instead requires CREATEROLE; the recommended administrator-preprovisioned setup above avoids that privilege. Do not manually set APP_DATABASE_URL to the owner URL: the API refuses it.
 6. Login using fictitious seed emails from README and your chosen SEED_PASSWORD. If there are no upcoming seed slots because many days have elapsed, create new times through a trainer account; rerunning the seed intentionally does not change existing identities or schedules.
 
 ## Cross-platform alternatives

@@ -2,7 +2,9 @@
 
 Use the active 384D migrations. Do not execute historical 128D SQL under database/legacy. Docker is optional; no Compose file is supplied.
 
-Prerequisites: Node.js 22+, npm, PostgreSQL with matching pgvector and btree_gist, MongoDB 7+, and the MiniLM model downloaded once. Create a private maintenance owner and disposable *_test databases using SETUP.md. The owner needs CREATEROLE for db:rbac (or an administrator must provision the equivalent grants).
+Prerequisites: Node.js 22+, npm, PostgreSQL with matching pgvector and btree_gist, MongoDB 7+, and the MiniLM model downloaded once. Follow SETUP.md's administrator-created maintenance/runtime roles, databases and extensions; fill both runtime URLs privately. This path keeps the maintenance owner NOCREATEROLE: db:rbac applies owner-granted object permissions to existing runtime logins. Only optional automatic creation of missing runtime roles requires CREATEROLE.
+
+For the full independent laptop/browser/database workflow and blank actual results use [TEAMMATE_EXECUTION_CHECKLIST.md](TEAMMATE_EXECUTION_CHECKLIST.md). For the final source-based viva and timing use [FINAL_VIVA_PREPARATION.md](FINAL_VIVA_PREPARATION.md).
 
 ```powershell
 npm.cmd ci

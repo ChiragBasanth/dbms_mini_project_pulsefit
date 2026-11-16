@@ -15,6 +15,10 @@ PulseFit combines database-enforced trainer reservations with flexible workout h
 
 Names and SRNs were explicitly confirmed by the user. Individual database/application contributions remain pending confirmation; see [contribution record](docs/CONTRIBUTIONS.md).
 
+## Teammate handoff
+
+PR #2 is merged into original main at `e63dd87`. Start with [Chirag’s execution checklist](docs/TEAMMATE_EXECUTION_CHECKLIST.md), [final viva preparation](docs/FINAL_VIVA_PREPARATION.md), and [latest handoff verification](docs/FINAL_HANDOFF_VERIFICATION.md). Manual result cells are intentionally blank until Chirag runs them on his laptop.
+
 ## Quick start
 
 Use Node.js 22 LTS or later, npm, PostgreSQL with **pgvector + btree_gist**, and MongoDB. Native installation and optional portable setup are explained in [docs/SETUP.md](docs/SETUP.md). Docker is optional.
@@ -22,7 +26,8 @@ Use Node.js 22 LTS or later, npm, PostgreSQL with **pgvector + btree_gist**, and
 ```powershell
 npm ci
 Copy-Item .env.example .env
-# Edit .env privately: actual database URLs, 32+ character SESSION_SECRET, SEED_PASSWORD.
+# Follow SETUP.md administrator provisioning first; fill owner AND runtime URLs privately.
+# Set Mongo URLs/DBs, 32+ character SESSION_SECRET and a 12–72 byte SEED_PASSWORD.
 npm run db:migrate
 npm run db:rbac
 npm run db:mongo
@@ -77,7 +82,7 @@ The concurrency test releases eight separately acquired PostgreSQL connections t
 - [Initial audit](docs/IMPLEMENTATION_AUDIT.md) and [requirements matrix](docs/REQUIREMENTS_MATRIX.md)
 - [ER diagram](docs/ER_DIAGRAM.md), [relational schema](docs/RELATIONAL_SCHEMA.md), [data dictionary](docs/DATA_DICTIONARY.md)
 - [Project report](docs/DBMS_PROJECT_REPORT.md) with the nine required headings and [printable PDF](docs/DBMS_PROJECT_REPORT.pdf)
-- [Seven-minute demo](docs/DEMO_SCRIPT.md) and [screenshot checklist](docs/SCREENSHOT_CHECKLIST.md)
+- [10–15 minute demo](docs/DEMO_SCRIPT.md) and [screenshot checklist](docs/SCREENSHOT_CHECKLIST.md)
 
 ## Limits and authorship
 
