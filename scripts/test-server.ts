@@ -11,6 +11,8 @@ if (
 )
   throw new Error("Disposable test databases must be explicitly configured");
 process.env.DATABASE_URL = process.env.TEST_DATABASE_URL;
+if (!process.env.TEST_APP_DATABASE_URL) throw new Error("Run db:rbac for the test runtime login first");
+process.env.APP_DATABASE_URL = process.env.TEST_APP_DATABASE_URL;
 process.env.MONGODB_URI = process.env.TEST_MONGODB_URI;
 process.env.MONGODB_DB = process.env.TEST_MONGODB_DB;
 process.env.APP_ORIGIN = "http://localhost:3001";

@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { hash, compare } from "bcryptjs";
 import { ObjectId } from "mongodb";
 import { z } from "zod";
-import { sql, mongo } from "@/lib/db";
+import { appSql, queryAs, mongo, assertRuntime } from "@/lib/db";
 import { currentUser, requireUser, session, guardOrigin } from "@/lib/auth";
 import { HttpError, errorResponse } from "@/lib/errors";
 import {
@@ -61,6 +61,7 @@ async function handle(
   ctx: { params: Promise<{ path: string[] }> },
 ) {
   try {
+    await assertRuntime();
     const p = (await ctx.params).path;
     const route = p[0],
       id = p[1],
@@ -75,7 +76,7 @@ async function handle(
         const input = registration.parse(await body(req));
         throttle(input.email);
         const password = await hash(input.password, 12);
-        const c = await sql().connect();
+        const c = await appSql().connect();
         try {
           await c.query("BEGIN");
           const user = (
@@ -84,6 +85,9 @@ async function handle(
               [input.name, input.email, password, input.role],
             )
           ).rows[0];
+          await c.query("SELECT set_config('pulsefit.actor_id',$1,true)", [
+            user.id,
+          ]);
           if (input.role === "MEMBER")
             await c.query("INSERT INTO member_profiles(user_id) VALUES($1)", [
               user.id,
@@ -106,7 +110,9 @@ async function handle(
         const input = credentials.parse(await body(req));
         throttle(input.email);
         const user = (
-          await sql().query("SELECT * FROM users WHERE email=$1", [input.email])
+          await appSql().query("SELECT * FROM users WHERE email=$1", [
+            input.email,
+          ])
         ).rows[0];
         const valid = await compare(
           input.password,
@@ -131,13 +137,14 @@ async function handle(
       return ok({ user });
     }
     if (route === "trainers" && method === "GET") {
-      await requireUser();
+      const u = await requireUser();
       const search = z
         .string()
         .max(100)
         .parse(req.nextUrl.searchParams.get("q") || "");
       const rows = (
-        await sql().query(
+        await queryAs(
+          u,
           "SELECT u.id,u.name,t.bio,t.specialties,t.experience_years,t.location FROM users u JOIN trainer_profiles t ON t.user_id=u.id WHERE ($1='' OR u.name ILIKE '%'||$1||'%' OR t.bio ILIKE '%'||$1||'%' OR array_to_string(t.specialties,',') ILIKE '%'||$1||'%') AND ($2::uuid IS NULL OR u.id=$2) ORDER BY u.name LIMIT 100",
           [search, id ? uuid.parse(id) : null],
         )
@@ -150,7 +157,8 @@ async function handle(
         const v = z
           .object({ goals: z.string().max(2000) })
           .parse(await body(req));
-        await sql().query(
+        await queryAs(
+          u,
           "UPDATE member_profiles SET fitness_goals=$1 WHERE user_id=$2",
           [v.goals, u.id],
         );
@@ -163,7 +171,8 @@ async function handle(
           })
           .parse(await body(req));
         const embedding = await embed([v.bio, ...v.specialties].join(" "));
-        await sql().query(
+        await queryAs(
+          u,
           "UPDATE trainer_profiles SET bio=$1,specialties=$2,experience_years=$3,embedding=$4::vector,embedding_model=$5 WHERE user_id=$6",
           [
             v.bio,
@@ -188,8 +197,9 @@ async function handle(
             : null;
         return ok(
           (
-            await sql().query(
-              "SELECT s.*,EXISTS(SELECT 1 FROM bookings b WHERE b.slot_id=s.id AND b.status='CONFIRMED') occupied FROM trainer_availability s WHERE ($1::uuid IS NULL OR s.trainer_id=$1) AND s.ends_at>now() ORDER BY starts_at LIMIT 200",
+            await queryAs(
+              u,
+              "SELECT s.*,EXISTS(SELECT 1 FROM occupied_slots b WHERE b.slot_id=s.id) occupied FROM trainer_availability s WHERE ($1::uuid IS NULL OR s.trainer_id=$1) AND s.ends_at>now() ORDER BY starts_at LIMIT 200",
               [trainerId],
             )
           ).rows,
@@ -200,7 +210,8 @@ async function handle(
         const v = slotInput.parse(await body(req));
         return ok(
           (
-            await sql().query(
+            await queryAs(
+              u,
               "INSERT INTO trainer_availability(trainer_id,starts_at,ends_at) VALUES($1,$2,$3) RETURNING *",
               [u.id, v.startsAt, v.endsAt],
             )
@@ -209,7 +220,8 @@ async function handle(
         );
       }
       if (method === "DELETE" && id) {
-        const result = await sql().query(
+        const result = await queryAs(
+          u,
           "UPDATE trainer_availability SET status='CLOSED' WHERE id=$1 AND trainer_id=$2 RETURNING id",
           [uuid.parse(id), u.id],
         );
@@ -222,7 +234,8 @@ async function handle(
       if (method === "GET")
         return ok(
           (
-            await sql().query(
+            await queryAs(
+              u,
               "SELECT b.id,b.status,b.slot_id,b.member_id,b.trainer_id,m.name member_name,t.name trainer_name,s.starts_at,s.ends_at FROM bookings b JOIN users m ON m.id=b.member_id JOIN users t ON t.id=b.trainer_id JOIN trainer_availability s ON s.id=b.slot_id WHERE ($1='MEMBER' AND b.member_id=$2) OR ($1='TRAINER' AND b.trainer_id=$2) ORDER BY s.starts_at DESC LIMIT 200",
               [u.role, u.id],
             )
@@ -231,14 +244,15 @@ async function handle(
       await requireUser("MEMBER");
       if (method === "POST") {
         const v = z.object({ slotId: uuid }).parse(await body(req));
-        const result = await sql().query("SELECT reserve_slot($1,$2) id", [
+        const result = await queryAs(u, "SELECT app_reserve_slot($1,$2) id", [
           u.id,
           v.slotId,
         ]);
         return ok(result.rows[0], 201);
       }
       if (method === "DELETE" && id) {
-        const result = await sql().query(
+        const result = await queryAs(
+          u,
           "UPDATE bookings b SET status='CANCELLED' FROM trainer_availability s WHERE b.slot_id=s.id AND b.id=$1 AND b.member_id=$2 AND b.status='CONFIRMED' AND s.starts_at>now() RETURNING b.id",
           [uuid.parse(id), u.id],
         );
@@ -321,18 +335,21 @@ async function handle(
       const v = goalsInput.parse(await body(req));
       const embedding = vector(await embed(v.goals));
       const exercises = (
-        await sql().query(
+        await queryAs(
+          u,
           "SELECT id,name,description,category,1-(embedding <=> $1::vector) similarity FROM exercises WHERE embedding IS NOT NULL AND embedding_model=$2 AND ($3::text IS NULL OR category=$3) ORDER BY embedding <=> $1::vector LIMIT 5",
           [embedding, MODEL, v.category || null],
         )
       ).rows;
       const trainers = (
-        await sql().query(
-          "SELECT t.user_id id,u.name,t.bio,t.specialties,1-(t.embedding <=> $1::vector) similarity FROM trainer_profiles t JOIN users u ON u.id=t.user_id WHERE t.embedding IS NOT NULL AND t.embedding_model=$2 AND EXISTS(SELECT 1 FROM trainer_availability s WHERE s.trainer_id=t.user_id AND s.starts_at>now() AND s.status='OPEN' AND NOT EXISTS(SELECT 1 FROM bookings b WHERE b.slot_id=s.id AND b.status='CONFIRMED')) ORDER BY t.embedding <=> $1::vector LIMIT 5",
+        await queryAs(
+          u,
+          "SELECT t.user_id id,u.name,t.bio,t.specialties,1-(t.embedding <=> $1::vector) similarity FROM trainer_profiles t JOIN users u ON u.id=t.user_id WHERE t.embedding IS NOT NULL AND t.embedding_model=$2 AND EXISTS(SELECT 1 FROM trainer_availability s WHERE s.trainer_id=t.user_id AND s.starts_at>now() AND s.status='OPEN' AND NOT EXISTS(SELECT 1 FROM occupied_slots b WHERE b.slot_id=s.id)) ORDER BY t.embedding <=> $1::vector LIMIT 5",
           [embedding, MODEL],
         )
       ).rows;
-      await sql().query(
+      await queryAs(
+        u,
         "UPDATE member_profiles SET fitness_goals=$1 WHERE user_id=$2",
         [v.goals, u.id],
       );

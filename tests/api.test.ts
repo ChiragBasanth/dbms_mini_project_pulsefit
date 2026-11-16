@@ -65,6 +65,15 @@ test(
     }
     assert.equal((await call(member, "availability", "POST", {})).status, 403);
     assert.equal((await call(trainer, "workouts")).status, 403);
+    assert.equal(
+      (
+        await call(trainer, "recommendations", "POST", {
+          goals: "Improve endurance",
+        })
+      ).status,
+      403,
+    );
+    assert.equal((await call(trainer, "bookings", "POST", {})).status, 403);
     assert.equal((await call({ cookie: "" }, "bookings")).status, 401);
     const start = Date.now() + 2 * 86400000;
     const slot = await call(trainer, "availability", "POST", {
@@ -77,6 +86,15 @@ test(
       call(other, "bookings", "POST", { slotId: slot.data.id }),
     ]);
     assert.deepEqual(outcomes.map((x) => x.status).sort(), [201, 409]);
+    console.log(
+      "HTTP_CONCURRENCY",
+      JSON.stringify(
+        outcomes.map((x) => ({
+          status: x.status,
+          ...(x.status === 409 ? { error: x.data.error } : {}),
+        })),
+      ),
+    );
     const winner = outcomes[0].status === 201 ? member : other;
     const loser = winner === member ? other : member;
     const booking = outcomes.find((x) => x.status === 201)!.data.id;
@@ -110,6 +128,15 @@ test(
     };
     const w = await call(member, "workouts", "POST", log);
     assert.equal(w.status, 201);
+    assert.equal(
+      (
+        await call(member, "workouts", "POST", {
+          ...log,
+          exercises: [{ name: "Cycling", sets: [{ duration: 0.0001 }] }],
+        })
+      ).status,
+      400,
+    );
     assert.equal((await call(other, "workouts/" + w.data.id)).data.length, 0);
     assert.equal(
       (await call(other, "workouts/" + w.data.id, "DELETE")).status,
@@ -145,12 +172,47 @@ test(
     assert.equal(invalidOrigin.status, 403);
     assert.equal(
       (
-        await call(member, "recommendations", "POST", {
-          goals: "Improve stamina and cardiovascular endurance",
+        await call(trainer, "profile", "PUT", {
+          bio: "Aerobic conditioning for stamina, cycling and cardiovascular endurance",
+          specialties: ["Endurance"],
+          experienceYears: 4,
         })
       ).status,
       200,
     );
+    assert.equal(
+      (
+        await call(trainer, "availability", "POST", {
+          startsAt: new Date(start + 7200000).toISOString(),
+          endsAt: new Date(start + 10800000).toISOString(),
+        })
+      ).status,
+      201,
+    );
+    const recommendation = await call(member, "recommendations", "POST", {
+      goals: "Improve stamina and cardiovascular endurance",
+      category: "CARDIO",
+    });
+    assert.equal(recommendation.status, 200);
+    assert.equal(recommendation.data.dimension, 384);
+    assert.ok(
+      recommendation.data.exercises.length > 0,
+      "seed and embed the test exercise catalog first",
+    );
+    assert.ok(
+      recommendation.data.exercises.every(
+        (e: { category: string; similarity: number }) =>
+          e.category === "CARDIO" && Number.isFinite(e.similarity),
+      ),
+    );
+    const trainerUser = (await call(trainer, "me")).data.user;
+    assert.ok(
+      recommendation.data.trainers.some(
+        (t: { id: string; similarity: number }) =>
+          t.id === trainerUser.id && Number.isFinite(t.similarity),
+      ),
+    );
+    console.log("API_VECTOR", JSON.stringify(recommendation.data));
     console.log(
       "API fixtures suffix:",
       suffix,

@@ -188,8 +188,18 @@ test(
           },
         );
         await t.test("I06 rollback and safe course SQL execute", async () => {
-          await db.query(
+          const course = await db.query(
             await readFile("database/postgres/queries/course_demo.sql", "utf8"),
+          );
+          const results = Array.isArray(course) ? course : [course];
+          const weekly = results.find((r) =>
+            r.fields?.some((f: { name: string }) => f.name === "free_slots"),
+          );
+          assert.ok(weekly, "recursive capacity report must execute");
+          assert.equal(weekly.rows.length, 7);
+          assert.equal(
+            new Set(weekly.rows.map((r: { day: Date }) => String(r.day))).size,
+            7,
           );
           const c = await db.connect();
           try {

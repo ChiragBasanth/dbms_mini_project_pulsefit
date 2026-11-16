@@ -8,6 +8,16 @@ import {
   goalsInput,
 } from "../src/lib/validation";
 import { progressPipeline } from "../src/lib/workouts";
+test("U09 cardio API boundaries agree with MongoDB validator", () => {
+  const input = (duration: number, distance: number) => ({
+    performedAt: new Date().toISOString(),
+    workoutType: "CARDIO",
+    exercises: [{ name: "Cycling", sets: [{ duration, distance }] }],
+  });
+  assert.equal(workoutInput.safeParse(input(0.001, 0.001)).success, true);
+  assert.equal(workoutInput.safeParse(input(0.0001, 1)).success, false);
+  assert.equal(workoutInput.safeParse(input(1, 0.0001)).success, false);
+});
 test("U01 registration validates roles and normalizes email", () => {
   const u = registration.parse({
     name: "Test Member",

@@ -11,6 +11,7 @@
     "lint": "eslint .",
     "test": "tsx --test tests/unit.test.ts",
     "test:integration": "tsx --test --test-concurrency=1 tests/integration.test.ts",
+    "db:rbac": "tsx scripts/rbac.ts",
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
     "db:mongo": "tsx scripts/mongo-setup.ts",
@@ -19,7 +20,9 @@
     "verify": "tsx scripts/verify.ts",
     "services": "tsx scripts/local-services.ts",
     "test:server": "tsx scripts/test-server.ts",
-    "test:smoke": "tsx --test tests/smoke.test.ts"
+    "test:smoke": "tsx --test tests/smoke.test.ts",
+    "test:rbac": "tsx --test tests/rbac.test.ts",
+    "verify:final": "tsx scripts/final-verify.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.8.1",

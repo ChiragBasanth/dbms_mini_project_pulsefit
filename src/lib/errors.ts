@@ -16,6 +16,8 @@ export function errorResponse(e: unknown) {
       { status: 400 },
     );
   const code = (e as { code?: string })?.code;
+  if (code === "42501")
+    return Response.json({ error: "Database permission denied." }, { status: 403 });
   if (code === "23505" || code === "23P01")
     return Response.json(
       {
