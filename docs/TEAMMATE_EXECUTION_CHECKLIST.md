@@ -339,3 +339,15 @@ Every row requires your own result. “Codex passed it earlier” is not a valid
 Review [CONTRIBUTIONS.md](CONTRIBUTIONS.md) and complete its personal-confirmation fields. Verifiable Git attribution is evidence of commits, not proof of independent manual coding. Both students should explain all core database/application boundaries; do not assign ownership of features merely to divide a viva.
 
 Use [FINAL_VIVA_PREPARATION.md](FINAL_VIVA_PREPARATION.md) for actual object names, questions, limitations and the 10–15 minute sequence. Originality/AI-policy acceptance and oral understanding require human confirmation even after every automated check is green.
+
+## Chirag-focused evidence supplement — 17 November 2026
+
+Fresh **agent-executed** results for original main dba53379c0a480901ffde75214bef02cca7ac1fb are in [CHIRAG_EXECUTION_RESULTS.md](CHIRAG_EXECUTION_RESULTS.md), with screenshots and exact test counts. Codex performed those actions at Chirag's request. They do not complete the blank student-execution table above or personal contribution confirmation.
+
+| Test | Expected result | Actual result | PASS/FAIL | Screenshot/evidence |
+|---|---|---|---|---|
+| Agent: isolated portable restart | SQL/Mongo data and private config retained | Retained after actual stop/restart; duplicate start safely rejected | PASS | Execution-results portable-service table and raw evidence bundle |
+| Agent: actual member/trainer browser workflows | Authenticate, persist CRUD and enforce roles | Actual workflows completed; wrong-role submission denied | PASS | Execution-results browser table; screenshots/chirag-agent-rehearsal/ |
+| Agent: database/API regression | No failures/skips; genuine DB operations | 20 reported passes, 0 fail/skip; typecheck/lint/build exit 0 | PASS | Execution-results commands and database readbacks |
+
+Chirag should use [CHIRAG_INDIVIDUAL_VIVA.md](CHIRAG_INDIVIDUAL_VIVA.md) for his evidence-based contribution walkthrough and 40 questions, then record his own execution and understanding separately.

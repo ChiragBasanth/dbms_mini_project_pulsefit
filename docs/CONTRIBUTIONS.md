@@ -29,3 +29,9 @@ Verifiable commits above establish attribution and file scope. The execution/viv
 | Chirag Basanth — PES1UG24CS133 | | | | | |
 
 Do not replace blank fields with invented percentages or conclusions from another person’s test run. Instructor originality/AI policy and viva readiness remain human confirmations.
+
+## Chirag individual review — 17 November 2026
+
+The focused review at original main dba5337 traced Chirag's surviving runtime changes specifically to 4e398a2 in scripts/local-services.ts (persistent configuration/ports, readiness/recovery and IPv4 connection behavior). The helper originated in Chhavi-attributed 7d489e6 and also contains later Chhavi changes; it is not wholly Chirag-authored. 24cc449's earlier app/128D SQL/Mongo implementation is historical and substantially superseded. No incomplete feature exclusively assigned to Chirag was identified.
+
+[CHIRAG_EXECUTION_RESULTS.md](CHIRAG_EXECUTION_RESULTS.md) records fresh Codex-executed restart, browser, database and regression evidence. [CHIRAG_INDIVIDUAL_VIVA.md](CHIRAG_INDIVIDUAL_VIVA.md) prepares the personal walkthrough. These AI-assisted documents and tests neither transfer Chhavi's implementation to Chirag nor complete his blank personal confirmations. He must confirm genuine personal work/assistance and practise independently.
