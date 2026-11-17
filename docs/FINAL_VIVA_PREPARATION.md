@@ -6,7 +6,7 @@ Team: **Chhavi S — PES1UG24CS132** and **Chirag Basanth — PES1UG24CS133**. B
 
 | Topic | Exact source / objects |
 |---|---|
-| Architecture/design | [ER diagram](ER_DIAGRAM.md), [PNG export](database-design/pulsefit-er-crows-foot.png), [relational schema](RELATIONAL_SCHEMA.md), [dictionary](DATA_DICTIONARY.md), [relational figure](database-design/pulsefit-relational-schema.svg), [hybrid figure](HYBRID_DATA_MODEL.md) |
+| Architecture/design | [ER diagram](ER_DIAGRAM.md), [PNG export](database-design/pulsefit-er-conceptual-identity.png), [relational schema](RELATIONAL_SCHEMA.md), [dictionary](DATA_DICTIONARY.md), [academic relational figure](database-design/pulsefit-relational-academic.svg), [physical supplement](database-design/pulsefit-relational-schema.svg), [conceptual ER page 2](database-design/pulsefit-er-conceptual-booking.svg), [hybrid figure](HYBRID_DATA_MODEL.md) |
 | Core SQL | `database/postgres/migrations/001_core.sql`: users, typed profiles, availability, bookings, audit, exercises; constraints/indexes/functions/triggers/views |
 | Additive schema | `002_profile_metadata.sql`: trainer location; `003_database_authorization.sql`: RLS, actor helpers, guarded reservation, capacity view |
 | Query demonstrations | `database/postgres/queries/course_demo.sql`, `inspect.sql`, `semantic_search.sql`; safe temporary DDL/DML and actual SQL relationships |
@@ -95,3 +95,15 @@ If time is short, use already executed dated logs for contention rather than wai
 | Chirag Basanth — PES1UG24CS133 | | | | | |
 
 Use the separate blank actual-result table in TEAMMATE_EXECUTION_CHECKLIST.md. Codex's successful runs do not fill these human confirmations.
+
+## Interactive menu and source navigation
+
+Launch from the repository root in VS Code PowerShell:
+
+```powershell
+node .\pulsefit-demo-menu.mjs
+```
+
+Use [FACULTY_MENU_GUIDE.md](FACULTY_MENU_GUIDE.md) for all 26 options, exact Explorer paths, highlighted statements and what the live output actually proves. Suggested sequence: 1–3 tables/constraints/indexes; 4–5 safe DDL/DML; 7–11 JOIN/nested/correlated/CTE/recursive SQL; 12–13 functions/triggers; 14–16 Mongo (16 explicitly confirmed, isolated); 17–18 vector storage/search; 19–20 auth/RLS metadata; 21–22 API/Next.js; 23 justification; 24 Git/docs; 25 complete rollback-contained SQL; 26 views.
+
+Show the two approved extended-Chen pages first, then the academic relational mapping; use the detailed physical schema/hybrid architecture as separate supplements. Explain that function/trigger/policy inspection is existence evidence, not proof of invoking every function or of denied access. Browser login checks and actual restricted-login RBAC tests remain separate demonstrations. An empty Mongo aggregation is valid when no workouts have been saved; use the member UI for meaningful session/volume/date analytics. Never run migrations or reseed just to fill an empty menu result.

@@ -1,6 +1,6 @@
 # PulseFit: 10–15 minute faculty demonstration
 
-Design figures: [ER](ER_DIAGRAM.md), [physical relational schema](RELATIONAL_SCHEMA.md), [hybrid architecture](HYBRID_DATA_MODEL.md). Use the scalable SVGs from [database-design](database-design/README.md); zoom table groups for presentation. Explain 0..many historical bookings versus partial confirmed uniqueness, and identify composite reference superkeys correctly.
+Design figures: [extended Chen ER, two pages](ER_DIAGRAM.md), [academic relational schema](database-design/pulsefit-relational-academic.svg), [detailed physical supplement](RELATIONAL_SCHEMA.md), [hybrid architecture](HYBRID_DATA_MODEL.md). Use the scalable SVGs from [database-design](database-design/README.md); zoom table groups for presentation. Explain Chen entity-side (min,max) labels and single/double participation lines, then 0..many historical bookings versus partial confirmed uniqueness, and identify composite reference superkeys correctly.
 
 Prepare with live-evaluation-runbook.md and SETUP.md. Run all setup/check/HTTP commands beforehand. Keep member and trainer browser profiles ready, fresh slots available, database processes running and model cached. Never project passwords.
 
@@ -20,3 +20,15 @@ Prepare with live-evaluation-runbook.md and SETUP.md. Run all setup/check/HTTP c
 | 12:30–14:00 | Contributions, limitations and viva | Actual Git/PR evidence; no fabricated independent authorship or distributed ACID claim |
 
 Both students rehearse the complete system; no arbitrary division of ownership is asserted. For a 10-minute slot, shorten navigation and show already executed contention/HTTP logs. If a live service fails, state that result and distinguish dated evidence from the failed action. Check startup/recovery once before faculty evaluation.
+
+## Interactive menu and source navigation
+
+Launch from the repository root in VS Code PowerShell:
+
+```powershell
+node .\pulsefit-demo-menu.mjs
+```
+
+Use [FACULTY_MENU_GUIDE.md](FACULTY_MENU_GUIDE.md) for all 26 options, exact Explorer paths, highlighted statements and what the live output actually proves. Suggested sequence: 1–3 tables/constraints/indexes; 4–5 safe DDL/DML; 7–11 JOIN/nested/correlated/CTE/recursive SQL; 12–13 functions/triggers; 14–16 Mongo (16 explicitly confirmed, isolated); 17–18 vector storage/search; 19–20 auth/RLS metadata; 21–22 API/Next.js; 23 justification; 24 Git/docs; 25 complete rollback-contained SQL; 26 views.
+
+Show the two approved extended-Chen pages first, then the academic relational mapping; use the detailed physical schema/hybrid architecture as separate supplements. Explain that function/trigger/policy inspection is existence evidence, not proof of invoking every function or of denied access. Browser login checks and actual restricted-login RBAC tests remain separate demonstrations. An empty Mongo aggregation is valid when no workouts have been saved; use the member UI for meaningful session/volume/date analytics. Never run migrations or reseed just to fill an empty menu result.
