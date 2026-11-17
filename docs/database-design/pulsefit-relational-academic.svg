@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3800" height="2440" viewBox="0 0 3800 2440" role="img"><title>PulseFit | Academic Relational Schema</title><desc>User-approved PulseFit academic design. Exact entities and mappings from active PostgreSQL migrations.</desc><defs><marker id="fk-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#34434b" stroke-width="1.5"/></marker></defs><rect width="100%" height="100%" fill="white"/><polyline points="230,666 390,666" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="230,700 230,666" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="390,700 390,666" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="980,376 1667,376" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="980,376 980,342" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="1667,376 1667,342" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="310,666 80,666 80,430 1323.5,430 1323.5,376" fill="none" stroke="#34434b" stroke-width="2"/>
+<polyline points="2180,666 2340,666" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="2180,700 2180,666" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="2340,700 2340,666" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="980,226 1667,226" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="980,226 980,260" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="1667,226 1667,260" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="2260,666 2000,666 2000,170 1323.5,170 1323.5,226" fill="none" stroke="#34434b" stroke-width="2"/>
+<polyline points="2644,1300 2644,1266" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="2180,816 2180,782" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="2644,1266 3300,1266 3300,1080 2180,1080 2180,816" fill="none" stroke="#34434b" stroke-width="2"/>
+<polyline points="640,1300 640,1266" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="230,816 230,782" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="640,1266 640,1080 230,1080 230,816" fill="none" stroke="#34434b" stroke-width="2"/>
+<polyline points="804,1416 968,1416" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="968,1382 968,1416" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="804,1382 804,1416" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="2480,1416 2644,1416" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="2480,1416 2480,1382" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="2644,1416 2644,1382" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="886,1416 886,1530 2562,1530 2562,1416" fill="none" stroke="#34434b" stroke-width="2"/>
+<polyline points="644,1830 644,1796" fill="none" stroke="#64717a" stroke-width="2"/>
+<polyline points="480,1416 480,1382" fill="none" stroke="#64717a" stroke-width="2" marker-end="url(#fk-arrow)"/>
+<polyline points="644,1796 644,1600 480,1600 480,1416" fill="none" stroke="#34434b" stroke-width="2"/><rect x="900" y="260" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1060" y="260" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1220" y="260" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1380" y="260" width="207" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1587" y="260" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1747" y="260" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="150" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="188" y1="740" x2="272" y2="740" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="310" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="366" y1="740" x2="414" y2="740" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="470" y="700" width="207" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2100" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="2138" y1="740" x2="2222" y2="740" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="2260" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="2316" y1="740" x2="2364" y2="740" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="2420" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2580" y="700" width="181" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2761" y="700" width="246" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="3007" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="3167" y="700" width="233" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="3400" y="700" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="400" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="560" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="586" y1="1340" x2="694" y2="1340" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="720" y="1300" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="744" y1="1340" x2="864" y2="1340" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="888" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="926" y1="1340" x2="1010" y2="1340" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="1048" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1208" y="1300" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2400" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2560" y="1300" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="2584" y1="1340" x2="2704" y2="1340" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="2728" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2888" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="3048" y="1300" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="400" y="1830" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="560" y="1830" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<line x1="584" y1="1870" x2="704" y2="1870" stroke="#34434b" stroke-width="1.8" stroke-dasharray="2 4"/>
+<rect x="728" y="1830" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="896" y="1830" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="1064" y="1830" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2100" y="1830" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2260" y="1830" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2420" y="1830" width="194" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2614" y="1830" width="181" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2795" y="1830" width="168" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="2963" y="1830" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="3123" y="1830" width="160" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/>
+<rect x="3283" y="1830" width="233" height="82" fill="white" stroke="#4f5c63" stroke-width="1.5"/><text x="70" y="65" font-family="Arial, sans-serif" font-size="37" font-weight="700" text-anchor="start" fill="#263238">PulseFit | Academic Relational Schema</text>
+<text x="70" y="108" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#64717a">Seven business relations · All 41 attributes and actual PostgreSQL types · Six numbered FK constraints, including three composite references</text>
+<text x="900" y="195" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">USERS</text>
+<text x="980" y="291" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">id</text>
+<text x="980" y="323" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="1140" y="291" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">name</text>
+<text x="1140" y="323" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="1300" y="291" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">email</text>
+<text x="1300" y="323" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="1368" y="278" font-family="Arial, sans-serif" font-size="16" font-weight="700" text-anchor="end" fill="#64717a">U</text>
+<text x="1483.5" y="291" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">password_hash</text>
+<text x="1483.5" y="323" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="1667" y="291" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">role</text>
+<text x="1667" y="323" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="1831" y="291" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">created_at</text>
+<text x="1831" y="323" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">timestamptz</text>
+<text x="150" y="635" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">MEMBER_PROFILES</text>
+<text x="230" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">user_id</text>
+<text x="230" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="390" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">role</text>
+<text x="390" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="573.5" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">fitness_goals</text>
+<text x="573.5" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="2100" y="635" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">TRAINER_PROFILES</text>
+<text x="2180" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">user_id</text>
+<text x="2180" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="2340" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">role</text>
+<text x="2340" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="2500" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">bio</text>
+<text x="2500" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="2670.5" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">specialties</text>
+<text x="2670.5" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text[]</text>
+<text x="2884" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">experience_years</text>
+<text x="2884" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">integer</text>
+<text x="3087" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">embedding</text>
+<text x="3087" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">vector(384)</text>
+<text x="3283.5" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">embedding_model</text>
+<text x="3283.5" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="3480" y="731" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">location</text>
+<text x="3480" y="763" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="400" y="1235" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">BOOKINGS</text>
+<text x="480" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">id</text>
+<text x="480" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="640" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">member_id</text>
+<text x="640" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="804" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">trainer_id</text>
+<text x="804" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="968" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">slot_id</text>
+<text x="968" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="1128" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">status</text>
+<text x="1128" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="1292" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">created_at</text>
+<text x="1292" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">timestamptz</text>
+<text x="2400" y="1235" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">TRAINER_AVAILABILITY</text>
+<text x="2480" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">id</text>
+<text x="2480" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="2644" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">trainer_id</text>
+<text x="2644" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="2808" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">starts_at</text>
+<text x="2808" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">timestamptz</text>
+<text x="2968" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">ends_at</text>
+<text x="2968" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">timestamptz</text>
+<text x="3128" y="1331" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">status</text>
+<text x="3128" y="1363" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="400" y="1765" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">BOOKING_AUDIT</text>
+<text x="480" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">id</text>
+<text x="480" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">bigint</text>
+<text x="644" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">booking_id</text>
+<text x="644" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="812" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">old_status</text>
+<text x="812" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="980" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">new_status</text>
+<text x="980" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="1148" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">changed_at</text>
+<text x="1148" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">timestamptz</text>
+<text x="2100" y="1765" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#263238">EXERCISES</text>
+<text x="2180" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238" text-decoration="underline">id</text>
+<text x="2180" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">uuid</text>
+<text x="2340" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">name</text>
+<text x="2340" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="2408" y="1848" font-family="Arial, sans-serif" font-size="16" font-weight="700" text-anchor="end" fill="#64717a">U</text>
+<text x="2517" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">muscle_group</text>
+<text x="2517" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="2704.5" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">description</text>
+<text x="2704.5" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="2879" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">difficulty</text>
+<text x="2879" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="3043" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">category</text>
+<text x="3043" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="3203" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">embedding</text>
+<text x="3203" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">vector(384)</text>
+<text x="3399.5" y="1861" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="#263238">embedding_model</text>
+<text x="3399.5" y="1893" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#64717a">text</text>
+<text x="332" y="690" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F1</text>
+<text x="1345.5" y="406" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F1</text>
+<text x="2282" y="690" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F2</text>
+<text x="1345.5" y="250" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F2</text>
+<text x="2666" y="1290" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F3</text>
+<text x="2202" y="846" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F3</text>
+<text x="662" y="1290" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F4</text>
+<text x="252" y="846" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F4</text>
+<text x="908" y="1446" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F5</text>
+<text x="2584" y="1446" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F5</text>
+<text x="666" y="1820" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F6</text>
+<text x="502" y="1446" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#263238">F6</text>
+<text x="70" y="2040" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#263238">KEYS &amp; REFERENCES</text>
+<text x="440" y="2040" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">Solid underline: PK · Dotted underline: FK component · U: single-column UNIQUE · Arrow: child FK → referenced key group</text>
+<text x="70" y="2088" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">F1 (user_id,role) → USERS(id,role) · F2 (user_id,role) → USERS(id,role) · F3 trainer_id → TRAINER_PROFILES(user_id)</text>
+<text x="70" y="2136" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">F4 member_id → MEMBER_PROFILES(user_id) · F5 (slot_id,trainer_id) → TRAINER_AVAILABILITY(id,trainer_id) · F6 booking_id → BOOKINGS(id)</text>
+<text x="70" y="2184" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">Grouped taps belong to ONE FK constraint; tuple order is defined above. No composite PKs are declared. These are reference arrows, not functional dependencies.</text>
+<text x="70" y="2232" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">UNIQUE: USERS.email, EXERCISES.name; (id,role) and (id,trainer_id) are nonminimal supporting superkeys. All FK components are NOT NULL.</text>
+<text x="70" y="2280" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">PARTIAL UNIQUE: BOOKINGS(slot_id) WHERE status = CONFIRMED. GiST exclusion prevents overlapping availability intervals for each trainer.</text>
+<text x="70" y="2328" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">CHECK/NN/defaults and all indexes: detailed physical diagram + RELATIONAL_SCHEMA.md. Booking trainer redundancy and specialties[] are normalization tradeoffs.</text>
+<text x="70" y="2376" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">Infrastructure only: schema_migrations. No strict universal 3NF/BCNF claim. Exercises has no FK; MongoDB and pgvector boundaries remain in the hybrid figure.</text></svg>

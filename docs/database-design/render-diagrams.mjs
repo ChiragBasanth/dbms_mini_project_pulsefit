@@ -280,7 +280,8 @@ text(
   19,
 );
 legend(1495);
-await save("pulsefit-er-crows-foot");
+fs.mkdirSync(dir + "archive", { recursive: true });
+await save("archive/pulsefit-er-crows-foot");
 
 function defaultText(c) {
   if (c.default === null) return "—";
@@ -545,8 +546,5 @@ text(
   20,
 );
 await save("pulsefit-hybrid-architecture");
-for (const extension of ["svg", "png"])
-  fs.copyFileSync(
-    dir + "pulsefit-er-crows-foot." + extension,
-    dir + "../er-diagram/pulsefit." + extension,
-  );
+// Refresh the reference-based conceptual/academic views and compatibility aliases last.
+await import("./render-reference-diagrams.mjs");

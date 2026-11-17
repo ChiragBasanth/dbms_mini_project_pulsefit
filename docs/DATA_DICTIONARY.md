@@ -1,6 +1,6 @@
 # Data dictionary
 
-All columns are NOT NULL unless marked nullable. PostgreSQL UUIDs are serialized as strings; dates use ISO strings at the API and timezone-aware storage. Sources: `001_core.sql`, `002_profile_metadata.sql`, `003_database_authorization.sql`, `database/mongo/setup.ts`. Full column-level defaults, exact SQL predicates, keys and normalization exceptions are in [RELATIONAL_SCHEMA.md](RELATIONAL_SCHEMA.md); figures: [ER](ER_DIAGRAM.md), [physical schema](database-design/pulsefit-relational-schema.svg), [hybrid](HYBRID_DATA_MODEL.md).
+All columns are NOT NULL unless marked nullable. PostgreSQL UUIDs are serialized as strings; dates use ISO strings at the API and timezone-aware storage. Sources: `001_core.sql`, `002_profile_metadata.sql`, `003_database_authorization.sql`, `database/mongo/setup.ts`. Full column-level defaults, exact SQL predicates, keys and normalization exceptions are in [RELATIONAL_SCHEMA.md](RELATIONAL_SCHEMA.md); figures: [ER](ER_DIAGRAM.md), [primary academic relational schema](database-design/pulsefit-relational-academic.svg), [physical supplement](database-design/pulsefit-relational-schema.svg), [hybrid](HYBRID_DATA_MODEL.md).
 
 | Table | Columns and types | Rules / meaning |
 |---|---|---|

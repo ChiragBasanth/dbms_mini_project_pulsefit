@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="1900" viewBox="0 0 3000 1900" role="img"><title>PulseFit | Conceptual ER — Identity and Profiles</title><desc>User-approved PulseFit academic design. Exact entities and mappings from active PostgreSQL migrations.</desc><defs><marker id="fk-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#34434b" stroke-width="1.5"/></marker></defs><rect width="100%" height="100%" fill="white"/><polyline points="1370,410 938.2754576102656,277.1616792646971" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1460,410 1285.5866976471264,235.5866976471264" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1540,410 1714.4133023528736,235.5866976471264" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1630,410 2061.7245423897343,277.1616792646971" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1360,460.7692307692308 975.4972410936746,490.34636606971736" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1640,460.7692307692308 2024.5027589063254,490.34636606971736" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="720,1210 364.31079012214934,1032.1553950610746" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="660,1278 406.3649205918866,1328.7270158816227" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="806.6666666666666,1290 843.8402596532977,1513.0415579197863" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2112,1210 1718.9912605464233,1031.3596638847378" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2166.6666666666665,1210 1980.0010373937214,986.0012448724658" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2226.6666666666665,1210 2375.7657247589,986.3514128616499" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2340,1211.8181818181818 2656.136733185961,1125.5990727674653" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2340,1275.4545454545455 2634.6589425612988,1329.0288986475089" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2242.4242424242425,1290 2512.4319112708095,1544.5786591981916" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2195,1290 2154.6222061166463,1613.0223510668295" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2123.076923076923,1290 1762.416180517172,1477.5435861310707" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1400,490 1400,800 935,800" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="803,878 803,1210" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="797,878 797,1210" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="1600,490 1600,800 2065,800" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2203,878 2203,1210" fill="none" stroke="#263238" stroke-width="2"/>
+<polyline points="2197,878 2197,1210" fill="none" stroke="#263238" stroke-width="2"/><rect x="1360" y="410" width="280" height="80" fill="#009eac" stroke="#009eac" stroke-width="2"/>
+<rect x="660" y="1210" width="280" height="80" fill="#009eac" stroke="#009eac" stroke-width="2"/>
+<rect x="2060" y="1210" width="280" height="80" fill="#009eac" stroke="#009eac" stroke-width="2"/>
+<ellipse cx="850" cy="250" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="1250" cy="200" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="1750" cy="200" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2150" cy="250" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="850" cy="500" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2150" cy="500" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="300" cy="1000" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="300" cy="1350" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="850" cy="1550" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="1650" cy="1000" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="1950" cy="950" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2400" cy="950" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2750" cy="1100" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2750" cy="1100" rx="137" ry="44" fill="none" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2750" cy="1350" rx="140" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2550" cy="1580" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="2150" cy="1650" rx="133" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<ellipse cx="1700" cy="1510" rx="130" ry="37" fill="#b80b50" stroke="#b80b50" stroke-width="2"/>
+<polygon points="800,722 935,800 800,878 665,800" fill="#00557d" stroke="#00557d" stroke-width="2"/>
+<polygon points="2200,722 2335,800 2200,878 2065,800" fill="#00557d" stroke="#00557d" stroke-width="2"/><text x="70" y="65" font-family="Arial, sans-serif" font-size="37" font-weight="700" text-anchor="start" fill="#263238">PulseFit | Conceptual ER — Identity and Profiles</text>
+<text x="70" y="108" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#64717a">Page 1 of 2 · Extended Chen notation · Read with page 2: scheduling, booking, audit and independent exercise catalog</text>
+<text x="1500" y="457" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="white">User</text>
+<text x="800" y="1257" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="white">Member Profile</text>
+<text x="2200" y="1257" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="white">Trainer Profile</text>
+<text x="850" y="258" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white" text-decoration="underline">id</text>
+<text x="1250" y="208" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">name</text>
+<text x="1750" y="208" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">email</text>
+<text x="2150" y="258" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">password_hash</text>
+<text x="850" y="508" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">role</text>
+<text x="2150" y="508" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">created_at</text>
+<text x="300" y="1008" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white" text-decoration="underline">user_id</text>
+<text x="300" y="1358" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">role</text>
+<text x="850" y="1558" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">fitness_goals</text>
+<text x="1650" y="1008" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white" text-decoration="underline">user_id</text>
+<text x="1950" y="958" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">role</text>
+<text x="2400" y="958" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">bio</text>
+<text x="2750" y="1108" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">specialties</text>
+<text x="2750" y="1358" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">experience_years</text>
+<text x="2550" y="1588" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">embedding</text>
+<text x="2550" y="1646" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#64717a">384D · stored</text>
+<text x="2150" y="1658" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">embedding_model</text>
+<text x="1700" y="1518" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" fill="white">location</text>
+<text x="800" y="793.5" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="white">Has member</text>
+<text x="800" y="822.5" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="white">profile</text>
+<text x="2200" y="793.5" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="white">Has trainer</text>
+<text x="2200" y="822.5" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="white">profile</text>
+<text x="1300" y="550" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238">(0,1)</text>
+<text x="880" y="1150" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238">(1,1)</text>
+<text x="1710" y="550" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238">(0,1)</text>
+<text x="2280" y="1050" font-family="Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#263238">(1,1)</text>
+<text x="70" y="635" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">Role condition: profiles are disjoint; the stored user role must qualify for the profile type.</text>
+<text x="70" y="675" font-family="Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" fill="#263238">A user is not required by SQL to have a profile. The application creates it during registration.</text>
+<text x="70" y="1750" font-family="Arial, sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#263238">EXTENDED CHEN</text>
+<text x="340" y="1750" font-family="Arial, sans-serif" font-size="23" font-weight="400" text-anchor="start" fill="#263238">Rectangle: entity · Diamond: relationship · Oval: stored attribute · Underlined: primary identifier</text>
+<text x="70" y="1793" font-family="Arial, sans-serif" font-size="23" font-weight="400" text-anchor="start" fill="#263238">Double oval: multivalued specialties · Single line: partial participation (min 0) · Double line: total participation (min 1)</text>
+<text x="70" y="1836" font-family="Arial, sans-serif" font-size="23" font-weight="400" text-anchor="start" fill="#263238">(min,max) beside an entity counts its relationship participations; N = many. No Crow’s Foot endpoints; no derived-attribute ovals.</text></svg>

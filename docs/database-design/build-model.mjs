@@ -154,7 +154,7 @@ fs.writeFileSync(
   JSON.stringify(model, null, 2) + "\n",
 );
 let mermaid =
-  "%% PostgreSQL-only ER companion; canonical layout: ../database-design/pulsefit-er-crows-foot.svg\nerDiagram\n";
+  "%% Physical Crow's Foot companion only; approved conceptual masters: ../database-design/pulsefit-er-conceptual-identity.svg and pulsefit-er-conceptual-booking.svg\nerDiagram\n";
 for (const r of model.relationships)
   mermaid +=
     " " +

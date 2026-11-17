@@ -173,7 +173,7 @@ assert.ok(
   ),
 );
 for (const [name, size] of [
-  ["pulsefit-er-crows-foot", [3680, 3380]],
+  ["archive/pulsefit-er-crows-foot", [3680, 3380]],
   ["pulsefit-relational-schema", [4240, 4340]],
   ["pulsefit-hybrid-architecture", [3600, 2540]],
 ]) {

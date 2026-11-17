@@ -5,9 +5,9 @@ const dir = fileURLToPath(new URL(".", import.meta.url)),
   m = JSON.parse(fs.readFileSync(dir + "schema-model.json")),
   c = JSON.parse(fs.readFileSync(dir + "catalog-verification.json"));
 const out = [
-  "# Physical relational schema and normalization",
+  "# Relational schema — academic mapping and physical implementation",
   "",
-  "The implemented PostgreSQL migrations 001–003 are authoritative. This document describes the current physical relations, not an idealized redesign. [Separate relational diagram: SVG](database-design/pulsefit-relational-schema.svg) / [high-resolution PNG](database-design/pulsefit-relational-schema.png). [ER model](ER_DIAGRAM.md) shows participation; [hybrid architecture](HYBRID_DATA_MODEL.md) shows storage boundaries.",
+  "The implemented PostgreSQL migrations 001–003 are authoritative. [Academic relational diagram: SVG](database-design/pulsefit-relational-academic.svg) / [PNG](database-design/pulsefit-relational-academic.png) uses horizontal attribute cells, solid PK underlines, dotted FK underlines and numbered FK-to-reference arrows. Its grouped taps represent one constraint each; exact tuple mappings define the order, not functional dependencies. [Detailed physical diagram: SVG](database-design/pulsefit-relational-schema.svg) / [PNG](database-design/pulsefit-relational-schema.png) is preserved unchanged as the implementation supplement. This document retains all columns, types, defaults, CHECKs and indexes. [Extended Chen ER](ER_DIAGRAM.md) shows concepts/participation; [hybrid architecture](HYBRID_DATA_MODEL.md) shows database boundaries.",
   "",
   "## Notation and reading rules",
   "",

@@ -1,44 +1,64 @@
-# Entity–Relationship diagram — Crow's Foot / Information Engineering
+# Conceptual ER diagram — extended Chen notation
 
-A physical ER model of **seven PostgreSQL business entities**, based on migrations 001–003. This is separate from the [relational schema](RELATIONAL_SCHEMA.md) and [hybrid architecture](HYBRID_DATA_MODEL.md).
+**User-approved academic design for PR #5.** Two landscape pages replace the previous Crow's Foot presentation as the conceptual view.
 
-![PulseFit Crow's Foot ER model](database-design/pulsefit-er-crows-foot.png)
+| Page | SVG / editable vector | High-resolution PNG |
+|---|---|---|
+| 1 — Identity and profiles | [SVG](database-design/pulsefit-er-conceptual-identity.svg) | [6000 × 3800 PNG](database-design/pulsefit-er-conceptual-identity.png) |
+| 2 — Scheduling, history and catalog | [SVG](database-design/pulsefit-er-conceptual-booking.svg) | [6000 × 3800 PNG](database-design/pulsefit-er-conceptual-booking.png) |
 
-[Editable SVG](database-design/pulsefit-er-crows-foot.svg) · [High-resolution PNG](database-design/pulsefit-er-crows-foot.png) · [Editable model/renderer](database-design/README.md) · [Mermaid companion](er-diagram/pulsefit.mmd)
+[Three-page review PDF](database-design/pulsefit-conceptual-and-academic-review.pdf) includes both conceptual pages and the separate [academic relational schema](RELATIONAL_SCHEMA.md). [Editable source and validation](database-design/README.md).
 
-## Notation
+![Conceptual ER page 1](database-design/pulsefit-er-conceptual-identity.png)
 
-Crow's Foot / Information Engineering symbols show both minimum and maximum participation: circle = zero, bar = one, fork = many. Paired bars = exactly one; circle/bar = zero-or-one; circle/fork = zero-or-many. Solid connectors identify relationships in which the parent's key forms the child's PK (profiles). Dashed connectors are non-identifying: the child has an independent PK. Dashed does not mean optional; endpoint circles determine optionality.
+![Conceptual ER page 2](database-design/pulsefit-er-conceptual-booking.png)
 
-All 41 business attributes and actual PostgreSQL types appear, including trainer location from migration 002. PK marks primary keys; FK marks every composite-reference component; UK marks a single-column unique key; ? means nullable. Full defaults/CHECKs/indexes belong in the relational schema rather than being confused with multiplicity.
+## Chosen convention
 
-## Relationships and participation
+This is **extended Chen notation**, without Crow's Foot endpoints. Teal rectangles are entities; dark blue diamonds contain relationship verbs; magenta ovals are attributes. Primary identifiers are underlined. The double oval is used only for the genuinely multivalued specialties array. It denotes multiple values, not a guarantee of a nonempty array, set semantics or a normalized specialty relation.
 
-| Relationship | Parent to child | Each child to parent | Enforced mapping / qualification |
+A single entity–relationship connection means partial participation (minimum zero). A double connection means total participation (minimum one). **(min,max) beside an entity counts how many instances of that relationship each instance of that entity participates in**; N means many. These labels are read using Chen participation semantics, not Crow's Foot look-across endpoints. The same convention is used on both pages.
+
+No dashed derived-attribute oval is used: embedding is persisted, application-maintained data, not a virtual or SQL-generated attribute. Both actual embedding attributes remain with Trainer Profile and Exercise, annotated 384D/stored. Nullability, types and constraints remain explicit in the physical schema.
+
+## Cardinality and participation validation
+
+| Relationship diamond | First entity participation | Second entity participation | Basis / limit |
 |---|---|---|---|
-| users → member_profiles | 0..1 | Exactly 1 | (user_id, role) → users(id, role); profile PK user_id; CHECK role='MEMBER' |
-| users → trainer_profiles | 0..1 | Exactly 1 | (user_id, role) → users(id, role); profile PK user_id; CHECK role='TRAINER' |
-| trainer_profiles → trainer_availability | 0..many | Exactly 1 | trainer_id → trainer_profiles(user_id), NOT NULL |
-| member_profiles → bookings | 0..many | Exactly 1 | member_id → member_profiles(user_id), NOT NULL |
-| trainer_availability → bookings | 0..many historical rows | Exactly 1 | (slot_id, trainer_id) → trainer_availability(id, trainer_id), both NOT NULL |
-| bookings → booking_audit | 0..many structurally | Exactly 1 | booking_id → bookings(id), NOT NULL; normal insert/status updates append audit |
+| User — Has member profile — Member Profile | User (0,1), partial | Member Profile (1,1), total | Profile PK/shared UUID; fixed MEMBER role and composite reference |
+| User — Has trainer profile — Trainer Profile | User (0,1), partial | Trainer Profile (1,1), total | Profile PK/shared UUID; fixed TRAINER role and composite reference |
+| Trainer Profile — Offers — Availability Slot | Trainer (0,N), partial | Slot (1,1), total | NOT NULL typed trainer reference |
+| Member Profile — Reserves — Booking | Member (0,N), partial | Booking (1,1), total | NOT NULL member reference |
+| Availability Slot — Allocates — Booking | Slot (0,N), partial | Booking (1,1), total | NOT NULL slot/trainer pair; historical rows remain many |
+| Booking — Records — Booking Audit | Booking (0,N), partial | Audit (1,1), total | Audit FK requires a booking; FK alone does not require an audit row |
+| Trainer Profile — Coaches — Booking | Trainer (0,N), partial | Booking (1,1), total | **Implied association** through the selected slot; not an additional independent SQL FK |
 
-A parent is not required to have children; every child requires a parent. The audit FK does not require an audit row, although the trigger produces records in normal workflows. These are structural cardinalities, not an assumption that every workflow has already run.
+The page-2 member/trainer rectangles repeat page-1 entities as context, not new entities. There are seven distinct PostgreSQL business entities, six actual FK constraints and seven conceptual relationship diamonds. Exercises remains independent.
 
-## Constraints beyond connector cardinality
+## Attribute mapping and implementation boundaries
 
-1. **Disjoint profiles:** users.role is MEMBER or TRAINER; CHECK-constrained profile roles and composite FKs prevent a single user satisfying both profile types. SQL does not enforce a profile for every user; application registration creates it transactionally. The 0..1 connectors are intentional.
-2. **History versus capacity:** a slot may have many historical/CANCELLED rows and at most one CONFIRMED row. one_confirmed_booking_per_slot is a partial unique index, not unconditional 1:1.
-3. **Composite references:** UNIQUE users(id, role) and trainer_availability(id, trainer_id) are nonminimal superkeys enabling exact FK targets; id alone is already a PK. bookings.trainer_id is part of the composite FK, not an invented standalone reference.
-4. **Temporal integrity:** GiST exclusion prevents same-trainer overlapping intervals, including CLOSED slots. Triggers enforce windows, immutable identities/times and occupied closure rules; these predicates are not expressible merely as a fork/bar.
-5. **Independent catalog:** exercises has no FK to trainers, bookings or Mongo workout snapshots. Its unconnected placement is deliberate.
+The two pages draw 36 actual attribute ovals. Five reference-only SQL fields are expressed as relationships instead of redundant attribute spokes:
 
-schema_migrations is infrastructure, not an eighth business entity. Policies/views/functions are implementation objects, not entities. MongoDB is excluded from this SQL ER model; pgvector attributes remain inside the PostgreSQL relations that store them.
+| Physical field | Conceptual representation |
+|---|---|
+| trainer_availability.trainer_id | Offers |
+| bookings.member_id | Reserves |
+| bookings.slot_id | Allocates |
+| bookings.trainer_id | Coaches, constrained to equal the selected slot's trainer |
+| booking_audit.booking_id | Records |
+
+The profile user_id attributes remain underlined identifiers, and role is retained as an actual constrained domain attribute. SQL FK labels/composite details are not placed on the ovals. All **41 business columns**, types and exact six FK mappings are retained in the separate academic/physical schema views. No business attribute was invented.
+
+Role checks make the profile types disjoint. SQL does not require every user to have a profile; registration creates the appropriate one. The model therefore does not assert total user specialization. Profiles could alternatively be represented as EER subtypes, but this view uses explicit role-qualified relationships as requested.
+
+A slot has multiple historical bookings and at most one CONFIRMED booking, enforced by the partial unique index. The booking coach must equal the selected slot's trainer through the physical composite FK. These are accompanying conditions, not unconditional 1:1 connectors. Normal triggers append audit records; the structural parent-to-audit minimum remains zero.
+
+MongoDB workout_logs, its logical member UUID and application-managed integrity remain exclusively in [HYBRID_DATA_MODEL.md](HYBRID_DATA_MODEL.md). pgvector is a PostgreSQL extension, not a third database server. schema_migrations is infrastructure, not an ER business entity.
 
 ## Viva explanation
 
-“Each user may have a typed profile, but each profile requires one correctly typed user. Trainers offer slots; members reserve them. A slot has many historical booking rows, while a partial index limits confirmed capacity to one. Audit is a booking child; exercises stands alone. Next I show exact keys/constraints in the relational diagram and database boundaries in the hybrid figure.”
+“Rectangles are business entities, diamonds are relationships and ovals are attributes. The min/max label describes each entity's own participation; double lines require participation. User profiles are optional and role-qualified. Booking relates to one member, slot and its corresponding trainer, with many historical rows per slot. Active capacity and coach consistency require the separate physical constraints. The independent exercise catalog and stored embeddings remain PostgreSQL entities/attributes.”
 
-## Verification and convention
+## Local validation
 
-[Validation checklist](database-design/VALIDATION.md) records source/catalog comparison and actual visual review. [Mermaid's ER convention reference](https://mermaid.js.org/syntax/entityRelationshipDiagram.html) documents the same cardinality/identification semantics. This uses accepted academic notation; no certification to a named ISO drawing standard is claimed.
+[Local review record](database-design/LOCAL_REVIEW.md) records implementation comparisons, full-resolution visual review, PDF checks and preserved files. The old Crow's Foot figures remain superseded physical-reference artifacts, not the current conceptual notation. The Mermaid companion remains explicitly a physical relationship aid; the editable conceptual source is render-reference-diagrams.mjs plus schema-model.json.

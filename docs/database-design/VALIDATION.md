@@ -1,3 +1,5 @@
+> Previous PR #5 design validation record. The local extended-Chen/academic relational revision is documented in [LOCAL_REVIEW.md](LOCAL_REVIEW.md). Earlier Crow's Foot layout claims below describe the prior revision, not the current conceptual notation.
+
 # Database-design comparison and validation
 
 Date: 17 November 2026, Asia/Kolkata. Base: latest merged original main e8424de (PR #4 included); full SHA is recorded in catalog-verification.json. Scope: documentation/design only. No application, migrations, Mongo validator, package/lock or database behavior changes.

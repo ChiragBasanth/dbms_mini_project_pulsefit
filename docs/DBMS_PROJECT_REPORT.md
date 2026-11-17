@@ -1,4 +1,4 @@
-> Historical November 1 snapshot. **Current design addendum (17 November 2026):** use the [Crow's Foot ER](ER_DIAGRAM.md), [separate physical relational schema](RELATIONAL_SCHEMA.md), [hybrid data model](HYBRID_DATA_MODEL.md) and [reviewed SVG/PNG exports](database-design/README.md). They supersede this dated snapshot's abbreviated diagram/schema figures; the historical PDF remains unchanged. Current technical audit, authorization and test evidence: [LEVEL3_FINAL_REPORT.md](LEVEL3_FINAL_REPORT.md).
+> Historical November 1 snapshot. **Current design addendum (17 November 2026):** use the [two-page extended Chen conceptual ER](ER_DIAGRAM.md), [academic relational schema with preserved physical supplement](RELATIONAL_SCHEMA.md), [hybrid data model](HYBRID_DATA_MODEL.md) and [reviewed SVG/PNG exports](database-design/README.md). They supersede this dated snapshot's abbreviated diagram/schema figures; the historical PDF remains unchanged. Current technical audit, authorization and test evidence: [LEVEL3_FINAL_REPORT.md](LEVEL3_FINAL_REPORT.md).
 
 # 1. TITLE
 

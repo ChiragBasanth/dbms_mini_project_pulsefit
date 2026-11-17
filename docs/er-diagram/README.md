@@ -1,5 +1,5 @@
-# ER companion and compatibility exports
+# Diagram compatibility paths
 
-Current masters are in [../database-design](../database-design/README.md): separate Crow's Foot ER, relational schema and hybrid architecture. [../ER_DIAGRAM.md](../ER_DIAGRAM.md) explains participation/composite keys.
+The current conceptual format is extended Chen across [identity/profiles](../database-design/pulsefit-er-conceptual-identity.svg) and [scheduling/history/catalog](../database-design/pulsefit-er-conceptual-booking.svg). See [ER_DIAGRAM.md](../ER_DIAGRAM.md) for cardinality/participation semantics.
 
-pulsefit.mmd is the full-attribute Mermaid ER companion. pulsefit.svg/png are compatibility copies of the current PostgreSQL-only Crow's Foot ER; they no longer combine MongoDB with SQL relationships. Prefer the clearly named masters in new references. MongoDB integration belongs to [../HYBRID_DATA_MODEL.md](../HYBRID_DATA_MODEL.md). Dated historical audit snapshots remain historical evidence.
+pulsefit.svg/png are compatibility aliases of conceptual page 1, not a complete one-page model; always use the page-2 link too. pulsefit.mmd is retained as an accurately labelled **physical Crow's Foot relationship companion**, not the editable Chen source. Conceptual and academic sources/exports are indexed in [../database-design/README.md](../database-design/README.md). The old Crow's Foot exports are superseded as conceptual presentation masters. Detailed physical/hybrid diagrams remain separate.

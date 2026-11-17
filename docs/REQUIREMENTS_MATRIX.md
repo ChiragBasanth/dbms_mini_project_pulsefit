@@ -6,8 +6,8 @@ See [LEVEL3_FINAL_REPORT.md](LEVEL3_FINAL_REPORT.md#compliance-matrix), covering
 
 | Deliverable | Evidence | Validation |
 |---|---|---|
-| Crow's Foot / IE ER | [ER](ER_DIAGRAM.md), [SVG/PNG](database-design/README.md) | Seven business entities; 41 columns; minimum/maximum participation; historical booking cardinality |
-| Separate physical relational schema | [Schema](RELATIONAL_SCHEMA.md), [diagram](database-design/pulsefit-relational-schema.svg) | Exact types/keys/defaults; six composite/ordinary FKs; superkeys; normalization exceptions |
+| Extended Chen conceptual ER, two pages | [ER](ER_DIAGRAM.md), [SVG/PNG](database-design/README.md) | Seven business entities; 36 actual attribute ovals + five reference-only fields represented by relationships; explicit (min,max)/single-double participation |
+| Academic relational schema + physical supplement | [Schema](RELATIONAL_SCHEMA.md), [academic diagram](database-design/pulsefit-relational-academic.svg), [preserved physical diagram](database-design/pulsefit-relational-schema.svg) | Exact types/keys/defaults; six composite/ordinary FKs; superkeys; normalization exceptions |
 | Hybrid architecture | [Hybrid model](HYBRID_DATA_MODEL.md) | Logical Mongo reference; pgvector inside PostgreSQL, 384D on trainers/exercises |
 
 [Executed source/catalog/render checklist](database-design/VALIDATION.md). These design checks do not newly certify student contributions, originality or viva mastery.
