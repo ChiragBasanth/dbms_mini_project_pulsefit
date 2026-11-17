@@ -80,10 +80,20 @@ The concurrency test releases eight separately acquired PostgreSQL connections t
 ## Academic deliverables
 
 - [Initial audit](docs/IMPLEMENTATION_AUDIT.md) and [requirements matrix](docs/REQUIREMENTS_MATRIX.md)
-- [ER diagram](docs/ER_DIAGRAM.md), [relational schema](docs/RELATIONAL_SCHEMA.md), [data dictionary](docs/DATA_DICTIONARY.md)
-- [Project report](docs/DBMS_PROJECT_REPORT.md) with the nine required headings and [printable PDF](docs/DBMS_PROJECT_REPORT.pdf)
+- [extended Chen conceptual ER (two pages)](docs/ER_DIAGRAM.md), [academic relational schema and detailed physical supplement](docs/RELATIONAL_SCHEMA.md), [data dictionary](docs/DATA_DICTIONARY.md), [hybrid data model](docs/HYBRID_DATA_MODEL.md), [editable figures and exports](docs/database-design/README.md)
+- [Current technical report](docs/LEVEL3_FINAL_REPORT.md); [historical nine-heading report with current design addendum](docs/DBMS_PROJECT_REPORT.md) and [historical printable PDF](docs/DBMS_PROJECT_REPORT.pdf)
 - [10–15 minute demo](docs/DEMO_SCRIPT.md) and [screenshot checklist](docs/SCREENSHOT_CHECKLIST.md)
 
 ## Limits and authorship
 
 This is a local academic demonstrator. It has no payment system, password reset, email verification, per-session revocation or distributed rate limiter. The in-process login throttle is appropriate to this single-process demo; scale-out requires a shared limiter. DB credentials are server-only and must use least privilege in deployment. MongoDB cannot enforce a PostgreSQL FK: users have no deletion API, and reconciliation is required before adding cross-store account deletion. Never assign student authorship or commit history that did not occur. Both students must review, understand and make identifiable database and application contributions according to their instructor's policy.
+
+## Interactive DBMS faculty menu
+
+From the repository root in VS Code PowerShell, after the supported local setup:
+
+```powershell
+node .\pulsefit-demo-menu.mjs
+```
+
+The 26 options show real source and the configured localhost database runtime. The normal single-checkout and existing pulsefit-main-audit / sibling pulsefit arrangement are supported. [Run/safety instructions and all 26 Explorer source mappings](docs/FACULTY_MENU_GUIDE.md). SQL inspection is read-only; write demonstrations roll back or require explicit isolated Mongo RUD confirmation. No service setup or reseeding is performed by the menu.

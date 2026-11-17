@@ -35,8 +35,8 @@ PASS means supported source and the stated executed evidence; PARTIAL identifies
 
 | Faculty deliverable | Status | Supporting files/functions | Executed evidence / limitation |
 |---|---|---|---|
-| ER diagram | PASS | ER_DIAGRAM.md; er-diagram/pulsefit.mmd; pulsefit.svg/png | Names match migrations; renderable Mermaid and actual visually inspected exported relationship overview; full constraints remain in SQL |
-| Relational keys/relationships/constraints | PASS | RELATIONAL_SCHEMA.md; DATA_DICTIONARY.md; migrations 001–003 | I01/I04/I05; typed composite FKs and exclusion/unique constraints |
+| Conceptual ER diagram | PASS (approved diagrams) | ER_DIAGRAM.md; database-design/pulsefit-er-conceptual-identity.svg/png; pulsefit-er-conceptual-booking.svg/png | Extended Chen symbols, entity-side min/max, single/double participation; 36 actual ovals plus five reference-only fields expressed as relationships; LOCAL_REVIEW.md |
+| Academic relational schema and physical supplement | PASS (approved diagrams) | RELATIONAL_SCHEMA.md; database-design/pulsefit-relational-academic.svg/png; preserved pulsefit-relational-schema.svg/png | 41 attributes in horizontal cells; six FK groups/three composite references; precise key underlines/arrows; preserved detailed constraints and normalization caveats |
 | SQL DDL including CREATE/ALTER/DROP | PASS | migrations; queries/course_demo.sql | I06 executes temporary DDL and rollback-protected domain DML |
 | NoSQL/vector creation | PASS | database/mongo/setup.ts; migration 001 | db:mongo, db:migrate; I07/I08 |
 | Technology justification | PASS | this report; architecture/overview.md; viva-notes.md | Matches actual source and real service runs |
@@ -85,7 +85,7 @@ These are nine logical areas sharing Portal and one catch-all route, not nine is
 
 ## Database feature inventory, schema and dictionary
 
-Canonical details: RELATIONAL_SCHEMA.md, DATA_DICTIONARY.md, ER_DIAGRAM.md and migrations. PostgreSQL has seven domain tables plus migration metadata:
+Canonical details: [relational schema](RELATIONAL_SCHEMA.md), [dictionary](DATA_DICTIONARY.md), [ER diagram](ER_DIAGRAM.md), [hybrid architecture](HYBRID_DATA_MODEL.md), [editable figures](database-design/README.md) and migrations. The approved reference-based revision is reviewed in [database-design/LOCAL_REVIEW.md](database-design/LOCAL_REVIEW.md), alongside the prior [validation record](database-design/VALIDATION.md); it does not change the dated runtime audit results. PostgreSQL has seven domain tables plus migration metadata:
 
 | Table | Keys and main constraints |
 |---|---|

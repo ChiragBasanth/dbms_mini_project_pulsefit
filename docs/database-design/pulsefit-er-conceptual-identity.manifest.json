@@ -1,0 +1,148 @@
+{
+  "title": "PulseFit | Conceptual ER — Identity and Profiles",
+  "entities": [
+    {
+      "table": "users",
+      "context": false
+    },
+    {
+      "table": "member_profiles",
+      "context": false
+    },
+    {
+      "table": "trainer_profiles",
+      "context": false
+    }
+  ],
+  "attributes": [
+    {
+      "table": "users",
+      "column": "id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "users",
+      "column": "name",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "users",
+      "column": "email",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "users",
+      "column": "password_hash",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "users",
+      "column": "role",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "users",
+      "column": "created_at",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "member_profiles",
+      "column": "user_id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "member_profiles",
+      "column": "role",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "member_profiles",
+      "column": "fitness_goals",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "user_id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "role",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "bio",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "specialties",
+      "key": false,
+      "multi": true
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "experience_years",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "embedding",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "embedding_model",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "location",
+      "key": false,
+      "multi": false
+    }
+  ],
+  "relationships": [
+    {
+      "entity": "users",
+      "relationship": "Has member profile",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "entity": "member_profiles",
+      "relationship": "Has member profile",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "entity": "users",
+      "relationship": "Has trainer profile",
+      "min": 0,
+      "max": 1
+    },
+    {
+      "entity": "trainer_profiles",
+      "relationship": "Has trainer profile",
+      "min": 1,
+      "max": 1
+    }
+  ],
+  "fkGroups": []
+}

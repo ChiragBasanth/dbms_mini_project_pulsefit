@@ -1,27 +1,33 @@
+%% Physical Crow's Foot companion only; approved conceptual masters: ../database-design/pulsefit-er-conceptual-identity.svg and pulsefit-er-conceptual-booking.svg
 erDiagram
- USERS ||--o| MEMBER_PROFILES : "id + role"
- USERS ||--o| TRAINER_PROFILES : "id + role"
- TRAINER_PROFILES ||--o{ TRAINER_AVAILABILITY : offers
- MEMBER_PROFILES ||--o{ BOOKINGS : reserves
- TRAINER_AVAILABILITY ||--o{ BOOKINGS : "slot_id + trainer_id"
- BOOKINGS ||--o{ BOOKING_AUDIT : records
+ USERS ||--o| MEMBER_PROFILES : "(user_id, role)"
+ USERS ||--o| TRAINER_PROFILES : "(user_id, role)"
+ TRAINER_PROFILES ||..o{ TRAINER_AVAILABILITY : "trainer_id"
+ MEMBER_PROFILES ||..o{ BOOKINGS : "member_id"
+ TRAINER_AVAILABILITY ||..o{ BOOKINGS : "slot_id + trainer_id"
+ BOOKINGS ||..o{ BOOKING_AUDIT : "booking_id"
  USERS {
   uuid id PK
+  text name
   text email UK
   text password_hash
   text role
+  timestamptz created_at
  }
  MEMBER_PROFILES {
   uuid user_id PK,FK
-  text role
+  text role FK
   text fitness_goals
  }
  TRAINER_PROFILES {
   uuid user_id PK,FK
+  text role FK
   text bio
   text_array specialties
-  int experience_years
+  integer experience_years
   vector384 embedding
+  text embedding_model
+  text location
  }
  TRAINER_AVAILABILITY {
   uuid id PK
@@ -36,16 +42,22 @@ erDiagram
   uuid trainer_id FK
   uuid slot_id FK
   text status
+  timestamptz created_at
  }
  BOOKING_AUDIT {
   bigint id PK
   uuid booking_id FK
   text old_status
   text new_status
+  timestamptz changed_at
  }
  EXERCISES {
   uuid id PK
   text name UK
+  text muscle_group
+  text description
+  text difficulty
   text category
   vector384 embedding
+  text embedding_model
  }

@@ -1,6 +1,6 @@
 # Data dictionary
 
-All columns are NOT NULL unless marked nullable. PostgreSQL UUIDs are serialized as strings; dates use ISO strings at the API and timezone-aware storage. Sources: `001_core.sql`, `002_profile_metadata.sql`, `database/mongo/setup.ts`.
+All columns are NOT NULL unless marked nullable. PostgreSQL UUIDs are serialized as strings; dates use ISO strings at the API and timezone-aware storage. Sources: `001_core.sql`, `002_profile_metadata.sql`, `003_database_authorization.sql`, `database/mongo/setup.ts`. Full column-level defaults, exact SQL predicates, keys and normalization exceptions are in [RELATIONAL_SCHEMA.md](RELATIONAL_SCHEMA.md); figures: [ER](ER_DIAGRAM.md), [primary academic relational schema](database-design/pulsefit-relational-academic.svg), [physical supplement](database-design/pulsefit-relational-schema.svg), [hybrid](HYBRID_DATA_MODEL.md).
 
 | Table | Columns and types | Rules / meaning |
 |---|---|---|
@@ -10,7 +10,7 @@ All columns are NOT NULL unless marked nullable. PostgreSQL UUIDs are serialized
 | trainer_availability | id uuid; trainer_id uuid; starts_at timestamptz; ends_at timestamptz; status text | UUID PK; trainer FK; duration >0 and ≤4h; OPEN/CLOSED; insertion starts within next 90 days; non-overlapping half-open ranges |
 | bookings | id uuid; member_id uuid; trainer_id uuid; slot_id uuid; status text; created_at timestamptz | PK; typed member FK; composite slot/trainer FK; CONFIRMED/CANCELLED; one confirmed row per slot; immutable identity |
 | booking_audit | id bigint identity; booking_id uuid; old_status text nullable; new_status text; changed_at timestamptz | PK; booking FK; trigger-produced change trail; initial old status null |
-| exercises | id uuid; name text; muscle_group text; description text; difficulty text; category text; embedding vector(384) nullable; embedding_model text nullable | PK; unique name; BEGINNER/INTERMEDIATE/ADVANCED; STRENGTH/CARDIO/MOBILITY; null embedding means not indexed |
+| exercises | id uuid; name text; muscle_group text; description text; difficulty text; category text; embedding vector(384) nullable; embedding_model text nullable | PK; unique name; BEGINNER/INTERMEDIATE/ADVANCED; STRENGTH/CARDIO/MOBILITY; null embedding means excluded from semantic retrieval; no ANN vector index exists |
 | schema_migrations | name text; checksum text; applied_at timestamptz | Migration filename PK; SHA-256 prevents edits to applied migrations |
 
 ## MongoDB workout_logs

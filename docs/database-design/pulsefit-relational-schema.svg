@@ -1,0 +1,298 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2120" height="2170" viewBox="0 0 2120 2170" role="img"><title>PulseFit | Physical Relational Schema</title><desc>Relation signatures, complete attributes and SQL constraints · Separate from the ER model · Migrations 001–003</desc><rect width="100%" height="100%" fill="white"/>
+<text x="50" y="60" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#193348" text-anchor="start">PulseFit | Physical Relational Schema</text>
+<text x="50" y="98" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#193348" text-anchor="start">Relation signatures, complete attributes and SQL constraints · Separate from the ER model · Migrations 001–003</text>
+<polyline points="50,122 2070,122" fill="none" stroke="#aab9c3" stroke-width="2" />
+<rect x="50" y="166" width="990" height="357" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="50" y="166" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="68" y="196" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">USERS</text>
+<text x="68" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="165" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="420" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="585" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="65,277 1025,277" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="269" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK</text>
+<text x="165" y="269" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">id : uuid</text>
+<text x="420" y="269" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="269" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">gen_random_uuid()</text>
+<polyline points="65,306 1025,306" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="298" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="298" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">name : text</text>
+<text x="420" y="298" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="298" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,335 1025,335" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="327" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">UK</text>
+<text x="165" y="327" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">email : text</text>
+<text x="420" y="327" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="327" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,364 1025,364" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="356" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="356" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">password_hash : text</text>
+<text x="420" y="356" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="356" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,393 1025,393" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="385" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="385" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">role : text</text>
+<text x="420" y="385" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="385" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,422 1025,422" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="414" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="414" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">created_at : timestamptz</text>
+<text x="420" y="414" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="414" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">now()</text>
+<text x="68" y="455" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CK: id; email. PK: id. UNIQUE(id, role) is a nonminimal reference superkey.</text>
+<text x="68" y="479" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK: name length 2–100; email = lower(btrim(email)) and contains @.</text>
+<text x="68" y="503" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK: password_hash length &gt;= 60; role IN (MEMBER, TRAINER).</text>
+<rect x="1080" y="166" width="990" height="415" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="1080" y="166" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="1098" y="196" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">TRAINER_PROFILES</text>
+<text x="1098" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="1195" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="1450" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="1615" y="238" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="1095,277 2055,277" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="269" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK,FK</text>
+<text x="1195" y="269" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">user_id : uuid</text>
+<text x="1450" y="269" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="269" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,306 2055,306" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="298" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="1195" y="298" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">role : text</text>
+<text x="1450" y="298" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="298" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">'TRAINER'</text>
+<polyline points="1095,335 2055,335" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="327" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="327" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">bio : text</text>
+<text x="1450" y="327" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="327" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">''</text>
+<polyline points="1095,364 2055,364" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="356" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="356" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">specialties : text[]</text>
+<text x="1450" y="356" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="356" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">'{}'</text>
+<polyline points="1095,393 2055,393" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="385" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="385" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">experience_years : integer</text>
+<text x="1450" y="385" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="385" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">0</text>
+<polyline points="1095,422 2055,422" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="414" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="414" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">embedding : vector(384)</text>
+<text x="1450" y="414" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NULL</text>
+<text x="1615" y="414" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,451 2055,451" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="443" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="443" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">embedding_model : text</text>
+<text x="1450" y="443" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NULL</text>
+<text x="1615" y="443" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,480 2055,480" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="472" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="472" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">location : text</text>
+<text x="1450" y="472" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="472" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">'PulseFit Campus Gym'</text>
+<text x="1098" y="513" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">FK (user_id, role) -&gt; users(id, role).</text>
+<text x="1098" y="537" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK: role = TRAINER; bio length &lt;= 2000; experience_years 0–80.</text>
+<text x="1098" y="561" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK: location length &lt;= 120. specialties is a PostgreSQL text[] array.</text>
+<rect x="50" y="621" width="990" height="246" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="50" y="621" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="68" y="651" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">MEMBER_PROFILES</text>
+<text x="68" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="165" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="420" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="585" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="65,732 1025,732" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="724" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK,FK</text>
+<text x="165" y="724" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">user_id : uuid</text>
+<text x="420" y="724" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="724" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,761 1025,761" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="753" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="165" y="753" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">role : text</text>
+<text x="420" y="753" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="753" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">'MEMBER'</text>
+<polyline points="65,790 1025,790" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="782" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="782" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">fitness_goals : text</text>
+<text x="420" y="782" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="782" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">''</text>
+<text x="68" y="823" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">FK (user_id, role) -&gt; users(id, role).</text>
+<text x="68" y="847" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK role = MEMBER; fitness_goals length &lt;= 2000.</text>
+<rect x="1080" y="621" width="990" height="415" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="1080" y="621" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="1098" y="651" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">EXERCISES</text>
+<text x="1098" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="1195" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="1450" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="1615" y="693" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="1095,732 2055,732" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="724" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK</text>
+<text x="1195" y="724" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">id : uuid</text>
+<text x="1450" y="724" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="724" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">gen_random_uuid()</text>
+<polyline points="1095,761 2055,761" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="753" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">UK</text>
+<text x="1195" y="753" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">name : text</text>
+<text x="1450" y="753" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="753" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,790 2055,790" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="782" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="782" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">muscle_group : text</text>
+<text x="1450" y="782" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="782" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,819 2055,819" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="811" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="811" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">description : text</text>
+<text x="1450" y="811" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="811" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,848 2055,848" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="840" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="840" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">difficulty : text</text>
+<text x="1450" y="840" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="840" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,877 2055,877" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="869" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="869" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">category : text</text>
+<text x="1450" y="869" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="869" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,906 2055,906" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="898" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="898" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">embedding : vector(384)</text>
+<text x="1450" y="898" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NULL</text>
+<text x="1615" y="898" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,935 2055,935" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="927" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="927" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">embedding_model : text</text>
+<text x="1450" y="927" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NULL</text>
+<text x="1615" y="927" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<text x="1098" y="968" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CK: id; name. PK: id. No FK to workout snapshots or trainer profiles.</text>
+<text x="1098" y="992" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK difficulty IN (BEGINNER, INTERMEDIATE, ADVANCED).</text>
+<text x="1098" y="1016" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK category IN (STRENGTH, CARDIO, MOBILITY).</text>
+<rect x="50" y="1076" width="990" height="352" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="50" y="1076" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="68" y="1106" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">TRAINER_AVAILABILITY</text>
+<text x="68" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="165" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="420" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="585" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="65,1187 1025,1187" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1179" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK</text>
+<text x="165" y="1179" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">id : uuid</text>
+<text x="420" y="1179" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1179" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">gen_random_uuid()</text>
+<polyline points="65,1216 1025,1216" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1208" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="165" y="1208" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">trainer_id : uuid</text>
+<text x="420" y="1208" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1208" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,1245 1025,1245" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1237" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="1237" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">starts_at : timestamptz</text>
+<text x="420" y="1237" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1237" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,1274 1025,1274" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1266" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="1266" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">ends_at : timestamptz</text>
+<text x="420" y="1266" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1266" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,1303 1025,1303" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1295" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="1295" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">status : text</text>
+<text x="420" y="1295" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1295" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">'OPEN'</text>
+<text x="68" y="1336" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">FK trainer_id -&gt; trainer_profiles(user_id). UNIQUE(id, trainer_id): nonminimal superkey.</text>
+<text x="68" y="1360" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK: status IN (OPEN, CLOSED); 0 &lt; duration &lt;= 4 hours.</text>
+<text x="68" y="1384" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">EXCLUDE GiST: trainer_id WITH =, tstzrange(starts_at, ends_at, [)) WITH &amp;&amp;.</text>
+<text x="68" y="1408" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">Trigger: new start in next 90 days; trainer/time immutable; no occupied closure.</text>
+<rect x="1080" y="1076" width="990" height="405" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="1080" y="1076" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="1098" y="1106" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">BOOKINGS</text>
+<text x="1098" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="1195" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="1450" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="1615" y="1148" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="1095,1187 2055,1187" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="1179" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK</text>
+<text x="1195" y="1179" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">id : uuid</text>
+<text x="1450" y="1179" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="1179" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">gen_random_uuid()</text>
+<polyline points="1095,1216 2055,1216" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="1208" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="1195" y="1208" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">member_id : uuid</text>
+<text x="1450" y="1208" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="1208" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,1245 2055,1245" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="1237" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="1195" y="1237" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">trainer_id : uuid</text>
+<text x="1450" y="1237" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="1237" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,1274 2055,1274" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="1266" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="1195" y="1266" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">slot_id : uuid</text>
+<text x="1450" y="1266" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="1266" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="1095,1303 2055,1303" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="1295" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="1295" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">status : text</text>
+<text x="1450" y="1295" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="1295" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">'CONFIRMED'</text>
+<polyline points="1095,1332 2055,1332" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="1098" y="1324" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="1195" y="1324" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">created_at : timestamptz</text>
+<text x="1450" y="1324" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="1615" y="1324" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">now()</text>
+<text x="1098" y="1365" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">FK member_id -&gt; member_profiles(user_id).</text>
+<text x="1098" y="1389" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">FK (slot_id, trainer_id) -&gt; trainer_availability(id, trainer_id).</text>
+<text x="1098" y="1413" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">CHECK status IN (CONFIRMED, CANCELLED).</text>
+<text x="1098" y="1437" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">PARTIAL UNIQUE: slot_id WHERE status = CONFIRMED; history may contain many rows.</text>
+<text x="1098" y="1461" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">Triggers guard booking identity/time/state and append booking_audit.</text>
+<rect x="50" y="1521" width="990" height="304" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="50" y="1521" width="990" height="45" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="68" y="1551" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white" text-anchor="start">BOOKING_AUDIT</text>
+<text x="68" y="1593" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">KEY</text>
+<text x="165" y="1593" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">ATTRIBUTE : TYPE</text>
+<text x="420" y="1593" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">NULL</text>
+<text x="585" y="1593" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#526674" text-anchor="start">DEFAULT</text>
+<polyline points="65,1632 1025,1632" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1624" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">PK</text>
+<text x="165" y="1624" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#193348" text-anchor="start">id : bigint</text>
+<text x="420" y="1624" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1624" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">GENERATED ALWAYS AS IDENTITY</text>
+<polyline points="65,1661 1025,1661" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1653" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start">FK</text>
+<text x="165" y="1653" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">booking_id : uuid</text>
+<text x="420" y="1653" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1653" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,1690 1025,1690" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1682" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="1682" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">old_status : text</text>
+<text x="420" y="1682" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NULL</text>
+<text x="585" y="1682" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,1719 1025,1719" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1711" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="1711" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">new_status : text</text>
+<text x="420" y="1711" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1711" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">—</text>
+<polyline points="65,1748 1025,1748" fill="none" stroke="#e1e7eb" stroke-width="1" />
+<text x="68" y="1740" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#234d67" text-anchor="start"></text>
+<text x="165" y="1740" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">changed_at : timestamptz</text>
+<text x="420" y="1740" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">NN</text>
+<text x="585" y="1740" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">now()</text>
+<text x="68" y="1781" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">FK booking_id -&gt; bookings(id). old_status is nullable for initial insert.</text>
+<text x="68" y="1805" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">Trigger appends changes; FK itself permits zero audit rows per booking.</text>
+<rect x="1080" y="1521" width="990" height="334" rx="4" fill="#eef3f6" stroke="#aab9c3" stroke-width="1.5"/>
+<text x="1100" y="1556" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#193348" text-anchor="start">REFERENTIAL MAPPINGS</text>
+<text x="1100" y="1593" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">member_profiles: (user_id, role) -&gt; users(id, role)</text>
+<text x="1100" y="1622" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">trainer_profiles: (user_id, role) -&gt; users(id, role)</text>
+<text x="1100" y="1651" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">trainer_availability: trainer_id -&gt; trainer_profiles(user_id)</text>
+<text x="1100" y="1680" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">bookings: member_id -&gt; member_profiles(user_id)</text>
+<text x="1100" y="1709" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">bookings: (slot_id, trainer_id) -&gt; trainer_availability(id, trainer_id)</text>
+<text x="1100" y="1738" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">booking_audit: booking_id -&gt; bookings(id)</text>
+<text x="1100" y="1791" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">All FKs: NOT NULL components; MATCH SIMPLE; NO ACTION; not deferrable.</text>
+<text x="1100" y="1821" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="#193348" text-anchor="start">No standalone bookings.trainer_id FK; the slot/trainer pair enforces it.</text>
+<text x="50" y="1875" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#193348" text-anchor="start">KEY LEGEND: PK chosen primary key · FK component of a reference · UK unique column · CK candidate key (minimal) · NN NOT NULL</text>
+<text x="50" y="1913" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="start">Nonminimal UNIQUE(id, role) and UNIQUE(id, trainer_id) are supporting reference superkeys, not additional candidate keys.</text>
+<text x="50" y="1951" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="start">Physical indexes: PK/UNIQUE B-trees; GiST non-overlap; partial booking uniqueness; member/date, trainer/status and trainer/date B-trees.</text>
+<text x="50" y="1989" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="start">Vector columns are nullable, stored in PostgreSQL via pgvector; current searches use exact cosine distance, with no HNSW/IVFFlat index.</text>
+<text x="50" y="2027" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="start">RLS: member_profiles, trainer_profiles, trainer_availability, bookings, booking_audit (12 policies). Runtime grants are configured separately.</text>
+<text x="50" y="2065" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="start">Infrastructure only: schema_migrations(name text PK, checksum text NN, applied_at timestamptz NN DEFAULT now()).</text>
+<text x="50" y="2103" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="start">See RELATIONAL_SCHEMA.md for full SQL predicates, index catalog, normalization exceptions, trigger behavior and authorization limits.</text>
+</svg>

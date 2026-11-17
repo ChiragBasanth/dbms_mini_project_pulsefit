@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-17T06:33:40.453Z",
+  "status": "PASS",
+  "scope": "Approved diagram source verification; no database writes; publication status recorded separately",
+  "counts": {
+    "businessEntities": 7,
+    "businessColumns": 41,
+    "conceptualOvals": 36,
+    "relationshipRepresentedColumns": 5,
+    "conceptualRelationships": 7,
+    "foreignKeyConstraints": 6,
+    "compositeForeignKeys": 3,
+    "targetAttributeArrows": 9,
+    "primaryKeys": 7,
+    "indexes": 17,
+    "newSvgPngPairs": 3,
+    "preservedPhysicalHybridFiles": 4
+  },
+  "limitations": [
+    "Existing live catalog snapshot compared to unchanged migration hashes; no fresh runtime workflow test claimed.",
+    "Visual and PDF review recorded separately in LOCAL_REVIEW.md."
+  ]
+}

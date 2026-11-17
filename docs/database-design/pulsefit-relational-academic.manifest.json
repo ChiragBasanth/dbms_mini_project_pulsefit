@@ -1,0 +1,469 @@
+{
+  "title": "PulseFit | Academic Relational Schema",
+  "entities": [
+    {
+      "table": "users",
+      "context": false
+    },
+    {
+      "table": "member_profiles",
+      "context": false
+    },
+    {
+      "table": "trainer_profiles",
+      "context": false
+    },
+    {
+      "table": "bookings",
+      "context": false
+    },
+    {
+      "table": "trainer_availability",
+      "context": false
+    },
+    {
+      "table": "booking_audit",
+      "context": false
+    },
+    {
+      "table": "exercises",
+      "context": false
+    }
+  ],
+  "attributes": [
+    {
+      "table": "users",
+      "column": "id",
+      "key": [
+        "PK"
+      ]
+    },
+    {
+      "table": "users",
+      "column": "name",
+      "key": []
+    },
+    {
+      "table": "users",
+      "column": "email",
+      "key": [
+        "UK"
+      ]
+    },
+    {
+      "table": "users",
+      "column": "password_hash",
+      "key": []
+    },
+    {
+      "table": "users",
+      "column": "role",
+      "key": []
+    },
+    {
+      "table": "users",
+      "column": "created_at",
+      "key": []
+    },
+    {
+      "table": "member_profiles",
+      "column": "user_id",
+      "key": [
+        "PK",
+        "FK"
+      ]
+    },
+    {
+      "table": "member_profiles",
+      "column": "role",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "member_profiles",
+      "column": "fitness_goals",
+      "key": []
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "user_id",
+      "key": [
+        "PK",
+        "FK"
+      ]
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "role",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "bio",
+      "key": []
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "specialties",
+      "key": []
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "experience_years",
+      "key": []
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "embedding",
+      "key": []
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "embedding_model",
+      "key": []
+    },
+    {
+      "table": "trainer_profiles",
+      "column": "location",
+      "key": []
+    },
+    {
+      "table": "bookings",
+      "column": "id",
+      "key": [
+        "PK"
+      ]
+    },
+    {
+      "table": "bookings",
+      "column": "member_id",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "bookings",
+      "column": "trainer_id",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "bookings",
+      "column": "slot_id",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "bookings",
+      "column": "status",
+      "key": []
+    },
+    {
+      "table": "bookings",
+      "column": "created_at",
+      "key": []
+    },
+    {
+      "table": "trainer_availability",
+      "column": "id",
+      "key": [
+        "PK"
+      ]
+    },
+    {
+      "table": "trainer_availability",
+      "column": "trainer_id",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "trainer_availability",
+      "column": "starts_at",
+      "key": []
+    },
+    {
+      "table": "trainer_availability",
+      "column": "ends_at",
+      "key": []
+    },
+    {
+      "table": "trainer_availability",
+      "column": "status",
+      "key": []
+    },
+    {
+      "table": "booking_audit",
+      "column": "id",
+      "key": [
+        "PK"
+      ]
+    },
+    {
+      "table": "booking_audit",
+      "column": "booking_id",
+      "key": [
+        "FK"
+      ]
+    },
+    {
+      "table": "booking_audit",
+      "column": "old_status",
+      "key": []
+    },
+    {
+      "table": "booking_audit",
+      "column": "new_status",
+      "key": []
+    },
+    {
+      "table": "booking_audit",
+      "column": "changed_at",
+      "key": []
+    },
+    {
+      "table": "exercises",
+      "column": "id",
+      "key": [
+        "PK"
+      ]
+    },
+    {
+      "table": "exercises",
+      "column": "name",
+      "key": [
+        "UK"
+      ]
+    },
+    {
+      "table": "exercises",
+      "column": "muscle_group",
+      "key": []
+    },
+    {
+      "table": "exercises",
+      "column": "description",
+      "key": []
+    },
+    {
+      "table": "exercises",
+      "column": "difficulty",
+      "key": []
+    },
+    {
+      "table": "exercises",
+      "column": "category",
+      "key": []
+    },
+    {
+      "table": "exercises",
+      "column": "embedding",
+      "key": []
+    },
+    {
+      "table": "exercises",
+      "column": "embedding_model",
+      "key": []
+    }
+  ],
+  "relationships": [],
+  "fkGroups": [
+    {
+      "id": "F1",
+      "child": "member_profiles",
+      "columns": [
+        "user_id",
+        "role"
+      ],
+      "parent": "users",
+      "references": [
+        "id",
+        "role"
+      ],
+      "route": [
+        [
+          310,
+          666
+        ],
+        [
+          80,
+          666
+        ],
+        [
+          80,
+          430
+        ],
+        [
+          1323.5,
+          430
+        ],
+        [
+          1323.5,
+          376
+        ]
+      ]
+    },
+    {
+      "id": "F2",
+      "child": "trainer_profiles",
+      "columns": [
+        "user_id",
+        "role"
+      ],
+      "parent": "users",
+      "references": [
+        "id",
+        "role"
+      ],
+      "route": [
+        [
+          2260,
+          666
+        ],
+        [
+          2000,
+          666
+        ],
+        [
+          2000,
+          170
+        ],
+        [
+          1323.5,
+          170
+        ],
+        [
+          1323.5,
+          226
+        ]
+      ]
+    },
+    {
+      "id": "F3",
+      "child": "trainer_availability",
+      "columns": [
+        "trainer_id"
+      ],
+      "parent": "trainer_profiles",
+      "references": [
+        "user_id"
+      ],
+      "route": [
+        [
+          2644,
+          1266
+        ],
+        [
+          3300,
+          1266
+        ],
+        [
+          3300,
+          1080
+        ],
+        [
+          2180,
+          1080
+        ],
+        [
+          2180,
+          816
+        ]
+      ]
+    },
+    {
+      "id": "F4",
+      "child": "bookings",
+      "columns": [
+        "member_id"
+      ],
+      "parent": "member_profiles",
+      "references": [
+        "user_id"
+      ],
+      "route": [
+        [
+          640,
+          1266
+        ],
+        [
+          640,
+          1080
+        ],
+        [
+          230,
+          1080
+        ],
+        [
+          230,
+          816
+        ]
+      ]
+    },
+    {
+      "id": "F5",
+      "child": "bookings",
+      "columns": [
+        "slot_id",
+        "trainer_id"
+      ],
+      "parent": "trainer_availability",
+      "references": [
+        "id",
+        "trainer_id"
+      ],
+      "route": [
+        [
+          886,
+          1416
+        ],
+        [
+          886,
+          1530
+        ],
+        [
+          2562,
+          1530
+        ],
+        [
+          2562,
+          1416
+        ]
+      ]
+    },
+    {
+      "id": "F6",
+      "child": "booking_audit",
+      "columns": [
+        "booking_id"
+      ],
+      "parent": "bookings",
+      "references": [
+        "id"
+      ],
+      "route": [
+        [
+          644,
+          1796
+        ],
+        [
+          644,
+          1600
+        ],
+        [
+          480,
+          1600
+        ],
+        [
+          480,
+          1416
+        ]
+      ]
+    }
+  ]
+}

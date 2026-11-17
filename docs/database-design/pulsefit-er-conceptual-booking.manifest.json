@@ -1,0 +1,208 @@
+{
+  "title": "PulseFit | Conceptual ER — Scheduling, History and Catalog",
+  "entities": [
+    {
+      "table": "trainer_availability",
+      "context": false
+    },
+    {
+      "table": "bookings",
+      "context": false
+    },
+    {
+      "table": "booking_audit",
+      "context": false
+    },
+    {
+      "table": "exercises",
+      "context": false
+    },
+    {
+      "table": "member_profiles",
+      "context": true
+    },
+    {
+      "table": "trainer_profiles",
+      "context": true
+    }
+  ],
+  "attributes": [
+    {
+      "table": "trainer_availability",
+      "column": "id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "trainer_availability",
+      "column": "starts_at",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_availability",
+      "column": "ends_at",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "trainer_availability",
+      "column": "status",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "bookings",
+      "column": "id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "bookings",
+      "column": "status",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "bookings",
+      "column": "created_at",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "booking_audit",
+      "column": "id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "booking_audit",
+      "column": "old_status",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "booking_audit",
+      "column": "new_status",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "booking_audit",
+      "column": "changed_at",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "id",
+      "key": true,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "name",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "muscle_group",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "description",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "difficulty",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "category",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "embedding",
+      "key": false,
+      "multi": false
+    },
+    {
+      "table": "exercises",
+      "column": "embedding_model",
+      "key": false,
+      "multi": false
+    }
+  ],
+  "relationships": [
+    {
+      "entity": "trainer_profiles",
+      "relationship": "Offers",
+      "min": 0,
+      "max": "N"
+    },
+    {
+      "entity": "trainer_availability",
+      "relationship": "Offers",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "entity": "member_profiles",
+      "relationship": "Reserves",
+      "min": 0,
+      "max": "N"
+    },
+    {
+      "entity": "bookings",
+      "relationship": "Reserves",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "entity": "trainer_availability",
+      "relationship": "Allocates",
+      "min": 0,
+      "max": "N"
+    },
+    {
+      "entity": "bookings",
+      "relationship": "Allocates",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "entity": "bookings",
+      "relationship": "Records",
+      "min": 0,
+      "max": "N"
+    },
+    {
+      "entity": "booking_audit",
+      "relationship": "Records",
+      "min": 1,
+      "max": 1
+    },
+    {
+      "entity": "trainer_profiles",
+      "relationship": "Coaches",
+      "min": 0,
+      "max": "N"
+    },
+    {
+      "entity": "bookings",
+      "relationship": "Coaches",
+      "min": 1,
+      "max": 1
+    }
+  ],
+  "fkGroups": []
+}
