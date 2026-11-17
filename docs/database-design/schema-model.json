@@ -1,0 +1,447 @@
+{
+  "sourceMain": "e8424de0922ea35d5a441258ddb788b59fe16912",
+  "tables": [
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "key": [
+            "PK"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "email",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "UK"
+          ]
+        },
+        {
+          "name": "password_hash",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false,
+          "default": "now()",
+          "key": []
+        }
+      ],
+      "rules": [
+        "CK: id; email. PK: id. UNIQUE(id, role) is a nonminimal reference superkey.",
+        "CHECK: name length 2–100; email = lower(btrim(email)) and contains @.",
+        "CHECK: password_hash length >= 60; role IN (MEMBER, TRAINER)."
+      ]
+    },
+    {
+      "name": "member_profiles",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "PK",
+            "FK"
+          ]
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": false,
+          "default": "'MEMBER'::text",
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "fitness_goals",
+          "type": "text",
+          "nullable": false,
+          "default": "''::text",
+          "key": []
+        }
+      ],
+      "rules": [
+        "FK (user_id, role) -> users(id, role).",
+        "CHECK role = MEMBER; fitness_goals length <= 2000."
+      ]
+    },
+    {
+      "name": "trainer_profiles",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "PK",
+            "FK"
+          ]
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": false,
+          "default": "'TRAINER'::text",
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "bio",
+          "type": "text",
+          "nullable": false,
+          "default": "''::text",
+          "key": []
+        },
+        {
+          "name": "specialties",
+          "type": "text[]",
+          "nullable": false,
+          "default": "'{}'::text[]",
+          "key": []
+        },
+        {
+          "name": "experience_years",
+          "type": "integer",
+          "nullable": false,
+          "default": "0",
+          "key": []
+        },
+        {
+          "name": "embedding",
+          "type": "vector(384)",
+          "nullable": true,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "embedding_model",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "location",
+          "type": "text",
+          "nullable": false,
+          "default": "'PulseFit Campus Gym'::text",
+          "key": []
+        }
+      ],
+      "rules": [
+        "FK (user_id, role) -> users(id, role).",
+        "CHECK: role = TRAINER; bio length <= 2000; experience_years 0–80.",
+        "CHECK: location length <= 120. specialties is a PostgreSQL text[] array."
+      ]
+    },
+    {
+      "name": "trainer_availability",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "key": [
+            "PK"
+          ]
+        },
+        {
+          "name": "trainer_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "starts_at",
+          "type": "timestamptz",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "ends_at",
+          "type": "timestamptz",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "default": "'OPEN'::text",
+          "key": []
+        }
+      ],
+      "rules": [
+        "FK trainer_id -> trainer_profiles(user_id). UNIQUE(id, trainer_id): nonminimal superkey.",
+        "CHECK: status IN (OPEN, CLOSED); 0 < duration <= 4 hours.",
+        "EXCLUDE GiST: trainer_id WITH =, tstzrange(starts_at, ends_at, [)) WITH &&.",
+        "Trigger: new start in next 90 days; trainer/time immutable; no occupied closure."
+      ]
+    },
+    {
+      "name": "bookings",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "key": [
+            "PK"
+          ]
+        },
+        {
+          "name": "member_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "trainer_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "slot_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": false,
+          "default": "'CONFIRMED'::text",
+          "key": []
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "nullable": false,
+          "default": "now()",
+          "key": []
+        }
+      ],
+      "rules": [
+        "FK member_id -> member_profiles(user_id).",
+        "FK (slot_id, trainer_id) -> trainer_availability(id, trainer_id).",
+        "CHECK status IN (CONFIRMED, CANCELLED).",
+        "PARTIAL UNIQUE: slot_id WHERE status = CONFIRMED; history may contain many rows.",
+        "Triggers guard booking identity/time/state and append booking_audit."
+      ]
+    },
+    {
+      "name": "booking_audit",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": false,
+          "default": "GENERATED ALWAYS AS IDENTITY",
+          "key": [
+            "PK"
+          ]
+        },
+        {
+          "name": "booking_id",
+          "type": "uuid",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "FK"
+          ]
+        },
+        {
+          "name": "old_status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "new_status",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "changed_at",
+          "type": "timestamptz",
+          "nullable": false,
+          "default": "now()",
+          "key": []
+        }
+      ],
+      "rules": [
+        "FK booking_id -> bookings(id). old_status is nullable for initial insert.",
+        "Trigger appends changes; FK itself permits zero audit rows per booking."
+      ]
+    },
+    {
+      "name": "exercises",
+      "columns": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "nullable": false,
+          "default": "gen_random_uuid()",
+          "key": [
+            "PK"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": [
+            "UK"
+          ]
+        },
+        {
+          "name": "muscle_group",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "difficulty",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "category",
+          "type": "text",
+          "nullable": false,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "embedding",
+          "type": "vector(384)",
+          "nullable": true,
+          "default": null,
+          "key": []
+        },
+        {
+          "name": "embedding_model",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "key": []
+        }
+      ],
+      "rules": [
+        "CK: id; name. PK: id. No FK to workout snapshots or trainer profiles.",
+        "CHECK difficulty IN (BEGINNER, INTERMEDIATE, ADVANCED).",
+        "CHECK category IN (STRENGTH, CARDIO, MOBILITY)."
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "parent": "users",
+      "child": "member_profiles",
+      "mapping": "(user_id, role) -> users(id, role)",
+      "identifying": true,
+      "childMin": 0,
+      "childMax": 1
+    },
+    {
+      "parent": "users",
+      "child": "trainer_profiles",
+      "mapping": "(user_id, role) -> users(id, role)",
+      "identifying": true,
+      "childMin": 0,
+      "childMax": 1
+    },
+    {
+      "parent": "trainer_profiles",
+      "child": "trainer_availability",
+      "mapping": "trainer_id -> trainer_profiles(user_id)",
+      "identifying": false,
+      "childMin": 0,
+      "childMax": "many"
+    },
+    {
+      "parent": "member_profiles",
+      "child": "bookings",
+      "mapping": "member_id -> member_profiles(user_id)",
+      "identifying": false,
+      "childMin": 0,
+      "childMax": "many"
+    },
+    {
+      "parent": "trainer_availability",
+      "child": "bookings",
+      "mapping": "(slot_id, trainer_id) -> trainer_availability(id, trainer_id)",
+      "identifying": false,
+      "childMin": 0,
+      "childMax": "many"
+    },
+    {
+      "parent": "bookings",
+      "child": "booking_audit",
+      "mapping": "booking_id -> bookings(id)",
+      "identifying": false,
+      "childMin": 0,
+      "childMax": "many"
+    }
+  ]
+}

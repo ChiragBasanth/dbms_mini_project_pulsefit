@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-11-17T05:00:09.009Z",
+  "checks": {
+    "migrationChecksums": 3,
+    "businessRelations": 7,
+    "businessColumns": 41,
+    "foreignKeys": 6,
+    "indexes": 17,
+    "svgPngPairs": 3
+  },
+  "result": "PASS",
+  "scope": "Documentation source/catalog/asset checks only; visual review separately recorded in VALIDATION.md."
+}

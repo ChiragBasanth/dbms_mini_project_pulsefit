@@ -80,8 +80,8 @@ The concurrency test releases eight separately acquired PostgreSQL connections t
 ## Academic deliverables
 
 - [Initial audit](docs/IMPLEMENTATION_AUDIT.md) and [requirements matrix](docs/REQUIREMENTS_MATRIX.md)
-- [ER diagram](docs/ER_DIAGRAM.md), [relational schema](docs/RELATIONAL_SCHEMA.md), [data dictionary](docs/DATA_DICTIONARY.md)
-- [Project report](docs/DBMS_PROJECT_REPORT.md) with the nine required headings and [printable PDF](docs/DBMS_PROJECT_REPORT.pdf)
+- [ER diagram](docs/ER_DIAGRAM.md), [relational schema](docs/RELATIONAL_SCHEMA.md), [data dictionary](docs/DATA_DICTIONARY.md), [hybrid data model](docs/HYBRID_DATA_MODEL.md), [editable figures and exports](docs/database-design/README.md)
+- [Current technical report](docs/LEVEL3_FINAL_REPORT.md); [historical nine-heading report with current design addendum](docs/DBMS_PROJECT_REPORT.md) and [historical printable PDF](docs/DBMS_PROJECT_REPORT.pdf)
 - [10–15 minute demo](docs/DEMO_SCRIPT.md) and [screenshot checklist](docs/SCREENSHOT_CHECKLIST.md)
 
 ## Limits and authorship

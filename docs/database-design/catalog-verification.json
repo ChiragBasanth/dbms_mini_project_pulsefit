@@ -1,0 +1,1209 @@
+{
+  "inspectedAt": "2026-11-17T04:59:37.752Z",
+  "sourceMain": "e8424de0922ea35d5a441258ddb788b59fe16912",
+  "serverVersion": "18.6",
+  "tables": [
+    {
+      "tablename": "booking_audit",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "bookings",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "exercises",
+      "rowsecurity": false
+    },
+    {
+      "tablename": "member_profiles",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "schema_migrations",
+      "rowsecurity": false
+    },
+    {
+      "tablename": "trainer_availability",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "trainer_profiles",
+      "rowsecurity": true
+    },
+    {
+      "tablename": "users",
+      "rowsecurity": false
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "booking_audit",
+      "column_name": "id",
+      "ordinal_position": 1,
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "YES",
+      "formatted_type": "bigint"
+    },
+    {
+      "table_name": "booking_audit",
+      "column_name": "booking_id",
+      "ordinal_position": 2,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "booking_audit",
+      "column_name": "old_status",
+      "ordinal_position": 3,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "booking_audit",
+      "column_name": "new_status",
+      "ordinal_position": 4,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "booking_audit",
+      "column_name": "changed_at",
+      "ordinal_position": 5,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "bookings",
+      "column_name": "id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "bookings",
+      "column_name": "member_id",
+      "ordinal_position": 2,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "bookings",
+      "column_name": "trainer_id",
+      "ordinal_position": 3,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "bookings",
+      "column_name": "slot_id",
+      "ordinal_position": 4,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "bookings",
+      "column_name": "status",
+      "ordinal_position": 5,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'CONFIRMED'::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "bookings",
+      "column_name": "created_at",
+      "ordinal_position": 6,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "name",
+      "ordinal_position": 2,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "muscle_group",
+      "ordinal_position": 3,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "description",
+      "ordinal_position": 4,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "difficulty",
+      "ordinal_position": 5,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "category",
+      "ordinal_position": 6,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "embedding",
+      "ordinal_position": 7,
+      "data_type": "USER-DEFINED",
+      "udt_name": "vector",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "vector(384)"
+    },
+    {
+      "table_name": "exercises",
+      "column_name": "embedding_model",
+      "ordinal_position": 8,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "member_profiles",
+      "column_name": "user_id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "member_profiles",
+      "column_name": "role",
+      "ordinal_position": 2,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'MEMBER'::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "member_profiles",
+      "column_name": "fitness_goals",
+      "ordinal_position": 3,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "occupied_slots",
+      "column_name": "slot_id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "schema_migrations",
+      "column_name": "name",
+      "ordinal_position": 1,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "schema_migrations",
+      "column_name": "checksum",
+      "ordinal_position": 2,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "schema_migrations",
+      "column_name": "applied_at",
+      "ordinal_position": 3,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "trainer_availability",
+      "column_name": "id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "trainer_availability",
+      "column_name": "trainer_id",
+      "ordinal_position": 2,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "trainer_availability",
+      "column_name": "starts_at",
+      "ordinal_position": 3,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "trainer_availability",
+      "column_name": "ends_at",
+      "ordinal_position": 4,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "trainer_availability",
+      "column_name": "status",
+      "ordinal_position": 5,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'OPEN'::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "user_id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "role",
+      "ordinal_position": 2,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'TRAINER'::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "bio",
+      "ordinal_position": 3,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "''::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "specialties",
+      "ordinal_position": 4,
+      "data_type": "ARRAY",
+      "udt_name": "_text",
+      "is_nullable": "NO",
+      "column_default": "'{}'::text[]",
+      "is_identity": "NO",
+      "formatted_type": "text[]"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "experience_years",
+      "ordinal_position": 5,
+      "data_type": "integer",
+      "udt_name": "int4",
+      "is_nullable": "NO",
+      "column_default": "0",
+      "is_identity": "NO",
+      "formatted_type": "integer"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "embedding",
+      "ordinal_position": 6,
+      "data_type": "USER-DEFINED",
+      "udt_name": "vector",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "vector(384)"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "embedding_model",
+      "ordinal_position": 7,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "column_name": "location",
+      "ordinal_position": 8,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": "'PulseFit Campus Gym'::text",
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "trainer_utilization",
+      "column_name": "user_id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "trainer_utilization",
+      "column_name": "slots",
+      "ordinal_position": 2,
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "bigint"
+    },
+    {
+      "table_name": "trainer_utilization",
+      "column_name": "confirmed_bookings",
+      "ordinal_position": 3,
+      "data_type": "bigint",
+      "udt_name": "int8",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "bigint"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "member_id",
+      "ordinal_position": 2,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "trainer_id",
+      "ordinal_position": 3,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "slot_id",
+      "ordinal_position": 4,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "status",
+      "ordinal_position": 5,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "member_name",
+      "ordinal_position": 6,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "trainer_name",
+      "ordinal_position": 7,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "starts_at",
+      "ordinal_position": 8,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "upcoming_bookings",
+      "column_name": "ends_at",
+      "ordinal_position": 9,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "YES",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    },
+    {
+      "table_name": "users",
+      "column_name": "id",
+      "ordinal_position": 1,
+      "data_type": "uuid",
+      "udt_name": "uuid",
+      "is_nullable": "NO",
+      "column_default": "gen_random_uuid()",
+      "is_identity": "NO",
+      "formatted_type": "uuid"
+    },
+    {
+      "table_name": "users",
+      "column_name": "name",
+      "ordinal_position": 2,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "users",
+      "column_name": "email",
+      "ordinal_position": 3,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "users",
+      "column_name": "password_hash",
+      "ordinal_position": 4,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "users",
+      "column_name": "role",
+      "ordinal_position": 5,
+      "data_type": "text",
+      "udt_name": "text",
+      "is_nullable": "NO",
+      "column_default": null,
+      "is_identity": "NO",
+      "formatted_type": "text"
+    },
+    {
+      "table_name": "users",
+      "column_name": "created_at",
+      "ordinal_position": 6,
+      "data_type": "timestamp with time zone",
+      "udt_name": "timestamptz",
+      "is_nullable": "NO",
+      "column_default": "now()",
+      "is_identity": "NO",
+      "formatted_type": "timestamp with time zone"
+    }
+  ],
+  "constraints": [
+    {
+      "table_name": "booking_audit",
+      "conname": "booking_audit_booking_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (booking_id) REFERENCES bookings(id)"
+    },
+    {
+      "table_name": "booking_audit",
+      "conname": "booking_audit_booking_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL booking_id"
+    },
+    {
+      "table_name": "booking_audit",
+      "conname": "booking_audit_changed_at_not_null",
+      "contype": "n",
+      "definition": "NOT NULL changed_at"
+    },
+    {
+      "table_name": "booking_audit",
+      "conname": "booking_audit_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "booking_audit",
+      "conname": "booking_audit_new_status_not_null",
+      "contype": "n",
+      "definition": "NOT NULL new_status"
+    },
+    {
+      "table_name": "booking_audit",
+      "conname": "booking_audit_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_created_at_not_null",
+      "contype": "n",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_member_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (member_id) REFERENCES member_profiles(user_id)"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_member_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL member_id"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_slot_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL slot_id"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_slot_id_trainer_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (slot_id, trainer_id) REFERENCES trainer_availability(id, trainer_id)"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_status_check",
+      "contype": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['CONFIRMED'::text, 'CANCELLED'::text])))"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_status_not_null",
+      "contype": "n",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "bookings",
+      "conname": "bookings_trainer_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL trainer_id"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_category_check",
+      "contype": "c",
+      "definition": "CHECK ((category = ANY (ARRAY['STRENGTH'::text, 'CARDIO'::text, 'MOBILITY'::text])))"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_category_not_null",
+      "contype": "n",
+      "definition": "NOT NULL category"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_description_not_null",
+      "contype": "n",
+      "definition": "NOT NULL description"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_difficulty_check",
+      "contype": "c",
+      "definition": "CHECK ((difficulty = ANY (ARRAY['BEGINNER'::text, 'INTERMEDIATE'::text, 'ADVANCED'::text])))"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_difficulty_not_null",
+      "contype": "n",
+      "definition": "NOT NULL difficulty"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_muscle_group_not_null",
+      "contype": "n",
+      "definition": "NOT NULL muscle_group"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_name_key",
+      "contype": "u",
+      "definition": "UNIQUE (name)"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_name_not_null",
+      "contype": "n",
+      "definition": "NOT NULL name"
+    },
+    {
+      "table_name": "exercises",
+      "conname": "exercises_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_fitness_goals_check",
+      "contype": "c",
+      "definition": "CHECK ((length(fitness_goals) <= 2000))"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_fitness_goals_not_null",
+      "contype": "n",
+      "definition": "NOT NULL fitness_goals"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (user_id)"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_role_check",
+      "contype": "c",
+      "definition": "CHECK ((role = 'MEMBER'::text))"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_role_not_null",
+      "contype": "n",
+      "definition": "NOT NULL role"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_user_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL user_id"
+    },
+    {
+      "table_name": "member_profiles",
+      "conname": "member_profiles_user_id_role_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (user_id, role) REFERENCES users(id, role)"
+    },
+    {
+      "table_name": "schema_migrations",
+      "conname": "schema_migrations_applied_at_not_null",
+      "contype": "n",
+      "definition": "NOT NULL applied_at"
+    },
+    {
+      "table_name": "schema_migrations",
+      "conname": "schema_migrations_checksum_not_null",
+      "contype": "n",
+      "definition": "NOT NULL checksum"
+    },
+    {
+      "table_name": "schema_migrations",
+      "conname": "schema_migrations_name_not_null",
+      "contype": "n",
+      "definition": "NOT NULL name"
+    },
+    {
+      "table_name": "schema_migrations",
+      "conname": "schema_migrations_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (name)"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_check",
+      "contype": "c",
+      "definition": "CHECK (((ends_at > starts_at) AND (ends_at <= (starts_at + '04:00:00'::interval))))"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_ends_at_not_null",
+      "contype": "n",
+      "definition": "NOT NULL ends_at"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_id_trainer_id_key",
+      "contype": "u",
+      "definition": "UNIQUE (id, trainer_id)"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_starts_at_not_null",
+      "contype": "n",
+      "definition": "NOT NULL starts_at"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_status_check",
+      "contype": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['OPEN'::text, 'CLOSED'::text])))"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_status_not_null",
+      "contype": "n",
+      "definition": "NOT NULL status"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_trainer_id_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (trainer_id) REFERENCES trainer_profiles(user_id)"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_trainer_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL trainer_id"
+    },
+    {
+      "table_name": "trainer_availability",
+      "conname": "trainer_availability_trainer_id_tstzrange_excl",
+      "contype": "x",
+      "definition": "EXCLUDE USING gist (trainer_id WITH =, tstzrange(starts_at, ends_at, '[)'::text) WITH &&)"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_bio_check",
+      "contype": "c",
+      "definition": "CHECK ((length(bio) <= 2000))"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_bio_not_null",
+      "contype": "n",
+      "definition": "NOT NULL bio"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_experience_years_check",
+      "contype": "c",
+      "definition": "CHECK (((experience_years >= 0) AND (experience_years <= 80)))"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_experience_years_not_null",
+      "contype": "n",
+      "definition": "NOT NULL experience_years"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_location_check",
+      "contype": "c",
+      "definition": "CHECK ((length(location) <= 120))"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_location_not_null",
+      "contype": "n",
+      "definition": "NOT NULL location"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (user_id)"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_role_check",
+      "contype": "c",
+      "definition": "CHECK ((role = 'TRAINER'::text))"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_role_not_null",
+      "contype": "n",
+      "definition": "NOT NULL role"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_specialties_not_null",
+      "contype": "n",
+      "definition": "NOT NULL specialties"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_user_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL user_id"
+    },
+    {
+      "table_name": "trainer_profiles",
+      "conname": "trainer_profiles_user_id_role_fkey",
+      "contype": "f",
+      "definition": "FOREIGN KEY (user_id, role) REFERENCES users(id, role)"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_created_at_not_null",
+      "contype": "n",
+      "definition": "NOT NULL created_at"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_email_check",
+      "contype": "c",
+      "definition": "CHECK (((email = lower(btrim(email))) AND (POSITION(('@'::text) IN (email)) > 1)))"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_email_key",
+      "contype": "u",
+      "definition": "UNIQUE (email)"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_email_not_null",
+      "contype": "n",
+      "definition": "NOT NULL email"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_id_not_null",
+      "contype": "n",
+      "definition": "NOT NULL id"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_id_role_key",
+      "contype": "u",
+      "definition": "UNIQUE (id, role)"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_name_check",
+      "contype": "c",
+      "definition": "CHECK (((length(name) >= 2) AND (length(name) <= 100)))"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_name_not_null",
+      "contype": "n",
+      "definition": "NOT NULL name"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_password_hash_check",
+      "contype": "c",
+      "definition": "CHECK ((length(password_hash) >= 60))"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_password_hash_not_null",
+      "contype": "n",
+      "definition": "NOT NULL password_hash"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_pkey",
+      "contype": "p",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_role_check",
+      "contype": "c",
+      "definition": "CHECK ((role = ANY (ARRAY['MEMBER'::text, 'TRAINER'::text])))"
+    },
+    {
+      "table_name": "users",
+      "conname": "users_role_not_null",
+      "contype": "n",
+      "definition": "NOT NULL role"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "booking_audit",
+      "indexname": "booking_audit_pkey",
+      "indexdef": "CREATE UNIQUE INDEX booking_audit_pkey ON public.booking_audit USING btree (id)"
+    },
+    {
+      "tablename": "bookings",
+      "indexname": "bookings_member_date",
+      "indexdef": "CREATE INDEX bookings_member_date ON public.bookings USING btree (member_id, created_at DESC)"
+    },
+    {
+      "tablename": "bookings",
+      "indexname": "bookings_pkey",
+      "indexdef": "CREATE UNIQUE INDEX bookings_pkey ON public.bookings USING btree (id)"
+    },
+    {
+      "tablename": "bookings",
+      "indexname": "bookings_trainer",
+      "indexdef": "CREATE INDEX bookings_trainer ON public.bookings USING btree (trainer_id, status)"
+    },
+    {
+      "tablename": "bookings",
+      "indexname": "one_confirmed_booking_per_slot",
+      "indexdef": "CREATE UNIQUE INDEX one_confirmed_booking_per_slot ON public.bookings USING btree (slot_id) WHERE (status = 'CONFIRMED'::text)"
+    },
+    {
+      "tablename": "exercises",
+      "indexname": "exercises_name_key",
+      "indexdef": "CREATE UNIQUE INDEX exercises_name_key ON public.exercises USING btree (name)"
+    },
+    {
+      "tablename": "exercises",
+      "indexname": "exercises_pkey",
+      "indexdef": "CREATE UNIQUE INDEX exercises_pkey ON public.exercises USING btree (id)"
+    },
+    {
+      "tablename": "member_profiles",
+      "indexname": "member_profiles_pkey",
+      "indexdef": "CREATE UNIQUE INDEX member_profiles_pkey ON public.member_profiles USING btree (user_id)"
+    },
+    {
+      "tablename": "schema_migrations",
+      "indexname": "schema_migrations_pkey",
+      "indexdef": "CREATE UNIQUE INDEX schema_migrations_pkey ON public.schema_migrations USING btree (name)"
+    },
+    {
+      "tablename": "trainer_availability",
+      "indexname": "availability_trainer_date",
+      "indexdef": "CREATE INDEX availability_trainer_date ON public.trainer_availability USING btree (trainer_id, starts_at)"
+    },
+    {
+      "tablename": "trainer_availability",
+      "indexname": "trainer_availability_id_trainer_id_key",
+      "indexdef": "CREATE UNIQUE INDEX trainer_availability_id_trainer_id_key ON public.trainer_availability USING btree (id, trainer_id)"
+    },
+    {
+      "tablename": "trainer_availability",
+      "indexname": "trainer_availability_pkey",
+      "indexdef": "CREATE UNIQUE INDEX trainer_availability_pkey ON public.trainer_availability USING btree (id)"
+    },
+    {
+      "tablename": "trainer_availability",
+      "indexname": "trainer_availability_trainer_id_tstzrange_excl",
+      "indexdef": "CREATE INDEX trainer_availability_trainer_id_tstzrange_excl ON public.trainer_availability USING gist (trainer_id, tstzrange(starts_at, ends_at, '[)'::text))"
+    },
+    {
+      "tablename": "trainer_profiles",
+      "indexname": "trainer_profiles_pkey",
+      "indexdef": "CREATE UNIQUE INDEX trainer_profiles_pkey ON public.trainer_profiles USING btree (user_id)"
+    },
+    {
+      "tablename": "users",
+      "indexname": "users_email_key",
+      "indexdef": "CREATE UNIQUE INDEX users_email_key ON public.users USING btree (email)"
+    },
+    {
+      "tablename": "users",
+      "indexname": "users_id_role_key",
+      "indexdef": "CREATE UNIQUE INDEX users_id_role_key ON public.users USING btree (id, role)"
+    },
+    {
+      "tablename": "users",
+      "indexname": "users_pkey",
+      "indexdef": "CREATE UNIQUE INDEX users_pkey ON public.users USING btree (id)"
+    }
+  ],
+  "migrations": [
+    {
+      "name": "001_core.sql",
+      "checksum": "c2faeecf02cbbf3acb4645ec88f5d2143353ac2ca466ca5731e5cf663b3451b9"
+    },
+    {
+      "name": "002_profile_metadata.sql",
+      "checksum": "b3c8996c41ad4fb639aebcae74c59dd67f5a1f1b54031d3ef75de648c0a0c22c"
+    },
+    {
+      "name": "003_database_authorization.sql",
+      "checksum": "cc1414d28411a7f06f4af90b089feeac870629984d7a925db4b8b17f3348cbdc"
+    }
+  ]
+}

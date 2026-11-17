@@ -1,5 +1,7 @@
 # PulseFit: 10–15 minute faculty demonstration
 
+Design figures: [ER](ER_DIAGRAM.md), [physical relational schema](RELATIONAL_SCHEMA.md), [hybrid architecture](HYBRID_DATA_MODEL.md). Use the scalable SVGs from [database-design](database-design/README.md); zoom table groups for presentation. Explain 0..many historical bookings versus partial confirmed uniqueness, and identify composite reference superkeys correctly.
+
 Prepare with live-evaluation-runbook.md and SETUP.md. Run all setup/check/HTTP commands beforehand. Keep member and trainer browser profiles ready, fresh slots available, database processes running and model cached. Never project passwords.
 
 | Time | Action | DBMS explanation / evidence |

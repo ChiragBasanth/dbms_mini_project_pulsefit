@@ -6,7 +6,7 @@ Team: **Chhavi S — PES1UG24CS132** and **Chirag Basanth — PES1UG24CS133**. B
 
 | Topic | Exact source / objects |
 |---|---|
-| Architecture/design | [ER diagram](ER_DIAGRAM.md), [PNG export](er-diagram/pulsefit.png), [relational schema](RELATIONAL_SCHEMA.md), [dictionary](DATA_DICTIONARY.md) |
+| Architecture/design | [ER diagram](ER_DIAGRAM.md), [PNG export](database-design/pulsefit-er-crows-foot.png), [relational schema](RELATIONAL_SCHEMA.md), [dictionary](DATA_DICTIONARY.md), [relational figure](database-design/pulsefit-relational-schema.svg), [hybrid figure](HYBRID_DATA_MODEL.md) |
 | Core SQL | `database/postgres/migrations/001_core.sql`: users, typed profiles, availability, bookings, audit, exercises; constraints/indexes/functions/triggers/views |
 | Additive schema | `002_profile_metadata.sql`: trainer location; `003_database_authorization.sql`: RLS, actor helpers, guarded reservation, capacity view |
 | Query demonstrations | `database/postgres/queries/course_demo.sql`, `inspect.sql`, `semantic_search.sql`; safe temporary DDL/DML and actual SQL relationships |

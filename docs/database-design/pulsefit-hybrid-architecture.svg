@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1270" viewBox="0 0 1800 1270" role="img"><title>PulseFit | Hybrid Database Architecture</title><desc>Application integration and storage boundaries · Architecture arrows are not ER/FK connectors</desc><rect width="100%" height="100%" fill="white"/>
+<text x="50" y="60" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#193348" text-anchor="start">PulseFit | Hybrid Database Architecture</text>
+<text x="50" y="98" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#193348" text-anchor="start">Application integration and storage boundaries · Architecture arrows are not ER/FK connectors</text>
+<polyline points="50,122 1750,122" fill="none" stroke="#aab9c3" stroke-width="2" />
+<rect x="410" y="160" width="980" height="160" rx="4" fill="#eef3f6" stroke="#aab9c3" stroke-width="1.5"/>
+<text x="900" y="204" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#193348" text-anchor="middle">Next.js UI → authenticated Node API</text>
+<text x="900" y="242" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#193348" text-anchor="middle">Session UUID / role checks · Zod validation · parameterized SQL · owner-scoped Mongo operations</text>
+<text x="900" y="280" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#526674" text-anchor="middle">src/app/api/[...path]/route.ts · src/lib/db.ts · src/lib/workouts.ts · src/lib/embedding.ts</text>
+<polyline points="650,320 650,430" fill="none" stroke="#234d67" stroke-width="2" />
+<polyline points="644,418 650,430 656,418" fill="none" stroke="#234d67" stroke-width="2" />
+<rect x="454.95000000000005" y="367" width="390.09999999999997" height="26" rx="4" fill="white" stroke="none" stroke-width="1.5"/>
+<text x="650" y="385" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="middle">Restricted SQL runtime login / transactions</text>
+<polyline points="1240,320 1490,320 1490,430" fill="none" stroke="#234d67" stroke-width="2" />
+<polyline points="1484,418 1490,430 1496,418" fill="none" stroke="#234d67" stroke-width="2" />
+<rect x="1299.3" y="367" width="381.4" height="26" rx="4" fill="white" stroke="none" stroke-width="1.5"/>
+<text x="1490" y="385" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="middle">MongoDB driver / scoped CRUD + aggregation</text>
+<rect x="50" y="430" width="1030" height="650" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="50" y="430" width="1030" height="48" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="75" y="463" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="start">POSTGRESQL SERVER</text>
+<text x="75" y="514" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#193348" text-anchor="start">Relational integrity: PK / FK / CHECK / UNIQUE / GiST / RLS</text>
+<text x="75" y="559" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">users — identity, role and credential hash</text>
+<text x="75" y="594" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">member_profiles — typed member identity and goals</text>
+<text x="75" y="629" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">trainer_profiles — bio, specialties, experience and location</text>
+<text x="75" y="664" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">trainer_availability — trainer/time/status; overlap exclusion</text>
+<text x="75" y="699" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">bookings — member + slot/trainer; history and active uniqueness</text>
+<text x="75" y="734" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">booking_audit — append trail of booking changes</text>
+<text x="75" y="769" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">exercises — standalone semantic exercise catalog</text>
+<rect x="75" y="825" width="980" height="170" rx="4" fill="#eef3f6" stroke="#aab9c3" stroke-width="1.5"/>
+<text x="95" y="860" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#193348" text-anchor="start">pgvector extension INSIDE PostgreSQL</text>
+<text x="95" y="899" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#193348" text-anchor="start">trainer_profiles.embedding vector(384) + embedding_model</text>
+<text x="95" y="935" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#193348" text-anchor="start">exercises.embedding vector(384) + embedding_model</text>
+<text x="95" y="970" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#193348" text-anchor="start">MiniLM mean-pooled, normalized vectors · exact cosine &lt;=&gt; · not another server</text>
+<text x="75" y="1045" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="start">Infrastructure: schema_migrations. Reporting: upcoming_bookings / trainer_utilization / occupied_slots.</text>
+<rect x="1150" y="430" width="600" height="650" rx="4" fill="white" stroke="#aab9c3" stroke-width="1.5"/>
+<rect x="1150" y="430" width="600" height="48" rx="4" fill="#234d67" stroke="#234d67" stroke-width="1.5"/>
+<text x="1175" y="463" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="start">MONGODB SERVER</text>
+<text x="1175" y="519" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#193348" text-anchor="start">workout_logs collection</text>
+<text x="1175" y="565" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">_id : ObjectId</text>
+<text x="1175" y="604" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">userId : string (member UUID)</text>
+<text x="1175" y="643" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">performedAt / createdAt : BSON date</text>
+<text x="1175" y="682" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">workoutType : enum; notes : optional string</text>
+<text x="1175" y="721" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">exercises[] : name + sets[] snapshots</text>
+<text x="1175" y="760" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">sets[] : reps / weight / duration / distance</text>
+<text x="1175" y="850" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#193348" text-anchor="start">Strict collection validator; no SQL FK.</text>
+<text x="1175" y="892" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">Compound indexes begin with userId.</text>
+<text x="1175" y="934" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">Owner/date match + facet/unwind/group.</text>
+<text x="1175" y="976" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">No enforced link to exercise catalog rows.</text>
+<polyline points="500,1080 500,1130 1450,1130 1450,1080" fill="none" stroke="#526674" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="614.6500000000001" y="1102" width="720.6999999999999" height="26" rx="4" fill="white" stroke="none" stroke-width="1.5"/>
+<text x="975" y="1120" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#193348" text-anchor="middle">Logical reference: workout_logs.userId ↔ member_profiles.user_id (UUID as string)</text>
+<text x="50" y="1190" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">Dashed logical link is application-managed: no cross-store FK, cascade or atomic transaction. Each store enforces only its own constraints.</text>
+<text x="50" y="1230" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#193348" text-anchor="start">No embedding field exists in workout_logs. PostgreSQL roles/RLS do not authorize MongoDB; the API applies Mongo owner filtering.</text>
+</svg>
